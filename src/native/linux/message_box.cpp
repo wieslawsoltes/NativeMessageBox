@@ -410,7 +410,7 @@ namespace
             gtk_label_set_xalign(GTK_LABEL(expanded_label), 0.0f);
             gtk_label_set_line_wrap(GTK_LABEL(expanded_label), TRUE);
             gtk_label_set_selectable(GTK_LABEL(expanded_label), FALSE);
-            gtk_expander_set_child(GTK_EXPANDER(expander), expanded_label);
+            gtk_container_add(GTK_CONTAINER(expander), expanded_label);
             gtk_box_pack_start(content, expander, FALSE, FALSE, 0);
         }
 

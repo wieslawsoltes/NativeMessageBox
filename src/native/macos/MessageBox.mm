@@ -286,6 +286,16 @@ static NSView* BuildAccessoryView(const NmbMessageBoxOptions* options, NmbAlertH
                 }
 
                 field.translatesAutoresizingMaskIntoConstraints = NO;
+                if (@available(macOS 10.11, *))
+                {
+                    [[field.heightAnchor constraintGreaterThanOrEqualToConstant:28.0] setActive:YES];
+                }
+                else
+                {
+                    NSRect frame = field.frame;
+                    frame.size.height = 28.0;
+                    field.frame = frame;
+                }
                 helper.inputControl = field;
                 [stack addArrangedSubview:field];
                 break;
@@ -318,6 +328,16 @@ static NSView* BuildAccessoryView(const NmbMessageBoxOptions* options, NmbAlertH
                 helper.inputControl = combo;
                 helper.inputMode = NMB_INPUT_COMBO;
                 combo.translatesAutoresizingMaskIntoConstraints = NO;
+                if (@available(macOS 10.11, *))
+                {
+                    [[combo.heightAnchor constraintGreaterThanOrEqualToConstant:28.0] setActive:YES];
+                }
+                else
+                {
+                    NSRect frame = combo.frame;
+                    frame.size.height = 28.0;
+                    combo.frame = frame;
+                }
                 [stack addArrangedSubview:combo];
                 break;
             }

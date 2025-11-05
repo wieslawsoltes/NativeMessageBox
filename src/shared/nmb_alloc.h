@@ -7,6 +7,12 @@
 
 #if defined(_WIN32)
 #  include <windows.h>
+#  ifdef _MSC_VER
+#    include <objbase.h>
+#    define NMB_HAVE_COTASKMEM 1
+#  else
+#    include <stdlib.h>
+#  endif
 #else
 #  include <stdlib.h>
 #endif
@@ -18,7 +24,7 @@ static inline void* nmb_default_alloc(size_t size)
         return NULL;
     }
 
-#if defined(_WIN32)
+#if defined(NMB_HAVE_COTASKMEM)
     return CoTaskMemAlloc(size);
 #else
     return malloc(size);
@@ -32,7 +38,7 @@ static inline void nmb_default_free(void* ptr)
         return;
     }
 
-#if defined(_WIN32)
+#if defined(NMB_HAVE_COTASKMEM)
     CoTaskMemFree(ptr);
 #else
     free(ptr);

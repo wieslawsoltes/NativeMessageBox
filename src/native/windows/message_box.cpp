@@ -366,7 +366,7 @@ namespace
         case NMB_ICON_INFORMATION:
             return TD_INFORMATION_ICON;
         case NMB_ICON_QUESTION:
-            return TD_QUESTION_ICON;
+            return TD_INFORMATION_ICON;
         default:
             return nullptr;
         }

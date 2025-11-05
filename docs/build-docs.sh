@@ -8,6 +8,8 @@ pushd "${SCRIPT_DIR}/.." > /dev/null
 
 dotnet tool restore
 
+export PATH="${HOME}/.dotnet/tools:${PATH}"
+
 docfx metadata "${DOCFX_DIR}/docfx.json"
 docfx build "${DOCFX_DIR}/docfx.json"
 
