@@ -10,8 +10,8 @@ dotnet tool restore
 
 export PATH="${HOME}/.dotnet/tools:${PATH}"
 
-docfx metadata "${DOCFX_DIR}/docfx.json"
-docfx build "${DOCFX_DIR}/docfx.json"
+dotnet tool run docfx metadata "${DOCFX_DIR}/docfx.json"
+dotnet tool run docfx build "${DOCFX_DIR}/docfx.json"
 
 popd > /dev/null
 
