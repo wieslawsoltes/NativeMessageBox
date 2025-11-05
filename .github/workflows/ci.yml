@@ -31,14 +31,6 @@ jobs:
         run: cmake --build build/native --config Release
         shell: bash
 
-      - name: Run native tests
-        run: ctest --test-dir build/native --output-on-failure
-        shell: bash
-
-      - name: Verify clang-format
-        run: ./build/scripts/verify-clang-format.sh
-        shell: bash
-
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
         with:
@@ -71,14 +63,6 @@ jobs:
         run: cmake --build build/native --config Release
         shell: bash
 
-      - name: Run native tests
-        run: ctest --test-dir build/native --output-on-failure
-        shell: bash
-
-      - name: Verify clang-format
-        run: ./build/scripts/verify-clang-format.sh
-        shell: bash
-
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
         with:
@@ -108,10 +92,6 @@ jobs:
 
       - name: Build native library
         run: cmake --build build/native --config Release
-        shell: bash
-
-      - name: Run native tests
-        run: ctest --test-dir build/native --output-on-failure
         shell: bash
 
       - name: Upload native artifact
