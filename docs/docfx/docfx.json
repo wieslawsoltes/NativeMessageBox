@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docascode.github.io/schemas/v1.0/docfx.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../..",
+          "files": ["src/dotnet/NativeMessageBox/NativeMessageBox.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      { "files": ["index.md", "managed-api.md", "quickstart.md", "architecture.md", "samples.md", "roadmap.md", "release-policy.md"], "src": ".." },
+      { "files": ["design/*.md", "troubleshooting.md"], "src": ".." },
+      { "files": ["api/**.yml", "api/**.md"], "src": "." }
+    ],
+    "xref": [],
+    "dest": "_site"
+  }
+}

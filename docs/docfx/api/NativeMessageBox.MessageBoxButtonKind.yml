@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxButtonKind
+  commentId: T:NativeMessageBox.MessageBoxButtonKind
+  id: MessageBoxButtonKind
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxButtonKind.Default
+  - NativeMessageBox.MessageBoxButtonKind.Destructive
+  - NativeMessageBox.MessageBoxButtonKind.Help
+  - NativeMessageBox.MessageBoxButtonKind.Primary
+  - NativeMessageBox.MessageBoxButtonKind.Secondary
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxButtonKind
+  nameWithType: MessageBoxButtonKind
+  fullName: NativeMessageBox.MessageBoxButtonKind
+  type: Enum
+  source:
+    id: MessageBoxButtonKind
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 27
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public enum MessageBoxButtonKind
+    content.vb: Public Enum MessageBoxButtonKind
+- uid: NativeMessageBox.MessageBoxButtonKind.Default
+  commentId: F:NativeMessageBox.MessageBoxButtonKind.Default
+  id: Default
+  parent: NativeMessageBox.MessageBoxButtonKind
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: MessageBoxButtonKind.Default
+  fullName: NativeMessageBox.MessageBoxButtonKind.Default
+  type: Field
+  source:
+    id: Default
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 29
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Default = 0
+    return:
+      type: NativeMessageBox.MessageBoxButtonKind
+- uid: NativeMessageBox.MessageBoxButtonKind.Primary
+  commentId: F:NativeMessageBox.MessageBoxButtonKind.Primary
+  id: Primary
+  parent: NativeMessageBox.MessageBoxButtonKind
+  langs:
+  - csharp
+  - vb
+  name: Primary
+  nameWithType: MessageBoxButtonKind.Primary
+  fullName: NativeMessageBox.MessageBoxButtonKind.Primary
+  type: Field
+  source:
+    id: Primary
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 30
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Primary = 1
+    return:
+      type: NativeMessageBox.MessageBoxButtonKind
+- uid: NativeMessageBox.MessageBoxButtonKind.Secondary
+  commentId: F:NativeMessageBox.MessageBoxButtonKind.Secondary
+  id: Secondary
+  parent: NativeMessageBox.MessageBoxButtonKind
+  langs:
+  - csharp
+  - vb
+  name: Secondary
+  nameWithType: MessageBoxButtonKind.Secondary
+  fullName: NativeMessageBox.MessageBoxButtonKind.Secondary
+  type: Field
+  source:
+    id: Secondary
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 31
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Secondary = 2
+    return:
+      type: NativeMessageBox.MessageBoxButtonKind
+- uid: NativeMessageBox.MessageBoxButtonKind.Destructive
+  commentId: F:NativeMessageBox.MessageBoxButtonKind.Destructive
+  id: Destructive
+  parent: NativeMessageBox.MessageBoxButtonKind
+  langs:
+  - csharp
+  - vb
+  name: Destructive
+  nameWithType: MessageBoxButtonKind.Destructive
+  fullName: NativeMessageBox.MessageBoxButtonKind.Destructive
+  type: Field
+  source:
+    id: Destructive
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 32
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Destructive = 3
+    return:
+      type: NativeMessageBox.MessageBoxButtonKind
+- uid: NativeMessageBox.MessageBoxButtonKind.Help
+  commentId: F:NativeMessageBox.MessageBoxButtonKind.Help
+  id: Help
+  parent: NativeMessageBox.MessageBoxButtonKind
+  langs:
+  - csharp
+  - vb
+  name: Help
+  nameWithType: MessageBoxButtonKind.Help
+  fullName: NativeMessageBox.MessageBoxButtonKind.Help
+  type: Field
+  source:
+    id: Help
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 33
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Help = 4
+    return:
+      type: NativeMessageBox.MessageBoxButtonKind
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: NativeMessageBox.MessageBoxButtonKind
+  commentId: T:NativeMessageBox.MessageBoxButtonKind
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxButtonKind.html
+  name: MessageBoxButtonKind
+  nameWithType: MessageBoxButtonKind
+  fullName: NativeMessageBox.MessageBoxButtonKind

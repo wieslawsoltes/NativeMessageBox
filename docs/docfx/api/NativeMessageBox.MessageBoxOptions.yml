@@ -1,0 +1,1165 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxOptions
+  commentId: T:NativeMessageBox.MessageBoxOptions
+  id: MessageBoxOptions
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxOptions.#ctor(System.String,System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton},System.String,NativeMessageBox.MessageBoxIcon,NativeMessageBox.MessageBoxSeverity,NativeMessageBox.MessageBoxDialogModality,System.IntPtr,NativeMessageBox.MessageBoxInputOptions,NativeMessageBox.MessageBoxSecondaryContent,System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.Nullable{System.UInt32},System.String,System.Object)
+  - NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+  - NativeMessageBox.MessageBoxOptions.Buttons
+  - NativeMessageBox.MessageBoxOptions.Icon
+  - NativeMessageBox.MessageBoxOptions.InputOptions
+  - NativeMessageBox.MessageBoxOptions.Locale
+  - NativeMessageBox.MessageBoxOptions.Message
+  - NativeMessageBox.MessageBoxOptions.Modality
+  - NativeMessageBox.MessageBoxOptions.ParentWindow
+  - NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+  - NativeMessageBox.MessageBoxOptions.SecondaryContent
+  - NativeMessageBox.MessageBoxOptions.Severity
+  - NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+  - NativeMessageBox.MessageBoxOptions.Tag
+  - NativeMessageBox.MessageBoxOptions.Timeout
+  - NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+  - NativeMessageBox.MessageBoxOptions.Title
+  - NativeMessageBox.MessageBoxOptions.VerificationText
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxOptions
+  nameWithType: MessageBoxOptions
+  fullName: NativeMessageBox.MessageBoxOptions
+  type: Class
+  source:
+    id: MessageBoxOptions
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 7
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public sealed class MessageBoxOptions
+    content.vb: Public NotInheritable Class MessageBoxOptions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NativeMessageBox.MessageBoxOptions.#ctor(System.String,System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton},System.String,NativeMessageBox.MessageBoxIcon,NativeMessageBox.MessageBoxSeverity,NativeMessageBox.MessageBoxDialogModality,System.IntPtr,NativeMessageBox.MessageBoxInputOptions,NativeMessageBox.MessageBoxSecondaryContent,System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.Nullable{System.UInt32},System.String,System.Object)
+  commentId: M:NativeMessageBox.MessageBoxOptions.#ctor(System.String,System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton},System.String,NativeMessageBox.MessageBoxIcon,NativeMessageBox.MessageBoxSeverity,NativeMessageBox.MessageBoxDialogModality,System.IntPtr,NativeMessageBox.MessageBoxInputOptions,NativeMessageBox.MessageBoxSecondaryContent,System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.Nullable{System.UInt32},System.String,System.Object)
+  id: '#ctor(System.String,System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton},System.String,NativeMessageBox.MessageBoxIcon,NativeMessageBox.MessageBoxSeverity,NativeMessageBox.MessageBoxDialogModality,System.IntPtr,NativeMessageBox.MessageBoxInputOptions,NativeMessageBox.MessageBoxSecondaryContent,System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.Nullable{System.UInt32},System.String,System.Object)'
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxOptions(string, IEnumerable<MessageBoxButton>?, string?, MessageBoxIcon, MessageBoxSeverity, MessageBoxDialogModality, nint, MessageBoxInputOptions?, MessageBoxSecondaryContent?, string?, bool, bool, bool, TimeSpan?, uint?, string?, object?)
+  nameWithType: MessageBoxOptions.MessageBoxOptions(string, IEnumerable<MessageBoxButton>?, string?, MessageBoxIcon, MessageBoxSeverity, MessageBoxDialogModality, nint, MessageBoxInputOptions?, MessageBoxSecondaryContent?, string?, bool, bool, bool, TimeSpan?, uint?, string?, object?)
+  fullName: NativeMessageBox.MessageBoxOptions.MessageBoxOptions(string, System.Collections.Generic.IEnumerable<NativeMessageBox.MessageBoxButton>?, string?, NativeMessageBox.MessageBoxIcon, NativeMessageBox.MessageBoxSeverity, NativeMessageBox.MessageBoxDialogModality, nint, NativeMessageBox.MessageBoxInputOptions?, NativeMessageBox.MessageBoxSecondaryContent?, string?, bool, bool, bool, System.TimeSpan?, uint?, string?, object?)
+  type: Constructor
+  source:
+    id: .ctor
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 9
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxOptions(string message, IEnumerable<MessageBoxButton>? buttons = null, string? title = null, MessageBoxIcon icon = MessageBoxIcon.None, MessageBoxSeverity severity = MessageBoxSeverity.Info, MessageBoxDialogModality modality = MessageBoxDialogModality.Application, nint parentWindow = 0, MessageBoxInputOptions? inputOptions = null, MessageBoxSecondaryContent? secondaryContent = null, string? verificationText = null, bool allowCancelViaEscape = true, bool showSuppressCheckbox = false, bool requiresExplicitAcknowledgement = false, TimeSpan? timeout = null, uint? timeoutButtonId = null, string? locale = null, object? tag = null)
+    parameters:
+    - id: message
+      type: System.String
+    - id: buttons
+      type: System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton}
+    - id: title
+      type: System.String
+    - id: icon
+      type: NativeMessageBox.MessageBoxIcon
+    - id: severity
+      type: NativeMessageBox.MessageBoxSeverity
+    - id: modality
+      type: NativeMessageBox.MessageBoxDialogModality
+    - id: parentWindow
+      type: System.IntPtr
+    - id: inputOptions
+      type: NativeMessageBox.MessageBoxInputOptions
+    - id: secondaryContent
+      type: NativeMessageBox.MessageBoxSecondaryContent
+    - id: verificationText
+      type: System.String
+    - id: allowCancelViaEscape
+      type: System.Boolean
+    - id: showSuppressCheckbox
+      type: System.Boolean
+    - id: requiresExplicitAcknowledgement
+      type: System.Boolean
+    - id: timeout
+      type: System.Nullable{System.TimeSpan}
+    - id: timeoutButtonId
+      type: System.Nullable{System.UInt32}
+    - id: locale
+      type: System.String
+    - id: tag
+      type: System.Object
+    content.vb: Public Sub New(message As String, buttons As IEnumerable(Of MessageBoxButton) = Nothing, title As String = Nothing, icon As MessageBoxIcon = MessageBoxIcon.None, severity As MessageBoxSeverity = MessageBoxSeverity.Info, modality As MessageBoxDialogModality = MessageBoxDialogModality.Application, parentWindow As IntPtr = 0, inputOptions As MessageBoxInputOptions = Nothing, secondaryContent As MessageBoxSecondaryContent = Nothing, verificationText As String = Nothing, allowCancelViaEscape As Boolean = True, showSuppressCheckbox As Boolean = False, requiresExplicitAcknowledgement As Boolean = False, timeout As TimeSpan? = Nothing, timeoutButtonId As UInteger? = Nothing, locale As String = Nothing, tag As Object = Nothing)
+  overload: NativeMessageBox.MessageBoxOptions.#ctor*
+  nameWithType.vb: MessageBoxOptions.New(String, IEnumerable(Of MessageBoxButton), String, MessageBoxIcon, MessageBoxSeverity, MessageBoxDialogModality, IntPtr, MessageBoxInputOptions, MessageBoxSecondaryContent, String, Boolean, Boolean, Boolean, TimeSpan?, UInteger?, String, Object)
+  fullName.vb: NativeMessageBox.MessageBoxOptions.New(String, System.Collections.Generic.IEnumerable(Of NativeMessageBox.MessageBoxButton), String, NativeMessageBox.MessageBoxIcon, NativeMessageBox.MessageBoxSeverity, NativeMessageBox.MessageBoxDialogModality, System.IntPtr, NativeMessageBox.MessageBoxInputOptions, NativeMessageBox.MessageBoxSecondaryContent, String, Boolean, Boolean, Boolean, System.TimeSpan?, UInteger?, String, Object)
+  name.vb: New(String, IEnumerable(Of MessageBoxButton), String, MessageBoxIcon, MessageBoxSeverity, MessageBoxDialogModality, IntPtr, MessageBoxInputOptions, MessageBoxSecondaryContent, String, Boolean, Boolean, Boolean, TimeSpan?, UInteger?, String, Object)
+- uid: NativeMessageBox.MessageBoxOptions.Title
+  commentId: P:NativeMessageBox.MessageBoxOptions.Title
+  id: Title
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: MessageBoxOptions.Title
+  fullName: NativeMessageBox.MessageBoxOptions.Title
+  type: Property
+  source:
+    id: Title
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 62
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public string? Title { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Title As String
+  overload: NativeMessageBox.MessageBoxOptions.Title*
+- uid: NativeMessageBox.MessageBoxOptions.Message
+  commentId: P:NativeMessageBox.MessageBoxOptions.Message
+  id: Message
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: MessageBoxOptions.Message
+  fullName: NativeMessageBox.MessageBoxOptions.Message
+  type: Property
+  source:
+    id: Message
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 64
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public string Message { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Message As String
+  overload: NativeMessageBox.MessageBoxOptions.Message*
+- uid: NativeMessageBox.MessageBoxOptions.Buttons
+  commentId: P:NativeMessageBox.MessageBoxOptions.Buttons
+  id: Buttons
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Buttons
+  nameWithType: MessageBoxOptions.Buttons
+  fullName: NativeMessageBox.MessageBoxOptions.Buttons
+  type: Property
+  source:
+    id: Buttons
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 66
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public IReadOnlyList<MessageBoxButton> Buttons { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{NativeMessageBox.MessageBoxButton}
+    content.vb: Public ReadOnly Property Buttons As IReadOnlyList(Of MessageBoxButton)
+  overload: NativeMessageBox.MessageBoxOptions.Buttons*
+- uid: NativeMessageBox.MessageBoxOptions.Icon
+  commentId: P:NativeMessageBox.MessageBoxOptions.Icon
+  id: Icon
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Icon
+  nameWithType: MessageBoxOptions.Icon
+  fullName: NativeMessageBox.MessageBoxOptions.Icon
+  type: Property
+  source:
+    id: Icon
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 68
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxIcon Icon { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+    content.vb: Public ReadOnly Property Icon As MessageBoxIcon
+  overload: NativeMessageBox.MessageBoxOptions.Icon*
+- uid: NativeMessageBox.MessageBoxOptions.Severity
+  commentId: P:NativeMessageBox.MessageBoxOptions.Severity
+  id: Severity
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Severity
+  nameWithType: MessageBoxOptions.Severity
+  fullName: NativeMessageBox.MessageBoxOptions.Severity
+  type: Property
+  source:
+    id: Severity
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 70
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxSeverity Severity { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxSeverity
+    content.vb: Public ReadOnly Property Severity As MessageBoxSeverity
+  overload: NativeMessageBox.MessageBoxOptions.Severity*
+- uid: NativeMessageBox.MessageBoxOptions.Modality
+  commentId: P:NativeMessageBox.MessageBoxOptions.Modality
+  id: Modality
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Modality
+  nameWithType: MessageBoxOptions.Modality
+  fullName: NativeMessageBox.MessageBoxOptions.Modality
+  type: Property
+  source:
+    id: Modality
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 72
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxDialogModality Modality { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxDialogModality
+    content.vb: Public ReadOnly Property Modality As MessageBoxDialogModality
+  overload: NativeMessageBox.MessageBoxOptions.Modality*
+- uid: NativeMessageBox.MessageBoxOptions.ParentWindow
+  commentId: P:NativeMessageBox.MessageBoxOptions.ParentWindow
+  id: ParentWindow
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: ParentWindow
+  nameWithType: MessageBoxOptions.ParentWindow
+  fullName: NativeMessageBox.MessageBoxOptions.ParentWindow
+  type: Property
+  source:
+    id: ParentWindow
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 74
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public nint ParentWindow { get; }
+    parameters: []
+    return:
+      type: System.IntPtr
+    content.vb: Public ReadOnly Property ParentWindow As IntPtr
+  overload: NativeMessageBox.MessageBoxOptions.ParentWindow*
+- uid: NativeMessageBox.MessageBoxOptions.InputOptions
+  commentId: P:NativeMessageBox.MessageBoxOptions.InputOptions
+  id: InputOptions
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: InputOptions
+  nameWithType: MessageBoxOptions.InputOptions
+  fullName: NativeMessageBox.MessageBoxOptions.InputOptions
+  type: Property
+  source:
+    id: InputOptions
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 76
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxInputOptions? InputOptions { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxInputOptions
+    content.vb: Public ReadOnly Property InputOptions As MessageBoxInputOptions
+  overload: NativeMessageBox.MessageBoxOptions.InputOptions*
+- uid: NativeMessageBox.MessageBoxOptions.SecondaryContent
+  commentId: P:NativeMessageBox.MessageBoxOptions.SecondaryContent
+  id: SecondaryContent
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: SecondaryContent
+  nameWithType: MessageBoxOptions.SecondaryContent
+  fullName: NativeMessageBox.MessageBoxOptions.SecondaryContent
+  type: Property
+  source:
+    id: SecondaryContent
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 78
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxSecondaryContent? SecondaryContent { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxSecondaryContent
+    content.vb: Public ReadOnly Property SecondaryContent As MessageBoxSecondaryContent
+  overload: NativeMessageBox.MessageBoxOptions.SecondaryContent*
+- uid: NativeMessageBox.MessageBoxOptions.VerificationText
+  commentId: P:NativeMessageBox.MessageBoxOptions.VerificationText
+  id: VerificationText
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: VerificationText
+  nameWithType: MessageBoxOptions.VerificationText
+  fullName: NativeMessageBox.MessageBoxOptions.VerificationText
+  type: Property
+  source:
+    id: VerificationText
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 80
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public string? VerificationText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property VerificationText As String
+  overload: NativeMessageBox.MessageBoxOptions.VerificationText*
+- uid: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+  commentId: P:NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+  id: AllowCancelViaEscape
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: AllowCancelViaEscape
+  nameWithType: MessageBoxOptions.AllowCancelViaEscape
+  fullName: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+  type: Property
+  source:
+    id: AllowCancelViaEscape
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 82
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public bool AllowCancelViaEscape { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property AllowCancelViaEscape As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape*
+- uid: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+  commentId: P:NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+  id: ShowSuppressCheckbox
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: ShowSuppressCheckbox
+  nameWithType: MessageBoxOptions.ShowSuppressCheckbox
+  fullName: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+  type: Property
+  source:
+    id: ShowSuppressCheckbox
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 84
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public bool ShowSuppressCheckbox { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ShowSuppressCheckbox As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox*
+- uid: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+  commentId: P:NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+  id: RequiresExplicitAcknowledgement
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: RequiresExplicitAcknowledgement
+  nameWithType: MessageBoxOptions.RequiresExplicitAcknowledgement
+  fullName: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+  type: Property
+  source:
+    id: RequiresExplicitAcknowledgement
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 86
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public bool RequiresExplicitAcknowledgement { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property RequiresExplicitAcknowledgement As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement*
+- uid: NativeMessageBox.MessageBoxOptions.Timeout
+  commentId: P:NativeMessageBox.MessageBoxOptions.Timeout
+  id: Timeout
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Timeout
+  nameWithType: MessageBoxOptions.Timeout
+  fullName: NativeMessageBox.MessageBoxOptions.Timeout
+  type: Property
+  source:
+    id: Timeout
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 88
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public TimeSpan? Timeout { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.TimeSpan}
+    content.vb: Public ReadOnly Property Timeout As TimeSpan?
+  overload: NativeMessageBox.MessageBoxOptions.Timeout*
+- uid: NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+  commentId: P:NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+  id: TimeoutButtonId
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: TimeoutButtonId
+  nameWithType: MessageBoxOptions.TimeoutButtonId
+  fullName: NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+  type: Property
+  source:
+    id: TimeoutButtonId
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 90
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public uint? TimeoutButtonId { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.UInt32}
+    content.vb: Public ReadOnly Property TimeoutButtonId As UInteger?
+  overload: NativeMessageBox.MessageBoxOptions.TimeoutButtonId*
+- uid: NativeMessageBox.MessageBoxOptions.Locale
+  commentId: P:NativeMessageBox.MessageBoxOptions.Locale
+  id: Locale
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Locale
+  nameWithType: MessageBoxOptions.Locale
+  fullName: NativeMessageBox.MessageBoxOptions.Locale
+  type: Property
+  source:
+    id: Locale
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 92
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public string? Locale { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Locale As String
+  overload: NativeMessageBox.MessageBoxOptions.Locale*
+- uid: NativeMessageBox.MessageBoxOptions.Tag
+  commentId: P:NativeMessageBox.MessageBoxOptions.Tag
+  id: Tag
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Tag
+  nameWithType: MessageBoxOptions.Tag
+  fullName: NativeMessageBox.MessageBoxOptions.Tag
+  type: Property
+  source:
+    id: Tag
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 94
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public object? Tag { get; }
+    parameters: []
+    return:
+      type: System.Object
+    content.vb: Public ReadOnly Property Tag As Object
+  overload: NativeMessageBox.MessageBoxOptions.Tag*
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NativeMessageBox.MessageBoxOptions.#ctor*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.#ctor
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions__ctor_System_String_System_Collections_Generic_IEnumerable_NativeMessageBox_MessageBoxButton__System_String_NativeMessageBox_MessageBoxIcon_NativeMessageBox_MessageBoxSeverity_NativeMessageBox_MessageBoxDialogModality_System_IntPtr_NativeMessageBox_MessageBoxInputOptions_NativeMessageBox_MessageBoxSecondaryContent_System_String_System_Boolean_System_Boolean_System_Boolean_System_Nullable_System_TimeSpan__System_Nullable_System_UInt32__System_String_System_Object_
+  name: MessageBoxOptions
+  nameWithType: MessageBoxOptions.MessageBoxOptions
+  fullName: NativeMessageBox.MessageBoxOptions.MessageBoxOptions
+  nameWithType.vb: MessageBoxOptions.New
+  fullName.vb: NativeMessageBox.MessageBoxOptions.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton}
+  commentId: T:System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<MessageBoxButton>
+  nameWithType: IEnumerable<MessageBoxButton>
+  fullName: System.Collections.Generic.IEnumerable<NativeMessageBox.MessageBoxButton>
+  nameWithType.vb: IEnumerable(Of MessageBoxButton)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of NativeMessageBox.MessageBoxButton)
+  name.vb: IEnumerable(Of MessageBoxButton)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: NativeMessageBox.MessageBoxButton
+    name: MessageBoxButton
+    href: NativeMessageBox.MessageBoxButton.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NativeMessageBox.MessageBoxButton
+    name: MessageBoxButton
+    href: NativeMessageBox.MessageBoxButton.html
+  - name: )
+- uid: NativeMessageBox.MessageBoxIcon
+  commentId: T:NativeMessageBox.MessageBoxIcon
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxIcon.html
+  name: MessageBoxIcon
+  nameWithType: MessageBoxIcon
+  fullName: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxSeverity
+  commentId: T:NativeMessageBox.MessageBoxSeverity
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxSeverity.html
+  name: MessageBoxSeverity
+  nameWithType: MessageBoxSeverity
+  fullName: NativeMessageBox.MessageBoxSeverity
+- uid: NativeMessageBox.MessageBoxDialogModality
+  commentId: T:NativeMessageBox.MessageBoxDialogModality
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxDialogModality.html
+  name: MessageBoxDialogModality
+  nameWithType: MessageBoxDialogModality
+  fullName: NativeMessageBox.MessageBoxDialogModality
+- uid: System.IntPtr
+  commentId: T:System.IntPtr
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.intptr
+  name: nint
+  nameWithType: nint
+  fullName: nint
+  nameWithType.vb: IntPtr
+  fullName.vb: System.IntPtr
+  name.vb: IntPtr
+- uid: NativeMessageBox.MessageBoxInputOptions
+  commentId: T:NativeMessageBox.MessageBoxInputOptions
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxInputOptions.html
+  name: MessageBoxInputOptions
+  nameWithType: MessageBoxInputOptions
+  fullName: NativeMessageBox.MessageBoxInputOptions
+- uid: NativeMessageBox.MessageBoxSecondaryContent
+  commentId: T:NativeMessageBox.MessageBoxSecondaryContent
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxSecondaryContent.html
+  name: MessageBoxSecondaryContent
+  nameWithType: MessageBoxSecondaryContent
+  fullName: NativeMessageBox.MessageBoxSecondaryContent
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Nullable{System.TimeSpan}
+  commentId: T:System.Nullable{System.TimeSpan}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan?
+  nameWithType: TimeSpan?
+  fullName: System.TimeSpan?
+  spec.csharp:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+  spec.vb:
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: '?'
+- uid: System.Nullable{System.UInt32}
+  commentId: T:System.Nullable{System.UInt32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint?
+  nameWithType: uint?
+  fullName: uint?
+  nameWithType.vb: UInteger?
+  fullName.vb: UInteger?
+  name.vb: UInteger?
+  spec.csharp:
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '?'
+  spec.vb:
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '?'
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NativeMessageBox.MessageBoxOptions.Title*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Title
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Title
+  name: Title
+  nameWithType: MessageBoxOptions.Title
+  fullName: NativeMessageBox.MessageBoxOptions.Title
+- uid: NativeMessageBox.MessageBoxOptions.Message*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Message
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Message
+  name: Message
+  nameWithType: MessageBoxOptions.Message
+  fullName: NativeMessageBox.MessageBoxOptions.Message
+- uid: NativeMessageBox.MessageBoxOptions.Buttons*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Buttons
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Buttons
+  name: Buttons
+  nameWithType: MessageBoxOptions.Buttons
+  fullName: NativeMessageBox.MessageBoxOptions.Buttons
+- uid: System.Collections.Generic.IReadOnlyList{NativeMessageBox.MessageBoxButton}
+  commentId: T:System.Collections.Generic.IReadOnlyList{NativeMessageBox.MessageBoxButton}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<MessageBoxButton>
+  nameWithType: IReadOnlyList<MessageBoxButton>
+  fullName: System.Collections.Generic.IReadOnlyList<NativeMessageBox.MessageBoxButton>
+  nameWithType.vb: IReadOnlyList(Of MessageBoxButton)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of NativeMessageBox.MessageBoxButton)
+  name.vb: IReadOnlyList(Of MessageBoxButton)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: NativeMessageBox.MessageBoxButton
+    name: MessageBoxButton
+    href: NativeMessageBox.MessageBoxButton.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NativeMessageBox.MessageBoxButton
+    name: MessageBoxButton
+    href: NativeMessageBox.MessageBoxButton.html
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NativeMessageBox.MessageBoxOptions.Icon*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Icon
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Icon
+  name: Icon
+  nameWithType: MessageBoxOptions.Icon
+  fullName: NativeMessageBox.MessageBoxOptions.Icon
+- uid: NativeMessageBox.MessageBoxOptions.Severity*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Severity
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Severity
+  name: Severity
+  nameWithType: MessageBoxOptions.Severity
+  fullName: NativeMessageBox.MessageBoxOptions.Severity
+- uid: NativeMessageBox.MessageBoxOptions.Modality*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Modality
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Modality
+  name: Modality
+  nameWithType: MessageBoxOptions.Modality
+  fullName: NativeMessageBox.MessageBoxOptions.Modality
+- uid: NativeMessageBox.MessageBoxOptions.ParentWindow*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.ParentWindow
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_ParentWindow
+  name: ParentWindow
+  nameWithType: MessageBoxOptions.ParentWindow
+  fullName: NativeMessageBox.MessageBoxOptions.ParentWindow
+- uid: NativeMessageBox.MessageBoxOptions.InputOptions*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.InputOptions
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_InputOptions
+  name: InputOptions
+  nameWithType: MessageBoxOptions.InputOptions
+  fullName: NativeMessageBox.MessageBoxOptions.InputOptions
+- uid: NativeMessageBox.MessageBoxOptions.SecondaryContent*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.SecondaryContent
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_SecondaryContent
+  name: SecondaryContent
+  nameWithType: MessageBoxOptions.SecondaryContent
+  fullName: NativeMessageBox.MessageBoxOptions.SecondaryContent
+- uid: NativeMessageBox.MessageBoxOptions.VerificationText*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.VerificationText
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_VerificationText
+  name: VerificationText
+  nameWithType: MessageBoxOptions.VerificationText
+  fullName: NativeMessageBox.MessageBoxOptions.VerificationText
+- uid: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_AllowCancelViaEscape
+  name: AllowCancelViaEscape
+  nameWithType: MessageBoxOptions.AllowCancelViaEscape
+  fullName: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
+- uid: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_ShowSuppressCheckbox
+  name: ShowSuppressCheckbox
+  nameWithType: MessageBoxOptions.ShowSuppressCheckbox
+  fullName: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
+- uid: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_RequiresExplicitAcknowledgement
+  name: RequiresExplicitAcknowledgement
+  nameWithType: MessageBoxOptions.RequiresExplicitAcknowledgement
+  fullName: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
+- uid: NativeMessageBox.MessageBoxOptions.Timeout*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Timeout
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Timeout
+  name: Timeout
+  nameWithType: MessageBoxOptions.Timeout
+  fullName: NativeMessageBox.MessageBoxOptions.Timeout
+- uid: NativeMessageBox.MessageBoxOptions.TimeoutButtonId*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_TimeoutButtonId
+  name: TimeoutButtonId
+  nameWithType: MessageBoxOptions.TimeoutButtonId
+  fullName: NativeMessageBox.MessageBoxOptions.TimeoutButtonId
+- uid: NativeMessageBox.MessageBoxOptions.Locale*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Locale
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Locale
+  name: Locale
+  nameWithType: MessageBoxOptions.Locale
+  fullName: NativeMessageBox.MessageBoxOptions.Locale
+- uid: NativeMessageBox.MessageBoxOptions.Tag*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Tag
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Tag
+  name: Tag
+  nameWithType: MessageBoxOptions.Tag
+  fullName: NativeMessageBox.MessageBoxOptions.Tag

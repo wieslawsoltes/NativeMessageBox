@@ -1,0 +1,1058 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.NativeMessageBoxClient
+  commentId: T:NativeMessageBox.NativeMessageBoxClient
+  id: NativeMessageBoxClient
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action{NativeMessageBox.NativeMessageBoxHostOptions})
+  - NativeMessageBox.NativeMessageBoxClient.CurrentHost
+  - NativeMessageBox.NativeMessageBoxClient.EnsureInitialized
+  - NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action{System.String})
+  - NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(System.String)
+  - NativeMessageBox.NativeMessageBoxClient.Show(NativeMessageBox.MessageBoxOptions)
+  - NativeMessageBox.NativeMessageBoxClient.ShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  - NativeMessageBox.NativeMessageBoxClient.ShowOrThrow(NativeMessageBox.MessageBoxOptions)
+  - NativeMessageBox.NativeMessageBoxClient.Shutdown
+  - NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions,NativeMessageBox.MessageBoxResult@)
+  - NativeMessageBox.NativeMessageBoxClient.TryShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  - NativeMessageBox.NativeMessageBoxClient.UseHost(NativeMessageBox.INativeMessageBoxHost)
+  - NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility
+  langs:
+  - csharp
+  - vb
+  name: NativeMessageBoxClient
+  nameWithType: NativeMessageBoxClient
+  fullName: NativeMessageBox.NativeMessageBoxClient
+  type: Class
+  source:
+    id: NativeMessageBoxClient
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 10
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  summary: High-level entry point for displaying cross-platform message boxes using a configurable host pipeline.
+  example: []
+  syntax:
+    content: public static class NativeMessageBoxClient
+    content.vb: Public Module NativeMessageBoxClient
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NativeMessageBox.NativeMessageBoxClient.CurrentHost
+  commentId: P:NativeMessageBox.NativeMessageBoxClient.CurrentHost
+  id: CurrentHost
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: CurrentHost
+  nameWithType: NativeMessageBoxClient.CurrentHost
+  fullName: NativeMessageBox.NativeMessageBoxClient.CurrentHost
+  type: Property
+  source:
+    id: CurrentHost
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 15
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static INativeMessageBoxHost CurrentHost { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.INativeMessageBoxHost
+    content.vb: Public Shared ReadOnly Property CurrentHost As INativeMessageBoxHost
+  overload: NativeMessageBox.NativeMessageBoxClient.CurrentHost*
+- uid: NativeMessageBox.NativeMessageBoxClient.UseHost(NativeMessageBox.INativeMessageBoxHost)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.UseHost(NativeMessageBox.INativeMessageBoxHost)
+  id: UseHost(NativeMessageBox.INativeMessageBoxHost)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: UseHost(INativeMessageBoxHost)
+  nameWithType: NativeMessageBoxClient.UseHost(INativeMessageBoxHost)
+  fullName: NativeMessageBox.NativeMessageBoxClient.UseHost(NativeMessageBox.INativeMessageBoxHost)
+  type: Method
+  source:
+    id: UseHost
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 26
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void UseHost(INativeMessageBoxHost host)
+    parameters:
+    - id: host
+      type: NativeMessageBox.INativeMessageBoxHost
+    content.vb: Public Shared Sub UseHost(host As INativeMessageBoxHost)
+  overload: NativeMessageBox.NativeMessageBoxClient.UseHost*
+- uid: NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action{NativeMessageBox.NativeMessageBoxHostOptions})
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action{NativeMessageBox.NativeMessageBoxHostOptions})
+  id: ConfigureHost(System.Action{NativeMessageBox.NativeMessageBoxHostOptions})
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: ConfigureHost(Action<NativeMessageBoxHostOptions>)
+  nameWithType: NativeMessageBoxClient.ConfigureHost(Action<NativeMessageBoxHostOptions>)
+  fullName: NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action<NativeMessageBox.NativeMessageBoxHostOptions>)
+  type: Method
+  source:
+    id: ConfigureHost
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 39
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void ConfigureHost(Action<NativeMessageBoxHostOptions> configure)
+    parameters:
+    - id: configure
+      type: System.Action{NativeMessageBox.NativeMessageBoxHostOptions}
+    content.vb: Public Shared Sub ConfigureHost(configure As Action(Of NativeMessageBoxHostOptions))
+  overload: NativeMessageBox.NativeMessageBoxClient.ConfigureHost*
+  nameWithType.vb: NativeMessageBoxClient.ConfigureHost(Action(Of NativeMessageBoxHostOptions))
+  fullName.vb: NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action(Of NativeMessageBox.NativeMessageBoxHostOptions))
+  name.vb: ConfigureHost(Action(Of NativeMessageBoxHostOptions))
+- uid: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(System.String)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(System.String)
+  id: RegisterNativeLibraryPath(System.String)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: RegisterNativeLibraryPath(string)
+  nameWithType: NativeMessageBoxClient.RegisterNativeLibraryPath(string)
+  fullName: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(string)
+  type: Method
+  source:
+    id: RegisterNativeLibraryPath
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 55
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void RegisterNativeLibraryPath(string path)
+    parameters:
+    - id: path
+      type: System.String
+    content.vb: Public Shared Sub RegisterNativeLibraryPath(path As String)
+  overload: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath*
+  nameWithType.vb: NativeMessageBoxClient.RegisterNativeLibraryPath(String)
+  fullName.vb: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(String)
+  name.vb: RegisterNativeLibraryPath(String)
+- uid: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action{System.String})
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action{System.String})
+  id: RegisterLogHandler(System.Action{System.String})
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: RegisterLogHandler(Action<string>?)
+  nameWithType: NativeMessageBoxClient.RegisterLogHandler(Action<string>?)
+  fullName: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action<string>?)
+  type: Method
+  source:
+    id: RegisterLogHandler
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 66
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void RegisterLogHandler(Action<string>? handler)
+    parameters:
+    - id: handler
+      type: System.Action{System.String}
+    content.vb: Public Shared Sub RegisterLogHandler(handler As Action(Of String))
+  overload: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler*
+  nameWithType.vb: NativeMessageBoxClient.RegisterLogHandler(Action(Of String))
+  fullName.vb: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action(Of String))
+  name.vb: RegisterLogHandler(Action(Of String))
+- uid: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.EnsureInitialized
+  id: EnsureInitialized
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: EnsureInitialized()
+  nameWithType: NativeMessageBoxClient.EnsureInitialized()
+  fullName: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized()
+  type: Method
+  source:
+    id: EnsureInitialized
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 77
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void EnsureInitialized()
+    content.vb: Public Shared Sub EnsureInitialized()
+  overload: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized*
+- uid: NativeMessageBox.NativeMessageBoxClient.Shutdown
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.Shutdown
+  id: Shutdown
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: NativeMessageBoxClient.Shutdown()
+  fullName: NativeMessageBox.NativeMessageBoxClient.Shutdown()
+  type: Method
+  source:
+    id: Shutdown
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 79
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static void Shutdown()
+    content.vb: Public Shared Sub Shutdown()
+  overload: NativeMessageBox.NativeMessageBoxClient.Shutdown*
+- uid: NativeMessageBox.NativeMessageBoxClient.Show(NativeMessageBox.MessageBoxOptions)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.Show(NativeMessageBox.MessageBoxOptions)
+  id: Show(NativeMessageBox.MessageBoxOptions)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: Show(MessageBoxOptions)
+  nameWithType: NativeMessageBoxClient.Show(MessageBoxOptions)
+  fullName: NativeMessageBox.NativeMessageBoxClient.Show(NativeMessageBox.MessageBoxOptions)
+  type: Method
+  source:
+    id: Show
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 81
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static MessageBoxResult Show(MessageBoxOptions options)
+    parameters:
+    - id: options
+      type: NativeMessageBox.MessageBoxOptions
+    return:
+      type: NativeMessageBox.MessageBoxResult
+    content.vb: Public Shared Function Show(options As MessageBoxOptions) As MessageBoxResult
+  overload: NativeMessageBox.NativeMessageBoxClient.Show*
+- uid: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow(NativeMessageBox.MessageBoxOptions)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.ShowOrThrow(NativeMessageBox.MessageBoxOptions)
+  id: ShowOrThrow(NativeMessageBox.MessageBoxOptions)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: ShowOrThrow(MessageBoxOptions)
+  nameWithType: NativeMessageBoxClient.ShowOrThrow(MessageBoxOptions)
+  fullName: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow(NativeMessageBox.MessageBoxOptions)
+  type: Method
+  source:
+    id: ShowOrThrow
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 83
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static MessageBoxResult ShowOrThrow(MessageBoxOptions options)
+    parameters:
+    - id: options
+      type: NativeMessageBox.MessageBoxOptions
+    return:
+      type: NativeMessageBox.MessageBoxResult
+    content.vb: Public Shared Function ShowOrThrow(options As MessageBoxOptions) As MessageBoxResult
+  overload: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow*
+- uid: NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions,NativeMessageBox.MessageBoxResult@)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions,NativeMessageBox.MessageBoxResult@)
+  id: TryShow(NativeMessageBox.MessageBoxOptions,NativeMessageBox.MessageBoxResult@)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: TryShow(MessageBoxOptions, out MessageBoxResult)
+  nameWithType: NativeMessageBoxClient.TryShow(MessageBoxOptions, out MessageBoxResult)
+  fullName: NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions, out NativeMessageBox.MessageBoxResult)
+  type: Method
+  source:
+    id: TryShow
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 94
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static bool TryShow(MessageBoxOptions options, out MessageBoxResult result)
+    parameters:
+    - id: options
+      type: NativeMessageBox.MessageBoxOptions
+    - id: result
+      type: NativeMessageBox.MessageBoxResult
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function TryShow(options As MessageBoxOptions, result As MessageBoxResult) As Boolean
+  overload: NativeMessageBox.NativeMessageBoxClient.TryShow*
+  nameWithType.vb: NativeMessageBoxClient.TryShow(MessageBoxOptions, MessageBoxResult)
+  fullName.vb: NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions, NativeMessageBox.MessageBoxResult)
+  name.vb: TryShow(MessageBoxOptions, MessageBoxResult)
+- uid: NativeMessageBox.NativeMessageBoxClient.ShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.ShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  id: ShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: ShowAsync(MessageBoxOptions, CancellationToken)
+  nameWithType: NativeMessageBoxClient.ShowAsync(MessageBoxOptions, CancellationToken)
+  fullName: NativeMessageBox.NativeMessageBoxClient.ShowAsync(NativeMessageBox.MessageBoxOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: ShowAsync
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 96
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static Task<MessageBoxResult> ShowAsync(MessageBoxOptions options, CancellationToken cancellationToken = default)
+    parameters:
+    - id: options
+      type: NativeMessageBox.MessageBoxOptions
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{NativeMessageBox.MessageBoxResult}
+    content.vb: Public Shared Function ShowAsync(options As MessageBoxOptions, cancellationToken As CancellationToken = Nothing) As Task(Of MessageBoxResult)
+  overload: NativeMessageBox.NativeMessageBoxClient.ShowAsync*
+- uid: NativeMessageBox.NativeMessageBoxClient.TryShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.TryShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  id: TryShowAsync(NativeMessageBox.MessageBoxOptions,System.Threading.CancellationToken)
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: TryShowAsync(MessageBoxOptions, CancellationToken)
+  nameWithType: NativeMessageBoxClient.TryShowAsync(MessageBoxOptions, CancellationToken)
+  fullName: NativeMessageBox.NativeMessageBoxClient.TryShowAsync(NativeMessageBox.MessageBoxOptions, System.Threading.CancellationToken)
+  type: Method
+  source:
+    id: TryShowAsync
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 98
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static Task<(bool Success, MessageBoxResult Result)> TryShowAsync(MessageBoxOptions options, CancellationToken cancellationToken = default)
+    parameters:
+    - id: options
+      type: NativeMessageBox.MessageBoxOptions
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}}
+    content.vb: Public Shared Function TryShowAsync(options As MessageBoxOptions, cancellationToken As CancellationToken = Nothing) As Task(Of (Success As Boolean, Result As MessageBoxResult))
+  overload: NativeMessageBox.NativeMessageBoxClient.TryShowAsync*
+- uid: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility
+  commentId: M:NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility
+  id: VerifyAbiCompatibility
+  parent: NativeMessageBox.NativeMessageBoxClient
+  langs:
+  - csharp
+  - vb
+  name: VerifyAbiCompatibility()
+  nameWithType: NativeMessageBoxClient.VerifyAbiCompatibility()
+  fullName: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility()
+  type: Method
+  source:
+    id: VerifyAbiCompatibility
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    startLine: 100
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public static bool VerifyAbiCompatibility()
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function VerifyAbiCompatibility() As Boolean
+  overload: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility*
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NativeMessageBox.NativeMessageBoxClient.CurrentHost*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.CurrentHost
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_CurrentHost
+  name: CurrentHost
+  nameWithType: NativeMessageBoxClient.CurrentHost
+  fullName: NativeMessageBox.NativeMessageBoxClient.CurrentHost
+- uid: NativeMessageBox.INativeMessageBoxHost
+  commentId: T:NativeMessageBox.INativeMessageBoxHost
+  parent: NativeMessageBox
+  href: NativeMessageBox.INativeMessageBoxHost.html
+  name: INativeMessageBoxHost
+  nameWithType: INativeMessageBoxHost
+  fullName: NativeMessageBox.INativeMessageBoxHost
+- uid: NativeMessageBox.NativeMessageBoxClient.UseHost*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.UseHost
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_UseHost_NativeMessageBox_INativeMessageBoxHost_
+  name: UseHost
+  nameWithType: NativeMessageBoxClient.UseHost
+  fullName: NativeMessageBox.NativeMessageBoxClient.UseHost
+- uid: NativeMessageBox.NativeMessageBoxClient.ConfigureHost*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.ConfigureHost
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_ConfigureHost_System_Action_NativeMessageBox_NativeMessageBoxHostOptions__
+  name: ConfigureHost
+  nameWithType: NativeMessageBoxClient.ConfigureHost
+  fullName: NativeMessageBox.NativeMessageBoxClient.ConfigureHost
+- uid: System.Action{NativeMessageBox.NativeMessageBoxHostOptions}
+  commentId: T:System.Action{NativeMessageBox.NativeMessageBoxHostOptions}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<NativeMessageBoxHostOptions>
+  nameWithType: Action<NativeMessageBoxHostOptions>
+  fullName: System.Action<NativeMessageBox.NativeMessageBoxHostOptions>
+  nameWithType.vb: Action(Of NativeMessageBoxHostOptions)
+  fullName.vb: System.Action(Of NativeMessageBox.NativeMessageBoxHostOptions)
+  name.vb: Action(Of NativeMessageBoxHostOptions)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: NativeMessageBox.NativeMessageBoxHostOptions
+    name: NativeMessageBoxHostOptions
+    href: NativeMessageBox.NativeMessageBoxHostOptions.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NativeMessageBox.NativeMessageBoxHostOptions
+    name: NativeMessageBoxHostOptions
+    href: NativeMessageBox.NativeMessageBoxHostOptions.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_RegisterNativeLibraryPath_System_String_
+  name: RegisterNativeLibraryPath
+  nameWithType: NativeMessageBoxClient.RegisterNativeLibraryPath
+  fullName: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_RegisterLogHandler_System_Action_System_String__
+  name: RegisterLogHandler
+  nameWithType: NativeMessageBoxClient.RegisterLogHandler
+  fullName: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler
+- uid: System.Action{System.String}
+  commentId: T:System.Action{System.String}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<string>
+  nameWithType: Action<string>
+  fullName: System.Action<string>
+  nameWithType.vb: Action(Of String)
+  fullName.vb: System.Action(Of String)
+  name.vb: Action(Of String)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.EnsureInitialized
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_EnsureInitialized
+  name: EnsureInitialized
+  nameWithType: NativeMessageBoxClient.EnsureInitialized
+  fullName: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized
+- uid: NativeMessageBox.NativeMessageBoxClient.Shutdown*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.Shutdown
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_Shutdown
+  name: Shutdown
+  nameWithType: NativeMessageBoxClient.Shutdown
+  fullName: NativeMessageBox.NativeMessageBoxClient.Shutdown
+- uid: NativeMessageBox.NativeMessageBoxClient.Show*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.Show
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_Show_NativeMessageBox_MessageBoxOptions_
+  name: Show
+  nameWithType: NativeMessageBoxClient.Show
+  fullName: NativeMessageBox.NativeMessageBoxClient.Show
+- uid: NativeMessageBox.MessageBoxOptions
+  commentId: T:NativeMessageBox.MessageBoxOptions
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxOptions.html
+  name: MessageBoxOptions
+  nameWithType: MessageBoxOptions
+  fullName: NativeMessageBox.MessageBoxOptions
+- uid: NativeMessageBox.MessageBoxResult
+  commentId: T:NativeMessageBox.MessageBoxResult
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxResult.html
+  name: MessageBoxResult
+  nameWithType: MessageBoxResult
+  fullName: NativeMessageBox.MessageBoxResult
+- uid: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.ShowOrThrow
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_ShowOrThrow_NativeMessageBox_MessageBoxOptions_
+  name: ShowOrThrow
+  nameWithType: NativeMessageBoxClient.ShowOrThrow
+  fullName: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow
+- uid: NativeMessageBox.NativeMessageBoxClient.TryShow*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.TryShow
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_TryShow_NativeMessageBox_MessageBoxOptions_NativeMessageBox_MessageBoxResult__
+  name: TryShow
+  nameWithType: NativeMessageBoxClient.TryShow
+  fullName: NativeMessageBox.NativeMessageBoxClient.TryShow
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NativeMessageBox.NativeMessageBoxClient.ShowAsync*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.ShowAsync
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_ShowAsync_NativeMessageBox_MessageBoxOptions_System_Threading_CancellationToken_
+  name: ShowAsync
+  nameWithType: NativeMessageBoxClient.ShowAsync
+  fullName: NativeMessageBox.NativeMessageBoxClient.ShowAsync
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{NativeMessageBox.MessageBoxResult}
+  commentId: T:System.Threading.Tasks.Task{NativeMessageBox.MessageBoxResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<MessageBoxResult>
+  nameWithType: Task<MessageBoxResult>
+  fullName: System.Threading.Tasks.Task<NativeMessageBox.MessageBoxResult>
+  nameWithType.vb: Task(Of MessageBoxResult)
+  fullName.vb: System.Threading.Tasks.Task(Of NativeMessageBox.MessageBoxResult)
+  name.vb: Task(Of MessageBoxResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: NativeMessageBox.MessageBoxResult
+    name: MessageBoxResult
+    href: NativeMessageBox.MessageBoxResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NativeMessageBox.MessageBoxResult
+    name: MessageBoxResult
+    href: NativeMessageBox.MessageBoxResult.html
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: NativeMessageBox.NativeMessageBoxClient.TryShowAsync*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.TryShowAsync
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_TryShowAsync_NativeMessageBox_MessageBoxOptions_System_Threading_CancellationToken_
+  name: TryShowAsync
+  nameWithType: NativeMessageBoxClient.TryShowAsync
+  fullName: NativeMessageBox.NativeMessageBoxClient.TryShowAsync
+- uid: System.Threading.Tasks.Task{System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}}
+  commentId: T:System.Threading.Tasks.Task{System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<(bool Success, MessageBoxResult Result)>
+  nameWithType: Task<(bool Success, MessageBoxResult Result)>
+  fullName: System.Threading.Tasks.Task<(bool Success, NativeMessageBox.MessageBoxResult Result)>
+  nameWithType.vb: Task(Of (Success As Boolean, Result As MessageBoxResult))
+  fullName.vb: System.Threading.Tasks.Task(Of (Success As Boolean, Result As NativeMessageBox.MessageBoxResult))
+  name.vb: Task(Of (Success As Boolean, Result As MessageBoxResult))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}.Success
+    name: Success
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,nativemessagebox.messageboxresult-.success
+  - name: ','
+  - name: " "
+  - uid: NativeMessageBox.MessageBoxResult
+    name: MessageBoxResult
+    href: NativeMessageBox.MessageBoxResult.html
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}.Result
+    name: Result
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,nativemessagebox.messageboxresult-.result
+  - name: )
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: (
+  - uid: System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}.Success
+    name: Success
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,nativemessagebox.messageboxresult-.success
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,NativeMessageBox.MessageBoxResult}.Result
+    name: Result
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,nativemessagebox.messageboxresult-.result
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: NativeMessageBox.MessageBoxResult
+    name: MessageBoxResult
+    href: NativeMessageBox.MessageBoxResult.html
+  - name: )
+  - name: )
+- uid: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility*
+  commentId: Overload:NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility
+  href: NativeMessageBox.NativeMessageBoxClient.html#NativeMessageBox_NativeMessageBoxClient_VerifyAbiCompatibility
+  name: VerifyAbiCompatibility
+  nameWithType: NativeMessageBoxClient.VerifyAbiCompatibility
+  fullName: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility

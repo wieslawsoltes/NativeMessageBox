@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/NativeMessageBox/NativeMessageBox/tree/main/docs
+    about: Review existing documentation before filing an issue.

@@ -1,0 +1,130 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxSeverity
+  commentId: T:NativeMessageBox.MessageBoxSeverity
+  id: MessageBoxSeverity
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxSeverity.Critical
+  - NativeMessageBox.MessageBoxSeverity.Error
+  - NativeMessageBox.MessageBoxSeverity.Info
+  - NativeMessageBox.MessageBoxSeverity.Warning
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxSeverity
+  nameWithType: MessageBoxSeverity
+  fullName: NativeMessageBox.MessageBoxSeverity
+  type: Enum
+  source:
+    id: MessageBoxSeverity
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 12
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public enum MessageBoxSeverity
+    content.vb: Public Enum MessageBoxSeverity
+- uid: NativeMessageBox.MessageBoxSeverity.Info
+  commentId: F:NativeMessageBox.MessageBoxSeverity.Info
+  id: Info
+  parent: NativeMessageBox.MessageBoxSeverity
+  langs:
+  - csharp
+  - vb
+  name: Info
+  nameWithType: MessageBoxSeverity.Info
+  fullName: NativeMessageBox.MessageBoxSeverity.Info
+  type: Field
+  source:
+    id: Info
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 14
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Info = 0
+    return:
+      type: NativeMessageBox.MessageBoxSeverity
+- uid: NativeMessageBox.MessageBoxSeverity.Warning
+  commentId: F:NativeMessageBox.MessageBoxSeverity.Warning
+  id: Warning
+  parent: NativeMessageBox.MessageBoxSeverity
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: MessageBoxSeverity.Warning
+  fullName: NativeMessageBox.MessageBoxSeverity.Warning
+  type: Field
+  source:
+    id: Warning
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 15
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Warning = 1
+    return:
+      type: NativeMessageBox.MessageBoxSeverity
+- uid: NativeMessageBox.MessageBoxSeverity.Error
+  commentId: F:NativeMessageBox.MessageBoxSeverity.Error
+  id: Error
+  parent: NativeMessageBox.MessageBoxSeverity
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: MessageBoxSeverity.Error
+  fullName: NativeMessageBox.MessageBoxSeverity.Error
+  type: Field
+  source:
+    id: Error
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 16
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Error = 2
+    return:
+      type: NativeMessageBox.MessageBoxSeverity
+- uid: NativeMessageBox.MessageBoxSeverity.Critical
+  commentId: F:NativeMessageBox.MessageBoxSeverity.Critical
+  id: Critical
+  parent: NativeMessageBox.MessageBoxSeverity
+  langs:
+  - csharp
+  - vb
+  name: Critical
+  nameWithType: MessageBoxSeverity.Critical
+  fullName: NativeMessageBox.MessageBoxSeverity.Critical
+  type: Field
+  source:
+    id: Critical
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 17
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Critical = 3
+    return:
+      type: NativeMessageBox.MessageBoxSeverity
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: NativeMessageBox.MessageBoxSeverity
+  commentId: T:NativeMessageBox.MessageBoxSeverity
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxSeverity.html
+  name: MessageBoxSeverity
+  nameWithType: MessageBoxSeverity
+  fullName: NativeMessageBox.MessageBoxSeverity

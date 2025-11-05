@@ -1,0 +1,222 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxOutcome
+  commentId: T:NativeMessageBox.MessageBoxOutcome
+  id: MessageBoxOutcome
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxOutcome.Cancelled
+  - NativeMessageBox.MessageBoxOutcome.InvalidArgument
+  - NativeMessageBox.MessageBoxOutcome.NotSupported
+  - NativeMessageBox.MessageBoxOutcome.OutOfMemory
+  - NativeMessageBox.MessageBoxOutcome.PlatformFailure
+  - NativeMessageBox.MessageBoxOutcome.Success
+  - NativeMessageBox.MessageBoxOutcome.Uninitialized
+  - NativeMessageBox.MessageBoxOutcome.Unknown
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxOutcome
+  nameWithType: MessageBoxOutcome
+  fullName: NativeMessageBox.MessageBoxOutcome
+  type: Enum
+  source:
+    id: MessageBoxOutcome
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 32
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public enum MessageBoxOutcome
+    content.vb: Public Enum MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.Success
+  commentId: F:NativeMessageBox.MessageBoxOutcome.Success
+  id: Success
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: MessageBoxOutcome.Success
+  fullName: NativeMessageBox.MessageBoxOutcome.Success
+  type: Field
+  source:
+    id: Success
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 34
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Success = 0
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.Cancelled
+  commentId: F:NativeMessageBox.MessageBoxOutcome.Cancelled
+  id: Cancelled
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: Cancelled
+  nameWithType: MessageBoxOutcome.Cancelled
+  fullName: NativeMessageBox.MessageBoxOutcome.Cancelled
+  type: Field
+  source:
+    id: Cancelled
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 35
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Cancelled = 1
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.NotSupported
+  commentId: F:NativeMessageBox.MessageBoxOutcome.NotSupported
+  id: NotSupported
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: NotSupported
+  nameWithType: MessageBoxOutcome.NotSupported
+  fullName: NativeMessageBox.MessageBoxOutcome.NotSupported
+  type: Field
+  source:
+    id: NotSupported
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 36
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: NotSupported = 2
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.PlatformFailure
+  commentId: F:NativeMessageBox.MessageBoxOutcome.PlatformFailure
+  id: PlatformFailure
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: PlatformFailure
+  nameWithType: MessageBoxOutcome.PlatformFailure
+  fullName: NativeMessageBox.MessageBoxOutcome.PlatformFailure
+  type: Field
+  source:
+    id: PlatformFailure
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 37
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: PlatformFailure = 3
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.OutOfMemory
+  commentId: F:NativeMessageBox.MessageBoxOutcome.OutOfMemory
+  id: OutOfMemory
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: OutOfMemory
+  nameWithType: MessageBoxOutcome.OutOfMemory
+  fullName: NativeMessageBox.MessageBoxOutcome.OutOfMemory
+  type: Field
+  source:
+    id: OutOfMemory
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 38
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: OutOfMemory = 4
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.InvalidArgument
+  commentId: F:NativeMessageBox.MessageBoxOutcome.InvalidArgument
+  id: InvalidArgument
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: InvalidArgument
+  nameWithType: MessageBoxOutcome.InvalidArgument
+  fullName: NativeMessageBox.MessageBoxOutcome.InvalidArgument
+  type: Field
+  source:
+    id: InvalidArgument
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 39
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: InvalidArgument = 5
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.Uninitialized
+  commentId: F:NativeMessageBox.MessageBoxOutcome.Uninitialized
+  id: Uninitialized
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: Uninitialized
+  nameWithType: MessageBoxOutcome.Uninitialized
+  fullName: NativeMessageBox.MessageBoxOutcome.Uninitialized
+  type: Field
+  source:
+    id: Uninitialized
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 40
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Uninitialized = 6
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+- uid: NativeMessageBox.MessageBoxOutcome.Unknown
+  commentId: F:NativeMessageBox.MessageBoxOutcome.Unknown
+  id: Unknown
+  parent: NativeMessageBox.MessageBoxOutcome
+  langs:
+  - csharp
+  - vb
+  name: Unknown
+  nameWithType: MessageBoxOutcome.Unknown
+  fullName: NativeMessageBox.MessageBoxOutcome.Unknown
+  type: Field
+  source:
+    id: Unknown
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    startLine: 41
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Unknown = 7
+    return:
+      type: NativeMessageBox.MessageBoxOutcome
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: NativeMessageBox.MessageBoxOutcome
+  commentId: T:NativeMessageBox.MessageBoxOutcome
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxOutcome.html
+  name: MessageBoxOutcome
+  nameWithType: MessageBoxOutcome
+  fullName: NativeMessageBox.MessageBoxOutcome

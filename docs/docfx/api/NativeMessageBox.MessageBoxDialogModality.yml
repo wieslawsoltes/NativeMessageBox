@@ -1,0 +1,107 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxDialogModality
+  commentId: T:NativeMessageBox.MessageBoxDialogModality
+  id: MessageBoxDialogModality
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxDialogModality.Application
+  - NativeMessageBox.MessageBoxDialogModality.System
+  - NativeMessageBox.MessageBoxDialogModality.Window
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxDialogModality
+  nameWithType: MessageBoxDialogModality
+  fullName: NativeMessageBox.MessageBoxDialogModality
+  type: Enum
+  source:
+    id: MessageBoxDialogModality
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 20
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public enum MessageBoxDialogModality
+    content.vb: Public Enum MessageBoxDialogModality
+- uid: NativeMessageBox.MessageBoxDialogModality.Application
+  commentId: F:NativeMessageBox.MessageBoxDialogModality.Application
+  id: Application
+  parent: NativeMessageBox.MessageBoxDialogModality
+  langs:
+  - csharp
+  - vb
+  name: Application
+  nameWithType: MessageBoxDialogModality.Application
+  fullName: NativeMessageBox.MessageBoxDialogModality.Application
+  type: Field
+  source:
+    id: Application
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 22
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Application = 0
+    return:
+      type: NativeMessageBox.MessageBoxDialogModality
+- uid: NativeMessageBox.MessageBoxDialogModality.Window
+  commentId: F:NativeMessageBox.MessageBoxDialogModality.Window
+  id: Window
+  parent: NativeMessageBox.MessageBoxDialogModality
+  langs:
+  - csharp
+  - vb
+  name: Window
+  nameWithType: MessageBoxDialogModality.Window
+  fullName: NativeMessageBox.MessageBoxDialogModality.Window
+  type: Field
+  source:
+    id: Window
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 23
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Window = 1
+    return:
+      type: NativeMessageBox.MessageBoxDialogModality
+- uid: NativeMessageBox.MessageBoxDialogModality.System
+  commentId: F:NativeMessageBox.MessageBoxDialogModality.System
+  id: System
+  parent: NativeMessageBox.MessageBoxDialogModality
+  langs:
+  - csharp
+  - vb
+  name: System
+  nameWithType: MessageBoxDialogModality.System
+  fullName: NativeMessageBox.MessageBoxDialogModality.System
+  type: Field
+  source:
+    id: System
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 24
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: System = 2
+    return:
+      type: NativeMessageBox.MessageBoxDialogModality
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: NativeMessageBox.MessageBoxDialogModality
+  commentId: T:NativeMessageBox.MessageBoxDialogModality
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxDialogModality.html
+  name: MessageBoxDialogModality
+  nameWithType: MessageBoxDialogModality
+  fullName: NativeMessageBox.MessageBoxDialogModality

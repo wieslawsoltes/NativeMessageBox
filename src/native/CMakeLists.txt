@@ -1,0 +1,55 @@
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+set(NMB_SOURCES ../shared/nmb_runtime.c)
+set(NMB_LIBS)
+
+if (WIN32)
+    list(APPEND NMB_SOURCES windows/message_box.cpp)
+    list(APPEND NMB_LIBS user32 comctl32 shell32)
+elseif (APPLE)
+    enable_language(OBJCXX)
+    list(APPEND NMB_SOURCES macos/MessageBox.mm)
+    list(APPEND NMB_LIBS "-framework Cocoa")
+elseif (UNIX)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+    list(APPEND NMB_SOURCES linux/message_box.cpp)
+    list(APPEND NMB_LIBS ${GTK3_LIBRARIES})
+else ()
+    message(FATAL_ERROR "Unsupported platform for native message box implementation.")
+endif ()
+
+add_library(nativemessagebox SHARED ${NMB_SOURCES})
+target_include_directories(nativemessagebox
+    PUBLIC ${CMAKE_SOURCE_DIR}/include
+    PRIVATE ${CMAKE_SOURCE_DIR}/src/shared)
+target_compile_definitions(nativemessagebox PRIVATE NMB_SHARED NMB_IMPLEMENTATION)
+target_compile_features(nativemessagebox PRIVATE cxx_std_17)
+
+if (UNIX AND NOT APPLE)
+    target_include_directories(nativemessagebox PRIVATE ${GTK3_INCLUDE_DIRS})
+    target_compile_options(nativemessagebox PRIVATE ${GTK3_CFLAGS_OTHER})
+endif ()
+
+if (NMB_LIBS)
+    target_link_libraries(nativemessagebox PRIVATE ${NMB_LIBS})
+endif ()
+
+set_target_properties(nativemessagebox PROPERTIES OUTPUT_NAME "nativemessagebox")
+
+if (BUILD_TESTING)
+    target_compile_definitions(nativemessagebox PRIVATE NMB_TESTING)
+    add_executable(nmb_sanity_test tests/sanity_test.c)
+    target_link_libraries(nmb_sanity_test PRIVATE nativemessagebox)
+    target_include_directories(nmb_sanity_test PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+    add_test(NAME nmb_sanity COMMAND nmb_sanity_test)
+
+    if (WIN32)
+        set_tests_properties(nmb_sanity PROPERTIES ENVIRONMENT "PATH=$<TARGET_FILE_DIR:nativemessagebox>;$ENV{PATH}")
+    elseif (APPLE)
+        set_tests_properties(nmb_sanity PROPERTIES ENVIRONMENT "DYLD_LIBRARY_PATH=$<TARGET_FILE_DIR:nativemessagebox>:$ENV{DYLD_LIBRARY_PATH}")
+    else ()
+        set_tests_properties(nmb_sanity PROPERTIES ENVIRONMENT "LD_LIBRARY_PATH=$<TARGET_FILE_DIR:nativemessagebox>:$ENV{LD_LIBRARY_PATH}")
+    endif ()
+endif ()

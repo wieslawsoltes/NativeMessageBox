@@ -1,0 +1,55 @@
+### YamlMime:TableOfContent
+items:
+- uid: NativeMessageBox
+  name: NativeMessageBox
+  type: Namespace
+  items:
+  - uid: NativeMessageBox.INativeMessageBoxHost
+    name: INativeMessageBoxHost
+    type: Interface
+  - uid: NativeMessageBox.MessageBoxButton
+    name: MessageBoxButton
+    type: Class
+  - uid: NativeMessageBox.MessageBoxButtonKind
+    name: MessageBoxButtonKind
+    type: Enum
+  - uid: NativeMessageBox.MessageBoxDialogModality
+    name: MessageBoxDialogModality
+    type: Enum
+  - uid: NativeMessageBox.MessageBoxIcon
+    name: MessageBoxIcon
+    type: Enum
+  - uid: NativeMessageBox.MessageBoxInputMode
+    name: MessageBoxInputMode
+    type: Enum
+  - uid: NativeMessageBox.MessageBoxInputOptions
+    name: MessageBoxInputOptions
+    type: Class
+  - uid: NativeMessageBox.MessageBoxOptions
+    name: MessageBoxOptions
+    type: Class
+  - uid: NativeMessageBox.MessageBoxOutcome
+    name: MessageBoxOutcome
+    type: Enum
+  - uid: NativeMessageBox.MessageBoxResult
+    name: MessageBoxResult
+    type: Class
+  - uid: NativeMessageBox.MessageBoxSecondaryContent
+    name: MessageBoxSecondaryContent
+    type: Class
+  - uid: NativeMessageBox.MessageBoxSeverity
+    name: MessageBoxSeverity
+    type: Enum
+  - uid: NativeMessageBox.NativeMessageBoxClient
+    name: NativeMessageBoxClient
+    type: Class
+  - uid: NativeMessageBox.NativeMessageBoxException
+    name: NativeMessageBoxException
+    type: Class
+  - uid: NativeMessageBox.NativeMessageBoxHostOptions
+    name: NativeMessageBoxHostOptions
+    type: Class
+  - uid: NativeMessageBox.NativeMessageBoxInitializationException
+    name: NativeMessageBoxInitializationException
+    type: Class
+memberLayout: SamePage

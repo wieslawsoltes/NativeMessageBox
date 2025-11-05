@@ -1,0 +1,176 @@
+### YamlMime:ManagedReference
+items:
+- uid: NativeMessageBox.MessageBoxIcon
+  commentId: T:NativeMessageBox.MessageBoxIcon
+  id: MessageBoxIcon
+  parent: NativeMessageBox
+  children:
+  - NativeMessageBox.MessageBoxIcon.Error
+  - NativeMessageBox.MessageBoxIcon.Information
+  - NativeMessageBox.MessageBoxIcon.None
+  - NativeMessageBox.MessageBoxIcon.Question
+  - NativeMessageBox.MessageBoxIcon.Shield
+  - NativeMessageBox.MessageBoxIcon.Warning
+  langs:
+  - csharp
+  - vb
+  name: MessageBoxIcon
+  nameWithType: MessageBoxIcon
+  fullName: NativeMessageBox.MessageBoxIcon
+  type: Enum
+  source:
+    id: MessageBoxIcon
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 2
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public enum MessageBoxIcon
+    content.vb: Public Enum MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.None
+  commentId: F:NativeMessageBox.MessageBoxIcon.None
+  id: None
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: MessageBoxIcon.None
+  fullName: NativeMessageBox.MessageBoxIcon.None
+  type: Field
+  source:
+    id: None
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 4
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: None = 0
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.Information
+  commentId: F:NativeMessageBox.MessageBoxIcon.Information
+  id: Information
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: Information
+  nameWithType: MessageBoxIcon.Information
+  fullName: NativeMessageBox.MessageBoxIcon.Information
+  type: Field
+  source:
+    id: Information
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 5
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Information = 1
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.Warning
+  commentId: F:NativeMessageBox.MessageBoxIcon.Warning
+  id: Warning
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: Warning
+  nameWithType: MessageBoxIcon.Warning
+  fullName: NativeMessageBox.MessageBoxIcon.Warning
+  type: Field
+  source:
+    id: Warning
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 6
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Warning = 2
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.Error
+  commentId: F:NativeMessageBox.MessageBoxIcon.Error
+  id: Error
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: MessageBoxIcon.Error
+  fullName: NativeMessageBox.MessageBoxIcon.Error
+  type: Field
+  source:
+    id: Error
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 7
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Error = 3
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.Question
+  commentId: F:NativeMessageBox.MessageBoxIcon.Question
+  id: Question
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: Question
+  nameWithType: MessageBoxIcon.Question
+  fullName: NativeMessageBox.MessageBoxIcon.Question
+  type: Field
+  source:
+    id: Question
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 8
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Question = 4
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+- uid: NativeMessageBox.MessageBoxIcon.Shield
+  commentId: F:NativeMessageBox.MessageBoxIcon.Shield
+  id: Shield
+  parent: NativeMessageBox.MessageBoxIcon
+  langs:
+  - csharp
+  - vb
+  name: Shield
+  nameWithType: MessageBoxIcon.Shield
+  fullName: NativeMessageBox.MessageBoxIcon.Shield
+  type: Field
+  source:
+    id: Shield
+    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    startLine: 9
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: Shield = 5
+    return:
+      type: NativeMessageBox.MessageBoxIcon
+references:
+- uid: NativeMessageBox
+  commentId: N:NativeMessageBox
+  href: NativeMessageBox.html
+  name: NativeMessageBox
+  nameWithType: NativeMessageBox
+  fullName: NativeMessageBox
+- uid: NativeMessageBox.MessageBoxIcon
+  commentId: T:NativeMessageBox.MessageBoxIcon
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxIcon.html
+  name: MessageBoxIcon
+  nameWithType: MessageBoxIcon
+  fullName: NativeMessageBox.MessageBoxIcon

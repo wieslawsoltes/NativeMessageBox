@@ -1,0 +1,382 @@
+{
+  "source_base_path": "/Users/wieslawsoltes/GitHub/NativeMessageBox/docs/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "architecture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../design/build-tooling.md",
+      "output": {
+        ".html": {
+          "relative_path": "design/build-tooling.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../design/error-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "design/error-handling.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../design/platform-capabilities.md",
+      "output": {
+        ".html": {
+          "relative_path": "design/platform-capabilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../design/user-experience-requirements.md",
+      "output": {
+        ".html": {
+          "relative_path": "design/user-experience-requirements.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../managed-api.md",
+      "output": {
+        ".html": {
+          "relative_path": "managed-api.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "quickstart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../release-policy.md",
+      "output": {
+        ".html": {
+          "relative_path": "release-policy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../roadmap.md",
+      "output": {
+        ".html": {
+          "relative_path": "roadmap.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../samples.md",
+      "output": {
+        ".html": {
+          "relative_path": "samples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../troubleshooting.md",
+      "output": {
+        ".html": {
+          "relative_path": "troubleshooting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.INativeMessageBoxHost.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.INativeMessageBoxHost.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.INativeMessageBoxHost",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxButton.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxButton.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxButton",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxButtonKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxButtonKind.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxButtonKind",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxDialogModality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxDialogModality.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxDialogModality",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxIcon.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxIcon",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxInputMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxInputMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxInputMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxInputOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxInputOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxInputOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxOutcome.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxOutcome.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxOutcome",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxResult",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxSecondaryContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxSecondaryContent.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxSecondaryContent",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxSeverity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxSeverity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxSeverity",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.NativeMessageBoxClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.NativeMessageBoxClient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.NativeMessageBoxClient",
+      "Summary": "<p sourcefile=\"api/NativeMessageBox.NativeMessageBoxClient.yml\" sourcestartlinenumber=\"1\">High-level entry point for displaying cross-platform message boxes using a configurable host pipeline.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.NativeMessageBoxException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.NativeMessageBoxException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.NativeMessageBoxException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.NativeMessageBoxHostOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.NativeMessageBoxHostOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.NativeMessageBoxHostOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.NativeMessageBoxInitializationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.NativeMessageBoxInitializationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.NativeMessageBoxInitializationException",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
