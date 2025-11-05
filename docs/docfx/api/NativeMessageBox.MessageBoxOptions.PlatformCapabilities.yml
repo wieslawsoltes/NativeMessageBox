@@ -1,32 +1,34 @@
 ### YamlMime:ManagedReference
 items:
-- uid: NativeMessageBox.NativeMessageBoxHostOptions
-  commentId: T:NativeMessageBox.NativeMessageBoxHostOptions
-  id: NativeMessageBoxHostOptions
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  commentId: T:NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  id: MessageBoxOptions.PlatformCapabilities
   parent: NativeMessageBox
   children:
-  - NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
+  - NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  - NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  - NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
   langs:
   - csharp
   - vb
-  name: NativeMessageBoxHostOptions
-  nameWithType: NativeMessageBoxHostOptions
-  fullName: NativeMessageBox.NativeMessageBoxHostOptions
+  name: MessageBoxOptions.PlatformCapabilities
+  nameWithType: MessageBoxOptions.PlatformCapabilities
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
   type: Class
   source:
     remote:
-      path: src/dotnet/NativeMessageBox/NativeMessageBoxHostOptions.cs
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
       branch: main
       repo: https://github.com/wieslawsoltes/NativeMessageBox.git
-    id: NativeMessageBoxHostOptions
-    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxHostOptions.cs
-    startLine: 2
+    id: PlatformCapabilities
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 100
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
   syntax:
-    content: public sealed class NativeMessageBoxHostOptions
-    content.vb: Public NotInheritable Class NativeMessageBoxHostOptions
+    content: public sealed class MessageBoxOptions.PlatformCapabilities
+    content.vb: Public NotInheritable Class MessageBoxOptions.PlatformCapabilities
   inheritance:
   - System.Object
   inheritedMembers:
@@ -36,35 +38,93 @@ items:
   - System.Object.GetType
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
-  commentId: P:NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
-  id: RequireStaThreadForWindows
-  parent: NativeMessageBox.NativeMessageBoxHostOptions
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  id: RequiresStaOnWindows
+  parent: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
   langs:
   - csharp
   - vb
-  name: RequireStaThreadForWindows
-  nameWithType: NativeMessageBoxHostOptions.RequireStaThreadForWindows
-  fullName: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
+  name: RequiresStaOnWindows
+  nameWithType: MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
   type: Property
   source:
     remote:
-      path: src/dotnet/NativeMessageBox/NativeMessageBoxHostOptions.cs
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
       branch: main
       repo: https://github.com/wieslawsoltes/NativeMessageBox.git
-    id: RequireStaThreadForWindows
-    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxHostOptions.cs
-    startLine: 4
+    id: RequiresStaOnWindows
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 115
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
   syntax:
-    content: public bool RequireStaThreadForWindows { get; set; }
+    content: public bool RequiresStaOnWindows { get; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Property RequireStaThreadForWindows As Boolean
-  overload: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows*
+    content.vb: Public ReadOnly Property RequiresStaOnWindows As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows*
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  id: SupportsWindowsInput
+  parent: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  langs:
+  - csharp
+  - vb
+  name: SupportsWindowsInput
+  nameWithType: MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  type: Property
+  source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
+    id: SupportsWindowsInput
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 117
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public bool SupportsWindowsInput { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property SupportsWindowsInput As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput*
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  id: LocaleSupported
+  parent: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  langs:
+  - csharp
+  - vb
+  name: LocaleSupported
+  nameWithType: MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  type: Property
+  source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
+    id: LocaleSupported
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 119
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public bool LocaleSupported { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property LocaleSupported As Boolean
+  overload: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported*
 references:
 - uid: NativeMessageBox
   commentId: N:NativeMessageBox
@@ -285,12 +345,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows*
-  commentId: Overload:NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
-  href: NativeMessageBox.NativeMessageBoxHostOptions.html#NativeMessageBox_NativeMessageBoxHostOptions_RequireStaThreadForWindows
-  name: RequireStaThreadForWindows
-  nameWithType: NativeMessageBoxHostOptions.RequireStaThreadForWindows
-  fullName: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_RequiresStaOnWindows
+  name: RequiresStaOnWindows
+  nameWithType: MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -302,3 +362,15 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_SupportsWindowsInput
+  name: SupportsWindowsInput
+  nameWithType: MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_LocaleSupported
+  name: LocaleSupported
+  nameWithType: MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported

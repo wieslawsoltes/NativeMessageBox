@@ -18,8 +18,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxButtonKind
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 27
   assemblies:
   - NativeMessageBox
@@ -39,8 +43,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind.Default
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Default
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 29
   assemblies:
   - NativeMessageBox
@@ -61,8 +69,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind.Primary
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Primary
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 30
   assemblies:
   - NativeMessageBox
@@ -83,8 +95,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind.Secondary
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Secondary
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 31
   assemblies:
   - NativeMessageBox
@@ -105,8 +121,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind.Destructive
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Destructive
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 32
   assemblies:
   - NativeMessageBox
@@ -127,8 +147,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButtonKind.Help
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Help
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 33
   assemblies:
   - NativeMessageBox

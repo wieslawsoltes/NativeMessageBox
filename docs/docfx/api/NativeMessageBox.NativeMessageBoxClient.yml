@@ -26,8 +26,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NativeMessageBoxClient
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 10
   assemblies:
   - NativeMessageBox
@@ -59,8 +63,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.CurrentHost
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: CurrentHost
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 15
   assemblies:
   - NativeMessageBox
@@ -84,8 +92,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.UseHost(NativeMessageBox.INativeMessageBoxHost)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: UseHost
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 26
   assemblies:
   - NativeMessageBox
@@ -109,8 +121,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.ConfigureHost(System.Action<NativeMessageBox.NativeMessageBoxHostOptions>)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ConfigureHost
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 39
   assemblies:
   - NativeMessageBox
@@ -137,8 +153,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.RegisterNativeLibraryPath(string)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: RegisterNativeLibraryPath
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 55
   assemblies:
   - NativeMessageBox
@@ -165,8 +185,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.RegisterLogHandler(System.Action<string>?)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: RegisterLogHandler
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 66
   assemblies:
   - NativeMessageBox
@@ -193,8 +217,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.EnsureInitialized()
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: EnsureInitialized
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 77
   assemblies:
   - NativeMessageBox
@@ -215,8 +243,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.Shutdown()
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Shutdown
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 79
   assemblies:
   - NativeMessageBox
@@ -237,8 +269,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.Show(NativeMessageBox.MessageBoxOptions)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Show
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 81
   assemblies:
   - NativeMessageBox
@@ -264,8 +300,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.ShowOrThrow(NativeMessageBox.MessageBoxOptions)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ShowOrThrow
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 83
   assemblies:
   - NativeMessageBox
@@ -291,8 +331,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.TryShow(NativeMessageBox.MessageBoxOptions, out NativeMessageBox.MessageBoxResult)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: TryShow
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 94
   assemblies:
   - NativeMessageBox
@@ -323,8 +367,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.ShowAsync(NativeMessageBox.MessageBoxOptions, System.Threading.CancellationToken)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ShowAsync
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 96
   assemblies:
   - NativeMessageBox
@@ -352,8 +400,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.TryShowAsync(NativeMessageBox.MessageBoxOptions, System.Threading.CancellationToken)
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: TryShowAsync
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 98
   assemblies:
   - NativeMessageBox
@@ -381,8 +433,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxClient.VerifyAbiCompatibility()
   type: Method
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: VerifyAbiCompatibility
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxClient.cs
     startLine: 100
   assemblies:
   - NativeMessageBox

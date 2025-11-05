@@ -16,8 +16,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxException
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NativeMessageBoxException
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
     startLine: 5
   assemblies:
   - NativeMessageBox
@@ -62,8 +66,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxException.Outcome
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Outcome
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
     startLine: 22
   assemblies:
   - NativeMessageBox
@@ -87,8 +95,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxException.NativeResultCode
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NativeResultCode
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
     startLine: 24
   assemblies:
   - NativeMessageBox
@@ -112,8 +124,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxException.Result
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Result
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
     startLine: 26
   assemblies:
   - NativeMessageBox

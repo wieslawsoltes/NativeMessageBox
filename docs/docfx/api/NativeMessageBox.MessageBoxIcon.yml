@@ -19,8 +19,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxIcon
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 2
   assemblies:
   - NativeMessageBox
@@ -40,8 +44,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.None
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: None
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 4
   assemblies:
   - NativeMessageBox
@@ -62,8 +70,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.Information
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Information
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 5
   assemblies:
   - NativeMessageBox
@@ -84,8 +96,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.Warning
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Warning
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 6
   assemblies:
   - NativeMessageBox
@@ -106,8 +122,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.Error
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Error
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 7
   assemblies:
   - NativeMessageBox
@@ -128,8 +148,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.Question
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Question
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 8
   assemblies:
   - NativeMessageBox
@@ -150,8 +174,12 @@ items:
   fullName: NativeMessageBox.MessageBoxIcon.Shield
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Shield
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 9
   assemblies:
   - NativeMessageBox

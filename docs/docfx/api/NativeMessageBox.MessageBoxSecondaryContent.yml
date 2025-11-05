@@ -18,8 +18,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxSecondaryContent
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 2
   assemblies:
   - NativeMessageBox
@@ -48,8 +52,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent.MessageBoxSecondaryContent(string?, string?, string?, string?)
   type: Constructor
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: .ctor
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 4
   assemblies:
   - NativeMessageBox
@@ -82,8 +90,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent.InformativeText
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: InformativeText
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 12
   assemblies:
   - NativeMessageBox
@@ -107,8 +119,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent.ExpandedText
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ExpandedText
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 14
   assemblies:
   - NativeMessageBox
@@ -132,8 +148,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent.FooterText
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: FooterText
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 16
   assemblies:
   - NativeMessageBox
@@ -157,8 +177,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSecondaryContent.HelpLink
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: HelpLink
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxSecondaryContent.cs
     startLine: 18
   assemblies:
   - NativeMessageBox

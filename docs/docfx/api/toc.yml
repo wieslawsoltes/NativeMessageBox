@@ -28,6 +28,9 @@ items:
   - uid: NativeMessageBox.MessageBoxOptions
     name: MessageBoxOptions
     type: Class
+  - uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    name: MessageBoxOptions.PlatformCapabilities
+    type: Class
   - uid: NativeMessageBox.MessageBoxOutcome
     name: MessageBoxOutcome
     type: Enum

@@ -16,8 +16,12 @@ items:
   fullName: NativeMessageBox.MessageBoxDialogModality
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxDialogModality
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 20
   assemblies:
   - NativeMessageBox
@@ -37,8 +41,12 @@ items:
   fullName: NativeMessageBox.MessageBoxDialogModality.Application
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Application
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 22
   assemblies:
   - NativeMessageBox
@@ -59,8 +67,12 @@ items:
   fullName: NativeMessageBox.MessageBoxDialogModality.Window
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Window
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 23
   assemblies:
   - NativeMessageBox
@@ -81,8 +93,12 @@ items:
   fullName: NativeMessageBox.MessageBoxDialogModality.System
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: System
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 24
   assemblies:
   - NativeMessageBox

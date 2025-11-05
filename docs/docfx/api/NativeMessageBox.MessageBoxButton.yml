@@ -20,8 +20,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxButton
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 4
   assemblies:
   - NativeMessageBox
@@ -50,8 +54,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.MessageBoxButton(uint, string, NativeMessageBox.MessageBoxButtonKind, bool, bool, string?)
   type: Constructor
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: .ctor
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 6
   assemblies:
   - NativeMessageBox
@@ -88,8 +96,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.Id
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Id
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 21
   assemblies:
   - NativeMessageBox
@@ -113,8 +125,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.Label
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Label
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 23
   assemblies:
   - NativeMessageBox
@@ -138,8 +154,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.Kind
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Kind
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 25
   assemblies:
   - NativeMessageBox
@@ -163,8 +183,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.IsDefault
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: IsDefault
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 27
   assemblies:
   - NativeMessageBox
@@ -188,8 +212,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.IsCancel
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: IsCancel
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 29
   assemblies:
   - NativeMessageBox
@@ -213,8 +241,12 @@ items:
   fullName: NativeMessageBox.MessageBoxButton.Description
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxButton.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Description
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxButton.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxButton.cs
     startLine: 31
   assemblies:
   - NativeMessageBox

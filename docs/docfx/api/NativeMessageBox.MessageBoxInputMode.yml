@@ -18,8 +18,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxInputMode
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 36
   assemblies:
   - NativeMessageBox
@@ -39,8 +43,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode.None
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: None
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 38
   assemblies:
   - NativeMessageBox
@@ -61,8 +69,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode.Checkbox
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Checkbox
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 39
   assemblies:
   - NativeMessageBox
@@ -83,8 +95,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode.Text
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Text
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 40
   assemblies:
   - NativeMessageBox
@@ -105,8 +121,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode.Password
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Password
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 41
   assemblies:
   - NativeMessageBox
@@ -127,8 +147,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputMode.Combo
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Combo
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 42
   assemblies:
   - NativeMessageBox

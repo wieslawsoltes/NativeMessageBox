@@ -476,6 +476,19 @@ references:
   isSpec: "True"
   fullName: NativeMessageBox.MessageBoxOptions.Buttons
   nameWithType: MessageBoxOptions.Buttons
+- uid: NativeMessageBox.MessageBoxOptions.Capabilities
+  name: Capabilities
+  href: api/NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Capabilities
+  commentId: P:NativeMessageBox.MessageBoxOptions.Capabilities
+  fullName: NativeMessageBox.MessageBoxOptions.Capabilities
+  nameWithType: MessageBoxOptions.Capabilities
+- uid: NativeMessageBox.MessageBoxOptions.Capabilities*
+  name: Capabilities
+  href: api/NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Capabilities_
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Capabilities
+  isSpec: "True"
+  fullName: NativeMessageBox.MessageBoxOptions.Capabilities
+  nameWithType: MessageBoxOptions.Capabilities
 - uid: NativeMessageBox.MessageBoxOptions.Icon
   name: Icon
   href: api/NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Icon
@@ -554,6 +567,51 @@ references:
   isSpec: "True"
   fullName: NativeMessageBox.MessageBoxOptions.ParentWindow
   nameWithType: MessageBoxOptions.ParentWindow
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  name: MessageBoxOptions.PlatformCapabilities
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html
+  commentId: T:NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  nameWithType: MessageBoxOptions.PlatformCapabilities
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  name: LocaleSupported
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_LocaleSupported
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  nameWithType: MessageBoxOptions.PlatformCapabilities.LocaleSupported
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported*
+  name: LocaleSupported
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_LocaleSupported_
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  isSpec: "True"
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.LocaleSupported
+  nameWithType: MessageBoxOptions.PlatformCapabilities.LocaleSupported
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  name: RequiresStaOnWindows
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_RequiresStaOnWindows
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  nameWithType: MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows*
+  name: RequiresStaOnWindows
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_RequiresStaOnWindows_
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  isSpec: "True"
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+  nameWithType: MessageBoxOptions.PlatformCapabilities.RequiresStaOnWindows
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  name: SupportsWindowsInput
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_SupportsWindowsInput
+  commentId: P:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  nameWithType: MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput*
+  name: SupportsWindowsInput
+  href: api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html#NativeMessageBox_MessageBoxOptions_PlatformCapabilities_SupportsWindowsInput_
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  isSpec: "True"
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
+  nameWithType: MessageBoxOptions.PlatformCapabilities.SupportsWindowsInput
 - uid: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
   name: RequiresExplicitAcknowledgement
   href: api/NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_RequiresExplicitAcknowledgement

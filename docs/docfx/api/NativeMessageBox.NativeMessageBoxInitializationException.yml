@@ -13,8 +13,12 @@ items:
   fullName: NativeMessageBox.NativeMessageBoxInitializationException
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NativeMessageBoxInitializationException
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
+    path: ../../src/dotnet/NativeMessageBox/NativeMessageBoxException.cs
     startLine: 29
   assemblies:
   - NativeMessageBox

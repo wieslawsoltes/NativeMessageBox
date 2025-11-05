@@ -21,8 +21,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxOutcome
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 32
   assemblies:
   - NativeMessageBox
@@ -42,8 +46,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.Success
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Success
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 34
   assemblies:
   - NativeMessageBox
@@ -64,8 +72,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.Cancelled
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Cancelled
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 35
   assemblies:
   - NativeMessageBox
@@ -86,8 +98,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.NotSupported
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NotSupported
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 36
   assemblies:
   - NativeMessageBox
@@ -108,8 +124,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.PlatformFailure
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: PlatformFailure
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 37
   assemblies:
   - NativeMessageBox
@@ -130,8 +150,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.OutOfMemory
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: OutOfMemory
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 38
   assemblies:
   - NativeMessageBox
@@ -152,8 +176,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.InvalidArgument
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: InvalidArgument
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 39
   assemblies:
   - NativeMessageBox
@@ -174,8 +202,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.Uninitialized
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Uninitialized
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 40
   assemblies:
   - NativeMessageBox
@@ -196,8 +228,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOutcome.Unknown
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Unknown
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 41
   assemblies:
   - NativeMessageBox

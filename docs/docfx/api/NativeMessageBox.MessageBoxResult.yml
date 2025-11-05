@@ -21,8 +21,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxResult
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 4
   assemblies:
   - NativeMessageBox
@@ -51,8 +55,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.MessageBoxResult(uint, bool, string?, bool, NativeMessageBox.MessageBoxOutcome, object?, uint)
   type: Constructor
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: .ctor
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 6
   assemblies:
   - NativeMessageBox
@@ -91,8 +99,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.ButtonId
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ButtonId
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 17
   assemblies:
   - NativeMessageBox
@@ -116,8 +128,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.CheckboxChecked
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: CheckboxChecked
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 19
   assemblies:
   - NativeMessageBox
@@ -141,8 +157,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.InputValue
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: InputValue
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 21
   assemblies:
   - NativeMessageBox
@@ -166,8 +186,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.WasTimeout
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: WasTimeout
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 23
   assemblies:
   - NativeMessageBox
@@ -191,8 +215,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.Outcome
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Outcome
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 25
   assemblies:
   - NativeMessageBox
@@ -216,8 +244,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.Tag
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Tag
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 27
   assemblies:
   - NativeMessageBox
@@ -241,8 +273,12 @@ items:
   fullName: NativeMessageBox.MessageBoxResult.NativeResultCode
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxResult.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: NativeResultCode
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxResult.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxResult.cs
     startLine: 29
   assemblies:
   - NativeMessageBox

@@ -222,6 +222,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.MessageBoxOptions.PlatformCapabilities",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NativeMessageBox.MessageBoxOptions.yml",
       "output": {
         ".html": {

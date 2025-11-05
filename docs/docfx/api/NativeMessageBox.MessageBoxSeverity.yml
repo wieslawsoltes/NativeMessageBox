@@ -17,8 +17,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSeverity
   type: Enum
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxSeverity
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 12
   assemblies:
   - NativeMessageBox
@@ -38,8 +42,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSeverity.Info
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Info
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 14
   assemblies:
   - NativeMessageBox
@@ -60,8 +68,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSeverity.Warning
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Warning
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 15
   assemblies:
   - NativeMessageBox
@@ -82,8 +94,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSeverity.Error
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Error
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 16
   assemblies:
   - NativeMessageBox
@@ -104,8 +120,12 @@ items:
   fullName: NativeMessageBox.MessageBoxSeverity.Critical
   type: Field
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Critical
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxEnums.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxEnums.cs
     startLine: 17
   assemblies:
   - NativeMessageBox

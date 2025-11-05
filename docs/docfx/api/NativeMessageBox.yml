@@ -12,6 +12,7 @@ items:
   - NativeMessageBox.MessageBoxInputMode
   - NativeMessageBox.MessageBoxInputOptions
   - NativeMessageBox.MessageBoxOptions
+  - NativeMessageBox.MessageBoxOptions.PlatformCapabilities
   - NativeMessageBox.MessageBoxOutcome
   - NativeMessageBox.MessageBoxResult
   - NativeMessageBox.MessageBoxSecondaryContent
@@ -92,6 +93,29 @@ references:
   name: MessageBoxOptions
   nameWithType: MessageBoxOptions
   fullName: NativeMessageBox.MessageBoxOptions
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  commentId: T:NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxOptions.html
+  name: MessageBoxOptions.PlatformCapabilities
+  nameWithType: MessageBoxOptions.PlatformCapabilities
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  spec.csharp:
+  - uid: NativeMessageBox.MessageBoxOptions
+    name: MessageBoxOptions
+    href: NativeMessageBox.MessageBoxOptions.html
+  - name: .
+  - uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    name: PlatformCapabilities
+    href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html
+  spec.vb:
+  - uid: NativeMessageBox.MessageBoxOptions
+    name: MessageBoxOptions
+    href: NativeMessageBox.MessageBoxOptions.html
+  - name: .
+  - uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    name: PlatformCapabilities
+    href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html
 - uid: NativeMessageBox.MessageBoxResult
   commentId: T:NativeMessageBox.MessageBoxResult
   parent: NativeMessageBox

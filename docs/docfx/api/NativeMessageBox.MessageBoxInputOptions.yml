@@ -19,8 +19,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxInputOptions
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 7
   assemblies:
   - NativeMessageBox
@@ -49,8 +53,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.MessageBoxInputOptions(NativeMessageBox.MessageBoxInputMode, string?, string?, string?, System.Collections.Generic.IReadOnlyList<string>?)
   type: Constructor
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: .ctor
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 9
   assemblies:
   - NativeMessageBox
@@ -85,8 +93,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.Mode
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Mode
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 28
   assemblies:
   - NativeMessageBox
@@ -110,8 +122,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.Prompt
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Prompt
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 30
   assemblies:
   - NativeMessageBox
@@ -135,8 +151,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.Placeholder
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Placeholder
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 32
   assemblies:
   - NativeMessageBox
@@ -160,8 +180,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.DefaultValue
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: DefaultValue
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 34
   assemblies:
   - NativeMessageBox
@@ -185,8 +209,12 @@ items:
   fullName: NativeMessageBox.MessageBoxInputOptions.ComboItems
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ComboItems
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxInputOptions.cs
     startLine: 36
   assemblies:
   - NativeMessageBox

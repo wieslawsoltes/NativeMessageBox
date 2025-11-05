@@ -8,6 +8,7 @@ items:
   - NativeMessageBox.MessageBoxOptions.#ctor(System.String,System.Collections.Generic.IEnumerable{NativeMessageBox.MessageBoxButton},System.String,NativeMessageBox.MessageBoxIcon,NativeMessageBox.MessageBoxSeverity,NativeMessageBox.MessageBoxDialogModality,System.IntPtr,NativeMessageBox.MessageBoxInputOptions,NativeMessageBox.MessageBoxSecondaryContent,System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.TimeSpan},System.Nullable{System.UInt32},System.String,System.Object)
   - NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
   - NativeMessageBox.MessageBoxOptions.Buttons
+  - NativeMessageBox.MessageBoxOptions.Capabilities
   - NativeMessageBox.MessageBoxOptions.Icon
   - NativeMessageBox.MessageBoxOptions.InputOptions
   - NativeMessageBox.MessageBoxOptions.Locale
@@ -31,8 +32,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions
   type: Class
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: MessageBoxOptions
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
     startLine: 7
   assemblies:
   - NativeMessageBox
@@ -61,8 +66,12 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.MessageBoxOptions(string, System.Collections.Generic.IEnumerable<NativeMessageBox.MessageBoxButton>?, string?, NativeMessageBox.MessageBoxIcon, NativeMessageBox.MessageBoxSeverity, NativeMessageBox.MessageBoxDialogModality, nint, NativeMessageBox.MessageBoxInputOptions?, NativeMessageBox.MessageBoxSecondaryContent?, string?, bool, bool, bool, System.TimeSpan?, uint?, string?, object?)
   type: Constructor
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: .ctor
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
     startLine: 9
   assemblies:
   - NativeMessageBox
@@ -121,9 +130,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Title
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Title
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 62
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 64
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -146,9 +159,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Message
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Message
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 64
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 66
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -171,9 +188,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Buttons
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Buttons
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 66
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 68
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -196,9 +217,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Icon
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Icon
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 68
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 70
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -221,9 +246,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Severity
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Severity
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 70
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 72
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -246,9 +275,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Modality
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Modality
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 72
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 74
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -271,9 +304,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.ParentWindow
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ParentWindow
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 74
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 76
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -296,9 +333,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.InputOptions
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: InputOptions
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 76
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 78
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -321,9 +362,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.SecondaryContent
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: SecondaryContent
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 78
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 80
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -346,9 +391,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.VerificationText
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: VerificationText
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 80
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 82
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -371,9 +420,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.AllowCancelViaEscape
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: AllowCancelViaEscape
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 82
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 84
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -396,9 +449,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.ShowSuppressCheckbox
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: ShowSuppressCheckbox
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 84
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 86
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -421,9 +478,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.RequiresExplicitAcknowledgement
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: RequiresExplicitAcknowledgement
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 86
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 88
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -446,9 +507,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Timeout
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Timeout
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 88
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 90
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -471,9 +536,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.TimeoutButtonId
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: TimeoutButtonId
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 90
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 92
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -496,9 +565,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Locale
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Locale
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 92
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 94
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -521,9 +594,13 @@ items:
   fullName: NativeMessageBox.MessageBoxOptions.Tag
   type: Property
   source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
     id: Tag
-    path: /Users/wieslawsoltes/GitHub/NativeMessageBox/src/dotnet/NativeMessageBox/MessageBoxOptions.cs
-    startLine: 94
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 96
   assemblies:
   - NativeMessageBox
   namespace: NativeMessageBox
@@ -534,6 +611,35 @@ items:
       type: System.Object
     content.vb: Public ReadOnly Property Tag As Object
   overload: NativeMessageBox.MessageBoxOptions.Tag*
+- uid: NativeMessageBox.MessageBoxOptions.Capabilities
+  commentId: P:NativeMessageBox.MessageBoxOptions.Capabilities
+  id: Capabilities
+  parent: NativeMessageBox.MessageBoxOptions
+  langs:
+  - csharp
+  - vb
+  name: Capabilities
+  nameWithType: MessageBoxOptions.Capabilities
+  fullName: NativeMessageBox.MessageBoxOptions.Capabilities
+  type: Property
+  source:
+    remote:
+      path: src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+      branch: main
+      repo: https://github.com/wieslawsoltes/NativeMessageBox.git
+    id: Capabilities
+    path: ../../src/dotnet/NativeMessageBox/MessageBoxOptions.cs
+    startLine: 98
+  assemblies:
+  - NativeMessageBox
+  namespace: NativeMessageBox
+  syntax:
+    content: public MessageBoxOptions.PlatformCapabilities Capabilities { get; }
+    parameters: []
+    return:
+      type: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    content.vb: Public ReadOnly Property Capabilities As MessageBoxOptions.PlatformCapabilities
+  overload: NativeMessageBox.MessageBoxOptions.Capabilities*
 references:
 - uid: NativeMessageBox
   commentId: N:NativeMessageBox
@@ -1163,3 +1269,32 @@ references:
   name: Tag
   nameWithType: MessageBoxOptions.Tag
   fullName: NativeMessageBox.MessageBoxOptions.Tag
+- uid: NativeMessageBox.MessageBoxOptions.Capabilities*
+  commentId: Overload:NativeMessageBox.MessageBoxOptions.Capabilities
+  href: NativeMessageBox.MessageBoxOptions.html#NativeMessageBox_MessageBoxOptions_Capabilities
+  name: Capabilities
+  nameWithType: MessageBoxOptions.Capabilities
+  fullName: NativeMessageBox.MessageBoxOptions.Capabilities
+- uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  commentId: T:NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  parent: NativeMessageBox
+  href: NativeMessageBox.MessageBoxOptions.html
+  name: MessageBoxOptions.PlatformCapabilities
+  nameWithType: MessageBoxOptions.PlatformCapabilities
+  fullName: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+  spec.csharp:
+  - uid: NativeMessageBox.MessageBoxOptions
+    name: MessageBoxOptions
+    href: NativeMessageBox.MessageBoxOptions.html
+  - name: .
+  - uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    name: PlatformCapabilities
+    href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html
+  spec.vb:
+  - uid: NativeMessageBox.MessageBoxOptions
+    name: MessageBoxOptions
+    href: NativeMessageBox.MessageBoxOptions.html
+  - name: .
+  - uid: NativeMessageBox.MessageBoxOptions.PlatformCapabilities
+    name: PlatformCapabilities
+    href: NativeMessageBox.MessageBoxOptions.PlatformCapabilities.html
