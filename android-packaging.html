@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Android Packaging Guide </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Android Packaging Guide ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="android-packaging-guide">Android Packaging Guide</h1>
+
+<p>The Android build ships as an AAR that contains the JNI bridge (<code>NativeMessageBoxBridge</code>) and prebuilt <code>libnativemessagebox.so</code> binaries for common ABIs. The AAR can be referenced directly from Xamarin/.NET for Android (<code>&lt;AndroidLibrary&gt;</code> item) or included in Gradle builds.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Android SDK (with the desired platform installed).</li>
+<li>Android NDK r23+.</li>
+<li>Java toolchain (<code>javac</code>, <code>jar</code>).</li>
+<li>CMake 3.21+ and Ninja (used by the packaging script).</li>
+</ul>
+<p>Set the following environment variables (these are read by the script):</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ANDROID_NDK_ROOT</code></td>
+<td>Path to the extracted NDK</td>
+<td><code>/Users/me/Library/Android/sdk/ndk/26.1.10909125</code></td>
+</tr>
+<tr>
+<td><code>ANDROID_SDK_ROOT</code></td>
+<td>Path to the Android SDK</td>
+<td><code>/Users/me/Library/Android/sdk</code></td>
+</tr>
+<tr>
+<td><code>ANDROID_API_LEVEL</code> (optional)</td>
+<td>Minimum API level to target (default <code>21</code>)</td>
+<td><code>23</code></td>
+</tr>
+<tr>
+<td><code>ANDROID_TARGET_SDK</code> (optional)</td>
+<td>Target SDK level for the manifest (default <code>34</code>)</td>
+<td><code>34</code></td>
+</tr>
+<tr>
+<td><code>ANDROID_ABIS</code> (optional)</td>
+<td>Space-separated list of ABIs to build (default <code>arm64-v8a armeabi-v7a x86_64</code>)</td>
+<td><code>&quot;arm64-v8a x86_64&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="generating-the-aar">Generating the AAR</h2>
+<pre><code class="lang-bash">./build/scripts/package-android-aar.sh
+</code></pre>
+<p>Outputs are written to <code>artifacts/android/</code>:</p>
+<ul>
+<li><code>NativeMessageBox.aar</code> — packaged Java bridge + native libraries.</li>
+<li><code>jni/&lt;abi&gt;/libnativemessagebox.so</code> — extracted copies of the native binaries for convenience.</li>
+<li><code>manifest.json</code> — build metadata (ABIs, API level, timestamp, git version).</li>
+</ul>
+<p>The CI workflow (<code>android-aar</code> job in <code>.github/workflows/ci.yml</code>) runs this script on every push/pr so the packaged artifacts are always up to date. Robolectric-based bridge tests (<code>tests/android/bridge-tests</code>) also run in CI to exercise the <code>setTestCallback</code> hook.</p>
+<p>The build uses <code>ANDROID_STL=c++_static</code>, so no additional STL shared libraries are required.</p>
+<h2 id="consuming-the-aar-in-net-for-android">Consuming the AAR in .NET for Android</h2>
+<p>To use the packaged artifacts in the cross-platform sample (or any .NET for Android project), add the generated AAR to the project file:</p>
+<pre><code class="lang-xml">&lt;ItemGroup&gt;
+  &lt;AndroidLibrary Include=&quot;..\..\..\artifacts\android\NativeMessageBox.aar&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>At runtime the managed host automatically probes the <code>android-*</code> RID, so no extra configuration is required beyond providing a valid <code>ActivityReferenceProvider</code> (see <code>docs/android-lifecycle.md</code>).</p>
+<h2 id="development-notes">Development Notes</h2>
+<ul>
+<li>When the AAR is absent, <code>NativeMessageBox.CrossPlatformSample.Android</code> falls back to compiling the Java bridge from <code>src/native/android/java/**</code>. This is useful while iterating on the native/Java code without repackaging.</li>
+<li>The script copies the resulting <code>.so</code> files into <code>artifacts/android/jni/&lt;abi&gt;</code> so they can be inspected or side-loaded if needed.</li>
+<li>The generated AAR includes a minimal manifest (<code>package=&quot;com.nativeinterop.nativemessagebox&quot;</code>); if you need a different namespace, unzip the archive and adjust the manifest/class package prior to redistribution.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/wieslawsoltes/NativeMessageBox/blob/main/docs/android-packaging.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

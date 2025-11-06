@@ -4,10 +4,40 @@
   "files": [
     {
       "type": "Conceptual",
+      "source_relative_path": "../advanced-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "advanced-usage.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../android-packaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "android-packaging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "../architecture.md",
       "output": {
         ".html": {
           "relative_path": "architecture.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../building.md",
+      "output": {
+        ".html": {
+          "relative_path": "building.html"
         }
       },
       "version": ""
@@ -58,6 +88,16 @@
       "output": {
         ".html": {
           "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../ios-packaging.md",
+      "output": {
+        ".html": {
+          "relative_path": "ios-packaging.html"
         }
       },
       "version": ""

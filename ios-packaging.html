@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>iOS Packaging Guide </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="iOS Packaging Guide ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ios-packaging-guide">iOS Packaging Guide</h1>
+
+<p>The native iOS implementation ships as an <code>xcframework</code> so that both device (<code>iphoneos</code>) and simulator (<code>iphonesimulator</code>) binaries are available to consumers. Packaging relies on CMake (Xcode generator) and the <code>xcodebuild -create-xcframework</code> tool bundled with Xcode.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Xcode command-line tools installed (<code>xcode-select --install</code>).</li>
+<li>CMake 3.21+ with the Xcode generator.</li>
+</ul>
+<h2 id="generating-the-xcframework">Generating the XCFramework</h2>
+<pre><code class="lang-bash">./build/scripts/package-ios-xcframework.sh
+</code></pre>
+<p>Environment variables:</p>
+<ul>
+<li><code>CONFIGURATION</code> (default: <code>Release</code>) — CMake/Xcode build configuration.</li>
+<li><code>NMB_IOS_DEPLOYMENT_TARGET</code> (default: <code>13.0</code>) — minimum iOS version for the produced binaries.</li>
+</ul>
+<p>Outputs are written to <code>artifacts/ios/</code>:</p>
+<ul>
+<li><code>NativeMessageBox.xcframework</code> — contains device + simulator slices.</li>
+<li><code>manifest.json</code> — metadata describing build configuration and architectures.</li>
+</ul>
+<p>To consume the framework in the Avalonia cross-platform sample, ensure the generated <code>NativeMessageBox.xcframework</code> remains at <code>artifacts/ios/</code>. The iOS project adds it as a <code>NativeReference</code> when the directory exists.</p>
+<h2 id="consuming-the-xcframework">Consuming the XCFramework</h2>
+<ol>
+<li>Copy <code>NativeMessageBox.xcframework</code> into your Xcode or .NET for iOS project.</li>
+<li>Add the framework to your app bundle and ensure it is code-signed with the host application.</li>
+<li>Update the managed runtime probing paths (if necessary) to include the directory hosting the <code>.xcframework</code> slice for the current runtime (<code>ios-arm64</code>, <code>iossimulator-arm64</code>, etc.). The managed loader already recognises iOS and simulator RIDs.</li>
+</ol>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/wieslawsoltes/NativeMessageBox/blob/main/docs/ios-packaging.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

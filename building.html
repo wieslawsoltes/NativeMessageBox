@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Building NativeMessageBox </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Building NativeMessageBox ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="building-nativemessagebox">Building NativeMessageBox</h1>
+
+<p>NativeMessageBox ships cross-platform tooling that can build the native libraries, .NET packages, and optional mobile artifacts (Android AAR, iOS xcframework) from macOS, Linux, and Windows hosts.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<table>
+<thead>
+<tr>
+<th>Host OS</th>
+<th>Required Toolchains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS</td>
+<td>Xcode command-line tools, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional for Android packaging), JDK 8+ (for <code>javac</code>/<code>jar</code>)</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional), JDK 8+</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td>Visual Studio Build Tools (with C++ workload), CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+, Android SDK/NDK (optional), JDK 8+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>ℹ️ iOS packaging requires macOS with the full Xcode toolchain. The Android packaging scripts expect the <code>ANDROID_SDK_ROOT</code>, <code>ANDROID_NDK_ROOT</code>, and <code>JAVA_HOME</code>/<code>PATH</code> variables to be configured.</p>
+</blockquote>
+<h2 id="command-overview">Command Overview</h2>
+<h3 id="macos--linux-buildsh">macOS / Linux (<code>build.sh</code>)</h3>
+<pre><code class="lang-bash"># Build desktop host binaries (Release configuration)
+./build/build.sh
+
+# Build everything (desktop + Android + iOS)
+./build/build.sh --all
+
+# Build host binaries in Debug and skip tests/dotnet steps
+./build/build.sh --config Debug --skip-tests --skip-dotnet
+
+# Only package Android artifacts (requires SDK/NDK/JDK)
+./build/build.sh --android
+
+# Only produce the iOS xcframework (macOS only)
+./build/build.sh --ios
+</code></pre>
+<blockquote>
+<p>ℹ️ Non-macOS hosts automatically skip the iOS packaging step, so <code>--all</code> builds succeed everywhere.</p>
+</blockquote>
+<h3 id="windows--cross-platform-powershell-buildps1">Windows / Cross-platform PowerShell (<code>build.ps1</code>)</h3>
+<pre><code class="lang-powershell"># Build desktop host binaries (Release configuration)
+pwsh build/build.ps1
+
+# Build host + Android artifacts
+pwsh build/build.ps1 -Targets host,android
+
+# Build everything (on macOS with PowerShell 7+ this includes iOS packaging)
+pwsh build/build.ps1 -All
+
+# Debug build without tests or dotnet packaging
+pwsh build/build.ps1 -Configuration Debug -SkipTests -SkipDotnet
+
+# Produce only the iOS xcframework (requires macOS host with PowerShell 7+)
+pwsh build/build.ps1 -Targets ios
+</code></pre>
+<p>The Windows script shares the same target semantics:</p>
+<ul>
+<li><code>host</code> — native desktop build + .NET packaging.</li>
+<li><code>android</code> — invokes <code>build/scripts/package-android-aar.sh</code>.</li>
+<li><code>ios</code> — invokes <code>build/scripts/package-ios-xcframework.sh</code> when running on macOS.</li>
+</ul>
+<h2 id="artifact-locations">Artifact Locations</h2>
+<p>All artifacts are written to <code>artifacts/</code>:</p>
+<ul>
+<li><code>artifacts/native/&lt;rid&gt;/</code> — native desktop binaries and symbols organized by runtime identifier.</li>
+<li><code>artifacts/native-&lt;rid&gt;.zip</code> — zipped copies of the native artifacts (one per RID).</li>
+<li><code>artifacts/nuget/</code> — <code>.nupkg</code> outputs for the managed layer.</li>
+<li><code>artifacts/android/</code> — AAR bundle, JNI libraries per ABI, and metadata manifest.</li>
+<li><code>artifacts/ios/</code> — xcframework bundle and manifest metadata.</li>
+</ul>
+<p>Each packaging step generates a <code>manifest.json</code> with version and timestamp details to simplify CI publishing.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/wieslawsoltes/NativeMessageBox/blob/main/docs/building.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

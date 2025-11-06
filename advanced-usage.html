@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Advanced Usage &amp; Platform Notes </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Advanced Usage &amp; Platform Notes ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="advanced-usage--platform-notes">Advanced Usage &amp; Platform Notes</h1>
+
+<p>This guide expands on <code>docs/abi-spec.md</code> with practical guidance for building richer experiences with the native message box runtime and managed wrapper.</p>
+<h2 id="threading-requirements">Threading Requirements</h2>
+<ul>
+<li><strong>Windows</strong>: UI calls may originate from any thread. The runtime marshals to Task Dialog APIs when advanced features are requested. When <code>RequiresExplicitAcknowledgement</code> is true, the ESC key is disabled. Use <code>NativeMessageBoxClient.ConfigureHost(opts =&gt; opts.RequireStaThreadForWindows = false)</code> if you intentionally support non-STA contexts (defaults to enforcing STA when advanced features are requested).</li>
+<li><strong>macOS</strong>: Message boxes must be invoked on the main thread. The native layer automatically dispatches to the main queue if required. Consumers embedding in macOS menu bar apps or background agents should call <code>nmb_initialize</code> early on the main thread.</li>
+<li><strong>Linux</strong>: GTK requires an initialized event loop. The runtime calls <code>gtk_init_check</code> lazily and falls back to <code>zenity</code> when GTK cannot be initialized (e.g., headless environments). Parent window handles should be <code>GtkWindow*</code> pointers.</li>
+</ul>
+<h2 id="inputs--secondary-content">Inputs &amp; Secondary Content</h2>
+<ul>
+<li><strong>Windows</strong>: Task Dialogs provide secondary content, verification checkboxes, hyperlinks, and auto-dismiss timers. Checkbox inputs are supported via the verification control. Text/password inputs are not yet available on Windows and return <code>NMB_E_NOT_SUPPORTED</code>.</li>
+<li><strong>macOS</strong>: Accessory views host text/password fields, combo boxes, and checkbox inputs. Expanded content is rendered as wrapped labels, and help buttons open URLs using the default browser.</li>
+<li><strong>Linux (GTK)</strong>: Text/password inputs use <code>GtkEntry</code>; combo boxes use <code>GtkComboBoxText</code>; checkbox inputs leverage <code>GtkCheckButton</code>. Verification and input checkboxes are independent controls. When GTK is unavailable, a minimal <code>zenity</code> fallback handles single-button dialogs.</li>
+</ul>
+<h2 id="timeout--cancellation">Timeout &amp; Cancellation</h2>
+<ul>
+<li><strong>Windows</strong>: Task dialogs support auto-dismiss timers. When <code>TimeoutButtonId</code> maps to a visible button, the dialog triggers that response and reports <code>was_timeout = true</code>.</li>
+<li><strong>macOS</strong>: Auto-dismiss is not currently supported; requests with timeouts are treated as normal dialogs.</li>
+<li><strong>Linux</strong>: GTK dialogs use <code>g_timeout_add</code> to fire button responses. Verification checkboxes and inputs remain valid on timeout.</li>
+</ul>
+<h2 id="asynchronous-patterns-net">Asynchronous Patterns (.NET)</h2>
+<p>The managed API is synchronous by default. To integrate into asynchronous workflows:</p>
+<pre><code class="lang-csharp">// Fire on a background thread to avoid blocking UI loops.
+var result = await Task.Run(() =&gt; NativeMessageBoxClient.Show(options), cancellationToken);
+
+if (result.Outcome == MessageBoxOutcome.Success &amp;&amp; result.ButtonId == (uint)KnownButtonIds.Yes)
+{
+    // handle affirmative response
+}
+</code></pre>
+<p>When targeting UI frameworks (e.g., Avalonia or WinUI), prefer scheduling on the appropriate dispatcher/main loop to maintain modality.</p>
+<h2 id="diagnostics--logging">Diagnostics &amp; Logging</h2>
+<ul>
+<li>Call <code>NativeMessageBoxClient.RegisterLogHandler</code> before <code>EnsureInitialized</code> to receive native log messages. The callback surfaces fallbacks (e.g., Task Dialog unavailability, GTK missing) and platform errors.</li>
+<li>You can update the log handler at runtime; the managed layer propagates the new delegate to the native runtime without requiring reinitialization.</li>
+<li>Swap in a custom implementation by calling <code>NativeMessageBoxClient.UseHost(...)</code> with your own <code>INativeMessageBoxHost</code> implementation when embedding the dialogs into bespoke environments.</li>
+</ul>
+<h2 id="native-library-probing">Native Library Probing</h2>
+<ul>
+<li><code>NativeMessageBoxClient</code> installs a custom <code>DllImportResolver</code> that probes the executing assembly directory followed by RID-specific folders such as <code>runtimes/win-x64/native</code>.</li>
+<li>Additional probing directories can be added via <code>NativeMessageBoxClient.RegisterNativeLibraryPath</code> or the <code>NMB_NATIVE_PATH</code> environment variable.</li>
+<li>Use the provided build scripts (<code>build/build.sh</code>, <code>build/build.ps1</code>) to produce native binaries and a NuGet package in <code>artifacts/nuget/</code> with per-platform outputs staged in the build tree and zipped per-RID (<code>artifacts/native-&lt;rid&gt;.zip</code>).</li>
+</ul>
+<h2 id="custom-hosts">Custom Hosts</h2>
+<p>The default runtime host is suitable for most scenarios, but you can supply your own <code>INativeMessageBoxHost</code> to integrate with custom dispatching models or telemetry pipelines.</p>
+<pre><code class="lang-csharp">using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Threading;
+
+sealed class DispatcherMessageBoxHost : INativeMessageBoxHost
+{
+    private readonly INativeMessageBoxHost _inner;
+    private readonly Dispatcher _dispatcher;
+
+    public DispatcherMessageBoxHost(INativeMessageBoxHost inner, Dispatcher dispatcher)
+    {
+        _inner = inner;
+        _dispatcher = dispatcher;
+    }
+
+    public void EnsureInitialized() =&gt; _dispatcher.Invoke(_inner.EnsureInitialized);
+    public void Shutdown() =&gt; _dispatcher.Invoke(_inner.Shutdown);
+    public MessageBoxResult Show(MessageBoxOptions options) =&gt; _dispatcher.Invoke(() =&gt; _inner.Show(options));
+    public bool TryShow(MessageBoxOptions options, out MessageBoxResult result) =&gt;
+        _dispatcher.Invoke(() =&gt; _inner.TryShow(options, out result));
+    public Task&lt;MessageBoxResult&gt; ShowAsync(MessageBoxOptions options, CancellationToken token = default) =&gt;
+        _dispatcher.InvokeAsync(() =&gt; _inner.ShowAsync(options, token)).Task.Unwrap();
+    public Task&lt;(bool Success, MessageBoxResult Result)&gt; TryShowAsync(MessageBoxOptions options, CancellationToken token = default) =&gt;
+        _dispatcher.InvokeAsync(() =&gt; _inner.TryShowAsync(options, token)).Task.Unwrap();
+}
+
+// Capture the runtime host before replacing it, then wrap it.
+var runtimeHost = NativeMessageBoxClient.CurrentHost;
+NativeMessageBoxClient.UseHost(new DispatcherMessageBoxHost(runtimeHost, Dispatcher.CurrentDispatcher));
+</code></pre>
+<p>For simple tweaks (such as disabling STA validation), call <code>NativeMessageBoxClient.ConfigureHost</code> instead of writing a full wrapper.</p>
+<h2 id="memory-ownership">Memory Ownership</h2>
+<ul>
+<li>Strings returned from the native layer are allocated via the caller-provided allocator. The managed wrapper supplies a <code>CoTaskMem</code> allocator so results can be released with <code>Marshal.FreeCoTaskMem</code>.</li>
+<li>Native consumers should set <code>NmbMessageBoxOptions::allocator</code> when custom allocation strategies (arena pools, tracking diagnostics) are required. When omitted, the runtime uses <code>CoTaskMemAlloc</code> on Windows and <code>malloc</code> elsewhere.</li>
+</ul>
+<h2 id="error-handling-recommendations">Error Handling Recommendations</h2>
+<ul>
+<li>Check the function return value (<code>NmbResultCode</code>) first. Non-<code>NMB_OK</code> values indicate platform issues (missing GTK, unsupported feature, cancelled operations).</li>
+<li>For managed callers, prefer <code>NativeMessageBoxClient.TryShow</code> to gracefully handle missing native binaries during development or in sandboxed environments.</li>
+<li>When <code>NMB_E_NOT_SUPPORTED</code> is returned, inspect the provided options and feature flags to determine fallback strategies (e.g., downgrade to simple informational dialog).</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/wieslawsoltes/NativeMessageBox/blob/main/docs/advanced-usage.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
