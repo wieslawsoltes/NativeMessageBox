@@ -687,14 +687,24 @@ static NmbResultCode ShowAlertInternal(const NmbMessageBoxOptions* options, NmbM
 
             if (parent)
             {
-                __block NSInteger sheetResponse = NSModalResponseCancel;
-                dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+                __block NSModalResponse sheetResponse = NSModalResponseCancel;
+                NSWindow* sheetWindow = alert.window;
+
                 [alert beginSheetModalForWindow:parent
                                   completionHandler:^(NSModalResponse returnCode) {
                                       sheetResponse = returnCode;
-                                      dispatch_semaphore_signal(semaphore);
+                                      [NSApp stopModalWithCode:returnCode];
                                   }];
-                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+
+                response = [NSApp runModalForWindow:sheetWindow];
+
+                NSWindow* activeParent = sheetWindow.sheetParent;
+                if (activeParent)
+                {
+                    [activeParent endSheet:sheetWindow];
+                }
+                [sheetWindow orderOut:nil];
+
                 response = sheetResponse;
             }
             else
@@ -728,19 +738,38 @@ static NmbResultCode ShowAlertInternal(const NmbMessageBoxOptions* options, NmbM
 #endif
 
             NSInteger index = response - base;
-            if (!options->buttons || options->button_count == 0)
+            bool hasButtons = (options->buttons && options->button_count > 0);
+            bool buttonMapped = false;
+            NmbButtonId mappedButton = NMB_BUTTON_ID_NONE;
+
+            if (!hasButtons)
             {
-                out_result->button = NMB_BUTTON_ID_OK;
+                mappedButton = NMB_BUTTON_ID_OK;
+                buttonMapped = true;
             }
-            else
+            else if (index >= 0 && static_cast<size_t>(index) < options->button_count)
             {
-                out_result->button = ButtonIdAtIndex(options, index);
+                mappedButton = ButtonIdAtIndex(options, index);
+                if (mappedButton != NMB_BUTTON_ID_NONE)
+                {
+                    buttonMapped = true;
+                }
             }
 
             if (options->show_suppress_checkbox == NMB_TRUE)
             {
                 out_result->checkbox_checked = (alert.suppressionButton.state == NSControlStateValueOn) ? NMB_TRUE : NMB_FALSE;
             }
+
+            if (!buttonMapped)
+            {
+                out_result->button = NMB_BUTTON_ID_CANCEL;
+                out_result->result_code = NMB_E_CANCELLED;
+                out_result->was_timeout = helper.timedOut ? NMB_TRUE : NMB_FALSE;
+                return NMB_E_CANCELLED;
+            }
+
+            out_result->button = mappedButton;
 
             NmbResultCode rc = CopyInputValue(options, helper, out_result);
             if (rc != NMB_OK)
