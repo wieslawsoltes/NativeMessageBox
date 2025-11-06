@@ -168,5 +168,3 @@ jobs:
           files: |
             artifacts/nuget/*.nupkg
             artifacts/download/native-*/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
