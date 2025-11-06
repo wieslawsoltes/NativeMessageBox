@@ -105,11 +105,15 @@ if [[ ${#JAVA_SOURCES[@]} -eq 0 ]]; then
 fi
 
 echo "Compiling Java bridge..."
-javac -source 1.8 -target 1.8 -encoding UTF-8 \
-      -bootclasspath "${ANDROID_JAR}" \
-      -classpath "${ANDROID_JAR}" \
-      -d "${CLASSES_DIR}" \
-      "${JAVA_SOURCES[@]}"
+# Prefer --release when available so we rely on the host JDK for Java 8 lambda support
+# while still constraining API usage, and fall back to -source/-target on older toolchains.
+JAVAC_ARGS=(-encoding UTF-8 -classpath "${ANDROID_JAR}" -d "${CLASSES_DIR}")
+if javac --help 2>&1 | grep -q -- '--release'; then
+    JAVAC_ARGS=(--release 8 "${JAVAC_ARGS[@]}")
+else
+    JAVAC_ARGS=(-source 1.8 -target 1.8 "${JAVAC_ARGS[@]}")
+fi
+javac "${JAVAC_ARGS[@]}" "${JAVA_SOURCES[@]}"
 
 CLASSES_JAR="${BUILD_ROOT}/classes.jar"
 jar --create --file "${CLASSES_JAR}" -C "${CLASSES_DIR}" .
