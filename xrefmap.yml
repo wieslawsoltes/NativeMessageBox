@@ -7,6 +7,102 @@ references:
   commentId: N:NativeMessageBox
   fullName: NativeMessageBox
   nameWithType: NativeMessageBox
+- uid: NativeMessageBox.AndroidActivityReference
+  name: AndroidActivityReference
+  href: api/NativeMessageBox.AndroidActivityReference.html
+  commentId: T:NativeMessageBox.AndroidActivityReference
+  fullName: NativeMessageBox.AndroidActivityReference
+  nameWithType: AndroidActivityReference
+- uid: NativeMessageBox.AndroidActivityReference.#ctor(System.IntPtr,System.Boolean)
+  name: AndroidActivityReference(nint, bool)
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference__ctor_System_IntPtr_System_Boolean_
+  commentId: M:NativeMessageBox.AndroidActivityReference.#ctor(System.IntPtr,System.Boolean)
+  name.vb: New(IntPtr, Boolean)
+  fullName: NativeMessageBox.AndroidActivityReference.AndroidActivityReference(nint, bool)
+  fullName.vb: NativeMessageBox.AndroidActivityReference.New(System.IntPtr, Boolean)
+  nameWithType: AndroidActivityReference.AndroidActivityReference(nint, bool)
+  nameWithType.vb: AndroidActivityReference.New(IntPtr, Boolean)
+- uid: NativeMessageBox.AndroidActivityReference.#ctor*
+  name: AndroidActivityReference
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference__ctor_
+  commentId: Overload:NativeMessageBox.AndroidActivityReference.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NativeMessageBox.AndroidActivityReference.AndroidActivityReference
+  fullName.vb: NativeMessageBox.AndroidActivityReference.New
+  nameWithType: AndroidActivityReference.AndroidActivityReference
+  nameWithType.vb: AndroidActivityReference.New
+- uid: NativeMessageBox.AndroidActivityReference.Dispose
+  name: Dispose()
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_Dispose
+  commentId: M:NativeMessageBox.AndroidActivityReference.Dispose
+  fullName: NativeMessageBox.AndroidActivityReference.Dispose()
+  nameWithType: AndroidActivityReference.Dispose()
+- uid: NativeMessageBox.AndroidActivityReference.Dispose*
+  name: Dispose
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_Dispose_
+  commentId: Overload:NativeMessageBox.AndroidActivityReference.Dispose
+  isSpec: "True"
+  fullName: NativeMessageBox.AndroidActivityReference.Dispose
+  nameWithType: AndroidActivityReference.Dispose
+- uid: NativeMessageBox.AndroidActivityReference.Handle
+  name: Handle
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_Handle
+  commentId: P:NativeMessageBox.AndroidActivityReference.Handle
+  fullName: NativeMessageBox.AndroidActivityReference.Handle
+  nameWithType: AndroidActivityReference.Handle
+- uid: NativeMessageBox.AndroidActivityReference.Handle*
+  name: Handle
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_Handle_
+  commentId: Overload:NativeMessageBox.AndroidActivityReference.Handle
+  isSpec: "True"
+  fullName: NativeMessageBox.AndroidActivityReference.Handle
+  nameWithType: AndroidActivityReference.Handle
+- uid: NativeMessageBox.AndroidActivityReference.None
+  name: None
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_None
+  commentId: P:NativeMessageBox.AndroidActivityReference.None
+  fullName: NativeMessageBox.AndroidActivityReference.None
+  nameWithType: AndroidActivityReference.None
+- uid: NativeMessageBox.AndroidActivityReference.None*
+  name: None
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_None_
+  commentId: Overload:NativeMessageBox.AndroidActivityReference.None
+  isSpec: "True"
+  fullName: NativeMessageBox.AndroidActivityReference.None
+  nameWithType: AndroidActivityReference.None
+- uid: NativeMessageBox.AndroidActivityReference.OwnsHandle
+  name: OwnsHandle
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_OwnsHandle
+  commentId: P:NativeMessageBox.AndroidActivityReference.OwnsHandle
+  fullName: NativeMessageBox.AndroidActivityReference.OwnsHandle
+  nameWithType: AndroidActivityReference.OwnsHandle
+- uid: NativeMessageBox.AndroidActivityReference.OwnsHandle*
+  name: OwnsHandle
+  href: api/NativeMessageBox.AndroidActivityReference.html#NativeMessageBox_AndroidActivityReference_OwnsHandle_
+  commentId: Overload:NativeMessageBox.AndroidActivityReference.OwnsHandle
+  isSpec: "True"
+  fullName: NativeMessageBox.AndroidActivityReference.OwnsHandle
+  nameWithType: AndroidActivityReference.OwnsHandle
+- uid: NativeMessageBox.AndroidHostOptions
+  name: AndroidHostOptions
+  href: api/NativeMessageBox.AndroidHostOptions.html
+  commentId: T:NativeMessageBox.AndroidHostOptions
+  fullName: NativeMessageBox.AndroidHostOptions
+  nameWithType: AndroidHostOptions
+- uid: NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider
+  name: ActivityReferenceProvider
+  href: api/NativeMessageBox.AndroidHostOptions.html#NativeMessageBox_AndroidHostOptions_ActivityReferenceProvider
+  commentId: P:NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider
+  fullName: NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider
+  nameWithType: AndroidHostOptions.ActivityReferenceProvider
+- uid: NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider*
+  name: ActivityReferenceProvider
+  href: api/NativeMessageBox.AndroidHostOptions.html#NativeMessageBox_AndroidHostOptions_ActivityReferenceProvider_
+  commentId: Overload:NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider
+  isSpec: "True"
+  fullName: NativeMessageBox.AndroidHostOptions.ActivityReferenceProvider
+  nameWithType: AndroidHostOptions.ActivityReferenceProvider
 - uid: NativeMessageBox.INativeMessageBoxHost
   name: INativeMessageBoxHost
   href: api/NativeMessageBox.INativeMessageBoxHost.html
@@ -1244,6 +1340,19 @@ references:
   commentId: T:NativeMessageBox.NativeMessageBoxHostOptions
   fullName: NativeMessageBox.NativeMessageBoxHostOptions
   nameWithType: NativeMessageBoxHostOptions
+- uid: NativeMessageBox.NativeMessageBoxHostOptions.Android
+  name: Android
+  href: api/NativeMessageBox.NativeMessageBoxHostOptions.html#NativeMessageBox_NativeMessageBoxHostOptions_Android
+  commentId: P:NativeMessageBox.NativeMessageBoxHostOptions.Android
+  fullName: NativeMessageBox.NativeMessageBoxHostOptions.Android
+  nameWithType: NativeMessageBoxHostOptions.Android
+- uid: NativeMessageBox.NativeMessageBoxHostOptions.Android*
+  name: Android
+  href: api/NativeMessageBox.NativeMessageBoxHostOptions.html#NativeMessageBox_NativeMessageBoxHostOptions_Android_
+  commentId: Overload:NativeMessageBox.NativeMessageBoxHostOptions.Android
+  isSpec: "True"
+  fullName: NativeMessageBox.NativeMessageBoxHostOptions.Android
+  nameWithType: NativeMessageBoxHostOptions.Android
 - uid: NativeMessageBox.NativeMessageBoxHostOptions.RequireStaThreadForWindows
   name: RequireStaThreadForWindows
   href: api/NativeMessageBox.NativeMessageBoxHostOptions.html#NativeMessageBox_NativeMessageBoxHostOptions_RequireStaThreadForWindows

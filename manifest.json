@@ -124,6 +124,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.AndroidActivityReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.AndroidActivityReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.AndroidActivityReference",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NativeMessageBox.AndroidHostOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NativeMessageBox.AndroidHostOptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "NativeMessageBox.AndroidHostOptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NativeMessageBox.INativeMessageBoxHost.yml",
       "output": {
         ".html": {
