@@ -4,10 +4,11 @@ This folder contains cross-platform build orchestration scripts (Bash and PowerS
 
 ## Entry Points
 
-- `build.sh` &mdash; unified build entry point for macOS and Linux hosts. Supports building the desktop host binaries, the Android AAR, and (on macOS) the iOS xcframework.
-- `build.ps1` &mdash; unified build entry point for Windows hosts (works with PowerShell 7+ on any platform). Supports desktop builds, Android packaging, and iOS packaging when run on macOS.
+- `build.sh` &mdash; unified build entry point for macOS and Linux hosts. Supports building the desktop host binaries, the Android AAR, the WebAssembly module, and (on macOS) the iOS xcframework.
+- `build.ps1` &mdash; unified build entry point for Windows hosts (works with PowerShell 7+ on any platform). Supports desktop builds, Android packaging, WebAssembly packaging, and iOS packaging when run on macOS.
 - `scripts/package-ios-xcframework.sh` &mdash; produces `NativeMessageBox.xcframework` with device + simulator slices (requires Xcode toolchain).
 - `scripts/package-android-aar.sh` &mdash; builds native libraries for multiple Android ABIs and bundles them (with the Java bridge) into `NativeMessageBox.aar`.
+- `scripts/package-wasm.sh` &mdash; compiles the native core with Emscripten using the `wasm-release` CMake preset and copies the resulting `libnative_message_box.wasm` artifacts.
 
 ## Common Usage
 
@@ -20,6 +21,9 @@ This folder contains cross-platform build orchestration scripts (Bash and PowerS
 
 # macOS/Linux: just package Android artifacts
 ./build/build.sh --android
+
+# macOS/Linux: only produce the WebAssembly module
+./build/build.sh --wasm
 ```
 
 ```powershell
@@ -31,6 +35,9 @@ pwsh build/build.ps1 -Targets host,android
 
 # macOS with PowerShell 7+: build everything
 pwsh build/build.ps1 -All
+
+# Windows/macOS/Linux (PowerShell 7+): only produce WebAssembly module
+pwsh build/build.ps1 -Targets wasm
 ```
 
 Both entry points accept:

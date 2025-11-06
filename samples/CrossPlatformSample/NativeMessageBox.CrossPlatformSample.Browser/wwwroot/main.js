@@ -8,6 +8,10 @@ const dotnetRuntime = await dotnet
     .withApplicationArgumentsFromQuery()
     .create();
 
+if (!globalThis.NativeMessageBoxManaged) {
+    console.error('NativeMessageBoxManaged bridge not loaded; ensure native-message-box.js is copied to wwwroot.');
+}
+
 const config = dotnetRuntime.getConfig();
 
 await dotnetRuntime.runMain(config.mainAssemblyName, [globalThis.location.href]);

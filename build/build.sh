@@ -8,10 +8,11 @@ Usage: build.sh [options]
 Options:
   <Configuration>           Optional positional build configuration (e.g. Release)
   --config <Configuration>   Build configuration (default: Release)
-  --targets <list>           Comma separated list of targets: host,ios,android
+  --targets <list>           Comma separated list of targets: host,ios,android,wasm
   --host                     Include the host-native build (default when no targets specified)
   --ios                      Include the iOS xcframework build (macOS only)
   --android                  Include the Android AAR build
+  --wasm                     Include the WebAssembly build
   --all                      Build all available targets
   --skip-tests               Skip running native ctest suites for the host build
   --skip-dotnet              Skip dotnet restore/build/pack for the host build
@@ -59,8 +60,11 @@ while [[ $# -gt 0 ]]; do
     --android)
       REQUESTED_TARGETS+=("android")
       ;;
+    --wasm)
+      REQUESTED_TARGETS+=("wasm")
+      ;;
     --all)
-      REQUESTED_TARGETS=("host" "ios" "android")
+      REQUESTED_TARGETS=("host" "ios" "android" "wasm")
       ;;
     --skip-tests)
       RUN_TESTS=false
@@ -92,13 +96,13 @@ if (( ${#REQUESTED_TARGETS[@]} == 0 )); then
 else
   for target in "${REQUESTED_TARGETS[@]}"; do
     case "${target}" in
-      host|ios|android)
+      host|ios|android|wasm)
         TARGETS["${target}"]=1
         ;;
       "" )
         ;;
       *)
-        echo "Unsupported target '${target}'. Allowed values: host, ios, android." >&2
+        echo "Unsupported target '${target}'. Allowed values: host, ios, android, wasm." >&2
         exit 1
         ;;
     esac
@@ -217,6 +221,11 @@ package_android() {
   "${SCRIPT_DIR}/scripts/package-android-aar.sh"
 }
 
+package_wasm() {
+  echo "Packaging WebAssembly module"
+  "${SCRIPT_DIR}/scripts/package-wasm.sh"
+}
+
 package_ios() {
   if [[ "$(uname -s)" != "Darwin" ]]; then
     echo "Skipping iOS build: requires macOS host" >&2
@@ -233,6 +242,10 @@ fi
 
 if [[ -n "${TARGETS[android]+set}" ]]; then
   package_android
+fi
+
+if [[ -n "${TARGETS[wasm]+set}" ]]; then
+  package_wasm
 fi
 
 if [[ -n "${TARGETS[ios]+set}" ]]; then

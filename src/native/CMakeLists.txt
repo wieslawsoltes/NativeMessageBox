@@ -32,6 +32,8 @@ elseif (ANDROID)
     if (NMB_ANDROID_LOG_LIB)
         list(APPEND NMB_LIBS ${NMB_ANDROID_LOG_LIB})
     endif ()
+elseif (EMSCRIPTEN)
+    list(APPEND NMB_SOURCES web/wasm_message_box.cpp)
 elseif (UNIX)
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
@@ -48,7 +50,7 @@ target_include_directories(nativemessagebox
 target_compile_definitions(nativemessagebox PRIVATE NMB_SHARED NMB_IMPLEMENTATION)
 target_compile_features(nativemessagebox PRIVATE cxx_std_17)
 
-if (UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE AND NOT EMSCRIPTEN)
     target_include_directories(nativemessagebox PRIVATE ${GTK3_INCLUDE_DIRS})
     target_compile_options(nativemessagebox PRIVATE ${GTK3_CFLAGS_OTHER})
 endif ()
@@ -57,9 +59,24 @@ if (NMB_LIBS)
     target_link_libraries(nativemessagebox PRIVATE ${NMB_LIBS})
 endif ()
 
-set_target_properties(nativemessagebox PROPERTIES OUTPUT_NAME "nativemessagebox")
+if (EMSCRIPTEN)
+    set(_nmb_wasm_pre_js "${CMAKE_SOURCE_DIR}/src/native/web/message_box.js")
+    set_target_properties(nativemessagebox PROPERTIES
+        OUTPUT_NAME "native_message_box"
+        SUFFIX ".wasm")
+    target_link_options(nativemessagebox PRIVATE
+        "-sSTANDALONE_WASM=1"
+        "-sALLOW_TABLE_GROWTH=1"
+        "-sEXPORT_ALL=1"
+        "-sASYNCIFY"
+        "-sEXPORTED_RUNTIME_METHODS=['UTF8ToString','stringToUTF8','lengthBytesUTF8']"
+        "--pre-js"
+        "${_nmb_wasm_pre_js}")
+else ()
+    set_target_properties(nativemessagebox PROPERTIES OUTPUT_NAME "nativemessagebox")
+endif ()
 
-if (BUILD_TESTING)
+if (BUILD_TESTING AND NOT EMSCRIPTEN)
     target_compile_definitions(nativemessagebox PRIVATE NMB_TESTING)
     add_executable(nmb_sanity_test tests/sanity_test.c)
     target_link_libraries(nmb_sanity_test PRIVATE nativemessagebox)

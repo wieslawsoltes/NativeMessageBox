@@ -8,7 +8,7 @@ This solution demonstrates invoking the native message box from a single Avaloni
 - `NativeMessageBox.CrossPlatformSample.Desktop` — desktop entry point (macOS/Linux/Windows).
 - `NativeMessageBox.CrossPlatformSample.iOS` — iOS entry point; consumes `NativeMessageBox.xcframework` when available.
 - `NativeMessageBox.CrossPlatformSample.Android` — Android entry point; consumes `NativeMessageBox.aar` when available.
-- `NativeMessageBox.CrossPlatformSample.Browser` — WebAssembly head (no native dialog support).
+- `NativeMessageBox.CrossPlatformSample.Browser` — WebAssembly head (renders the JavaScript overlay host shipped with `NativeMessageBox` and optionally loads the compiled `libnative_message_box.wasm` artifacts when available).
 
 The shared project references the managed `NativeMessageBox` library. Each mobile head wires platform-specific lifecycle hooks to supply native handles (e.g., the Android tracker provides the foreground `Activity`).
 
@@ -60,11 +60,23 @@ The Android head registers `NativeMessageBoxActivityTracker`, which keeps a glob
 
 ### Browser (WASM)
 
-```bash
-dotnet run --project NativeMessageBox.CrossPlatformSample.Browser
-```
+1. (Optional) Package the WebAssembly artifacts:
+   ```bash
+   ./build/scripts/package-wasm.sh
+   ```
+   When this folder exists, the browser head automatically copies
+   `libnative_message_box.wasm` (and its companion `libnative_message_box.js/.map`)
+   into `wwwroot/native/`.
 
-> The WebAssembly target does not surface a native dialog, but the sample still builds for completeness.
+2. Launch the browser head:
+   ```bash
+   dotnet run --project NativeMessageBox.CrossPlatformSample.Browser
+   ```
+
+The browser target always registers the JavaScript host from
+`message_box.js`, which renders accessible overlay dialogs. If the packaged
+`libnative_message_box.wasm` artifacts are present they are served alongside the
+application for experimentation, but the managed host does not depend on them.
 
 ## Notes
 

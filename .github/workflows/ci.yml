@@ -141,9 +141,39 @@ jobs:
           name: ios-xcframework
           path: artifacts/ios/
 
+  wasm-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: latest
+
+      - name: Package WebAssembly artifacts
+        run: |
+          chmod +x build/scripts/package-wasm.sh
+          ./build/scripts/package-wasm.sh
+        shell: bash
+
+      - name: Upload Web artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-package
+          path: artifacts/web/
+
   managed:
     runs-on: ubuntu-latest
-    needs: [native-linux, native-macos, native-windows, ios-xcframework, android-aar, android-tests]
+    needs: [native-linux, native-macos, native-windows, ios-xcframework, android-aar, android-tests, wasm-package]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -187,11 +217,18 @@ jobs:
           name: android-aar
           path: artifacts/android
 
+      - name: Download Web artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-package
+          path: artifacts/web
+
       - name: Archive mobile artifacts
         run: |
           cd artifacts
           if [ -d ios ]; then zip -r native-ios.zip ios; fi
           if [ -d android ]; then zip -r native-android.zip android; fi
+          if [ -d web ]; then zip -r native-web.zip web; fi
 
       - name: Upload NuGet packages
         uses: actions/upload-artifact@v4
@@ -212,10 +249,11 @@ jobs:
           path: |
             artifacts/native-ios.zip
             artifacts/native-android.zip
+            artifacts/native-web.zip
 
   samples:
     runs-on: macos-latest
-    needs: [managed, ios-xcframework, android-aar]
+    needs: [managed, ios-xcframework, android-aar, wasm-package]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -248,8 +286,17 @@ jobs:
           name: android-aar
           path: artifacts/android
 
+      - name: Download Web artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-package
+          path: artifacts/web
+
       - name: Build sample solution
         run: dotnet build samples/AvaloniaSamples.sln --configuration Release
+
+      - name: Publish browser sample
+        run: dotnet publish samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser -c Release
 
   android-aar:
     runs-on: ubuntu-latest

@@ -33,6 +33,11 @@ internal static class NativeLibraryLoader
 
     internal static IntPtr Resolve(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
     {
+        if (OperatingSystem.IsBrowser())
+        {
+            return IntPtr.Zero;
+        }
+
         if (!string.Equals(libraryName, LibraryBaseName, StringComparison.Ordinal))
         {
             return IntPtr.Zero;
@@ -103,6 +108,11 @@ internal static class NativeLibraryLoader
 
     internal static void RegisterDevelopmentProbingPaths()
     {
+        if (OperatingSystem.IsBrowser())
+        {
+            return;
+        }
+
         var baseDir = AppContext.BaseDirectory;
 
         string[] relativeCandidates =

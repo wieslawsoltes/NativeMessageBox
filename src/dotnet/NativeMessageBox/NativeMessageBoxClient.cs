@@ -11,7 +11,7 @@ namespace NativeMessageBox;
 public static class NativeMessageBoxClient
 {
     private static readonly object s_hostLock = new();
-    private static INativeMessageBoxHost s_host = new NativeRuntimeMessageBoxHost();
+    private static INativeMessageBoxHost s_host = CreateDefaultHost();
 
     public static INativeMessageBoxHost CurrentHost
     {
@@ -98,7 +98,22 @@ public static class NativeMessageBoxClient
 
     public static Task<(bool Success, MessageBoxResult Result)> TryShowAsync(MessageBoxOptions options, CancellationToken cancellationToken = default) => CurrentHost.TryShowAsync(options, cancellationToken);
 
-    public static bool VerifyAbiCompatibility() => NativeMessageBoxNative.GetAbiVersion() == NativeConstants.AbiVersion;
+    public static bool VerifyAbiCompatibility()
+    {
+        if (OperatingSystem.IsBrowser())
+        {
+            return true;
+        }
+
+        try
+        {
+            return NativeMessageBoxNative.GetAbiVersion() == NativeConstants.AbiVersion;
+        }
+        catch (DllNotFoundException)
+        {
+            return false;
+        }
+    }
 
     private static INativeRuntimeHostSupport? GetRuntimeHostSupport()
     {
@@ -106,5 +121,12 @@ public static class NativeMessageBoxClient
         {
             return s_host as INativeRuntimeHostSupport;
         }
+    }
+
+    private static INativeMessageBoxHost CreateDefaultHost()
+    {
+        return OperatingSystem.IsBrowser()
+            ? new NativeMessageBoxBrowserHost()
+            : new NativeRuntimeMessageBoxHost();
     }
 }

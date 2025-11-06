@@ -22,7 +22,7 @@ NativeMessageBox is a production-ready native dialog runtime that ships a stable
 | Feature | Description |
 | --- | --- |
 | Stable C ABI | `include/native_message_box.h` exposes a forward-compatible ABI with explicit struct sizing, version negotiation, and allocator hooks. |
-| Native implementations | Dedicated Windows (Task Dialog / MessageBox), macOS (NSAlert), Linux (GTK 3/4 with zenity fallback), iOS (UIKit), and Android (AlertDialog) back ends. |
+| Native implementations | Dedicated Windows (Task Dialog / MessageBox), macOS (NSAlert), Linux (GTK 3/4 with zenity fallback), iOS (UIKit), Android (AlertDialog), plus a WebAssembly browser overlay host. |
 | Managed .NET 8 wrapper | `NativeMessageBox` NuGet package with source-generated interop, async APIs, configurable host abstraction, and logging hooks. |
 | Rich dialog options | Multiple buttons, custom IDs, icons, verification checkboxes, timeouts, secondary content, and optional text/password/combo inputs (platform-dependent). |
 | Mobile packaging | Automated AAR (Android) and XCFramework (iOS) outputs with manifests describing ABIs, architectures, and build metadata. |
@@ -32,19 +32,19 @@ NativeMessageBox is a production-ready native dialog runtime that ships a stable
 
 ## Feature Matrix
 
-| Capability | Windows | macOS | Linux (GTK) | iOS | Android |
-| --- | --- | --- | --- | --- | --- |
-| Multi-button dialogs | Yes (Task Dialog supports 8+) | Yes | Yes | Yes | Partial (AlertDialog: 3 buttons) |
-| Custom button text/IDs | Yes | Yes | Yes | Yes | Yes (first 3 buttons) |
-| Button roles (default/cancel/destructive/help) | Yes | Yes | Partial (default/cancel) | Yes | Partial (positive/negative/neutral) |
-| Standard icons | Yes | Yes | Yes | No (ignored) | No (ignored) |
-| Verification checkbox | Yes | Yes | Yes | No | No |
-| Text/password input | No (planned) | Yes | Yes | Yes (text/password) | No |
-| Combo box input | No | Yes | Yes | No | No |
-| Secondary informative/expanded content | Yes | Yes | Yes | No | No |
-| Help links / hyperlinks | Yes (Task Dialog hyperlink events) | Yes (opens via `NSWorkspace`) | Yes (GtkLinkButton) | No | No |
-| Auto-close timeout | Yes | Yes | Yes | Yes | No |
-| Threading requirements | STA enforced for advanced dialogs | Must run on main thread | GTK main loop required | Must be called on main thread | Requires `Activity` on UI thread |
+| Capability | Windows | macOS | Linux (GTK) | iOS | Android | Web (Browser) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Multi-button dialogs | Yes (Task Dialog supports 8+) | Yes | Yes | Yes | Partial (AlertDialog: 3 buttons) | Yes |
+| Custom button text/IDs | Yes | Yes | Yes | Yes | Yes (first 3 buttons) | Yes |
+| Button roles (default/cancel/destructive/help) | Yes | Yes | Partial (default/cancel) | Yes | Partial (positive/negative/neutral) | Yes (primary/cancel/destructive) |
+| Standard icons | Yes | Yes | Yes | No (ignored) | No (ignored) | No (style via CSS) |
+| Verification checkbox | Yes | Yes | Yes | No | No | Yes |
+| Text/password input | No (planned) | Yes | Yes | Yes (text/password) | No | Yes |
+| Combo box input | No | Yes | Yes | No | No | Yes |
+| Secondary informative/expanded content | Yes | Yes | Yes | No | No | Yes |
+| Help links / hyperlinks | Yes (Task Dialog hyperlink events) | Yes (opens via `NSWorkspace`) | Yes (GtkLinkButton) | No | No | No (render text only) |
+| Auto-close timeout | Yes | Yes | Yes | Yes | No | Yes |
+| Threading requirements | STA enforced for advanced dialogs | Must run on main thread | GTK main loop required | Must be called on main thread | Requires `Activity` on UI thread | Browser main thread (async overlay) |
 
 > Notes: iOS ignores icons and secondary content but supports buttons, timeout, and single-line text/password input. Android is backed by `AlertDialog` and therefore limited to three buttons and no accessory controls. Windows falls back to `MessageBoxW` if Task Dialog APIs are unavailable.
 
@@ -205,16 +205,18 @@ int main(void)
 ## Building From Source
 - macOS / Linux: `./build/build.sh --all`  
 - Windows / PowerShell 7+: `pwsh build/build.ps1 -All`  
-- See `docs/building.md` for prerequisites, optional flags (`--skip-tests`, `--config Debug`, `-Targets android,ios`), and environment variables used by the Android/iOS packaging scripts.
+- WebAssembly-only packaging: `./build/build.sh --wasm` (requires an Emscripten environment)  
+- See `docs/building.md` for prerequisites, optional flags (`--skip-tests`, `--config Debug`, `-Targets android,ios,wasm`), and environment variables used by the Android/iOS packaging scripts.
 
 ## Samples
 - `samples/Showcase` demonstrates feature coverage on desktop platforms.  
 - `samples/DialogPlayground` enables experimenting with different button layouts, icons, and inputs.  
+- `samples/CrossPlatformSample` targets desktop, Android, iOS, and the browser. Run `dotnet publish samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser -c Release` (optionally after `./build/scripts/package-wasm.sh`) to exercise the Web overlay.  
 - Mobile samples consume the generated AAR/XCFramework to illustrate lifecycle integration. Build the solution via `dotnet build samples/AvaloniaSamples.sln`.
 
 ## Documentation
 - Run `docs/build-docs.sh` to generate the DocFX site under `docs/docfx/_site`.  
-- Key entry points: `docs/quickstart.md`, `docs/managed-api.md`, `docs/advanced-usage.md`, `docs/architecture.md`, `docs/android-packaging.md`, and `docs/ios-packaging.md`.
+- Key entry points: `docs/quickstart.md`, `docs/managed-api.md`, `docs/advanced-usage.md`, `docs/architecture.md`, `docs/android-packaging.md`, `docs/ios-packaging.md`, and `docs/browser-deployment.md`.
 
 ## Contributing
 - Review `CONTRIBUTING.md`, `MAINTENANCE.md`, and `SECURITY.md`.  

@@ -13,4 +13,30 @@
   <ItemGroup>
     <ProjectReference Include="..\NativeMessageBox.CrossPlatformSample\NativeMessageBox.CrossPlatformSample.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\..\src\native\web\message_box.js">
+      <Link>wwwroot\native-message-box.js</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('..\..\..\artifacts\web')">
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm">
+      <Link>wwwroot\native\libnative_message_box.wasm</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.js">
+      <Link>wwwroot\native\libnative_message_box.js</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm.map">
+      <Link>wwwroot\native\libnative_message_box.wasm.map</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
