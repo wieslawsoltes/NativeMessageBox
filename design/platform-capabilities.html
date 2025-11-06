@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Platform Capabilities Matrix </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Platform Capabilities Matrix ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="platform-capabilities-matrix">Platform Capabilities Matrix</h1>
+
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Windows</th>
+<th>macOS</th>
+<th>Linux (GTK)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary API</td>
+<td><code>TaskDialogIndirect</code> / <code>MessageBoxW</code></td>
+<td><code>NSAlert</code> / <code>NSPanel</code></td>
+<td><code>GtkMessageDialog</code> (GTK 3/4)</td>
+</tr>
+<tr>
+<td>Multi-button support</td>
+<td>Up to 8 buttons via Task Dialog; standard MessageBox limited to 3</td>
+<td>Unlimited buttons</td>
+<td>Unlimited buttons</td>
+</tr>
+<tr>
+<td>Custom button labels</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Checkbox / verification control</td>
+<td>Task Dialog verification checkbox</td>
+<td>Suppression checkbox + accessory checkbox</td>
+<td>Separate <code>GtkCheckButton</code></td>
+</tr>
+<tr>
+<td>Text input</td>
+<td>Planned via accessory controls only (Task Dialog lacks native text input)</td>
+<td>Supported via accessory view (<code>NSTextField</code>, <code>NSSecureTextField</code>)</td>
+<td>Supported via <code>GtkEntry</code></td>
+</tr>
+<tr>
+<td>Combo box</td>
+<td>Not native; emulate via accessory host</td>
+<td>Supported via accessory view</td>
+<td>Supported (<code>GtkComboBoxText</code>)</td>
+</tr>
+<tr>
+<td>Timeout auto-close</td>
+<td>Supported via Task Dialog timer</td>
+<td>Not built-in</td>
+<td>Supported via GTimeout/<code>g_timeout_add</code></td>
+</tr>
+<tr>
+<td>Icon support</td>
+<td>System icons (information, warning, error, shield)</td>
+<td>NSAlert icon levels</td>
+<td>GTK stock icons / custom pixbuf</td>
+</tr>
+<tr>
+<td>Hyperlink / Help link</td>
+<td>Task Dialog hyperlink events</td>
+<td>Accessory button opening <code>NSWorkspace</code></td>
+<td><code>GtkLinkButton</code></td>
+</tr>
+<tr>
+<td>Parent window modality</td>
+<td>App/window/global modal flags</td>
+<td>Sheets vs. app modal</td>
+<td>Modal to parent or application</td>
+</tr>
+<tr>
+<td>Thread requirements</td>
+<td>Advanced dialogs require STA thread; simple MessageBox is thread-agnostic</td>
+<td>Must execute on main thread</td>
+<td>GTK main loop required</td>
+</tr>
+<tr>
+<td>Headless fallback</td>
+<td>Console fallback (optional future)</td>
+<td>Not applicable</td>
+<td><code>zenity</code> CLI fallback</td>
+</tr>
+<tr>
+<td>Theming</td>
+<td>Follows system theme</td>
+<td>Follows system theme</td>
+<td>GTK theme dependent</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>UI Automation via Task Dialog</td>
+<td>VoiceOver support</td>
+<td>ATK integration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Windows: Task Dialog available on Vista+ with comctl32 v6. MessageBox remains for minimal features.</li>
+<li>macOS: Accessory views provide extensibility for inputs; main-thread enforcement is mandatory.</li>
+<li>Linux: GTK 4 preferred; fallback to GTK 3 when 4 is unavailable. CLI fallback ensures minimal functionality when no display server is accessible.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/wieslawsoltes/NativeMessageBox/blob/main/docs/design/platform-capabilities.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
