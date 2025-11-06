@@ -2,6 +2,14 @@
   href: ../index.md
 - name: Quick Start
   href: ../quickstart.md
+- name: Building
+  href: ../building.md
+- name: Android Packaging
+  href: ../android-packaging.md
+- name: iOS Packaging
+  href: ../ios-packaging.md
+- name: Advanced Usage
+  href: ../advanced-usage.md
 - name: Architecture
   href: ../architecture.md
 - name: Managed API

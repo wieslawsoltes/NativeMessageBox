@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Test;
 import org.robolectric.annotation.Config;
 
-@Config(manifest = Config.NONE)
+@Config(manifest = Config.NONE, shadows = NativeMessageBoxBridgeShadow.class)
 public class NativeMessageBoxBridgeTest {
 
     @After

@@ -1,34 +1,226 @@
 # NativeMessageBox
 
-Cross-platform native message box library exposing a stable C ABI and a modern .NET 8 managed wrapper. The project targets Windows, macOS, Linux, iOS, and Android, and includes Avalonia sample applications, comprehensive documentation, and fully automated build and release pipelines.
+[![NuGet](https://img.shields.io/nuget/v/NativeMessageBox.svg)](https://www.nuget.org/packages/NativeMessageBox/)
+[![NuGet (Downloads)](https://img.shields.io/nuget/dt/NativeMessageBox.svg)](https://www.nuget.org/packages/NativeMessageBox/)
 
-## Project Status
-- Planning: see `docs/project-plan.md`.
-- Development: scaffolding in progress.
+NativeMessageBox is a production-ready native dialog runtime that ships a stable C ABI, high-level .NET 8 wrapper, and first-class tooling for Windows, macOS, Linux, iOS, and Android. The project focuses on predictable behaviour, strong diagnostics, and packaging that fits both managed and native distribution pipelines.
 
-## High-Level Components
-- Native C/C++/Objective-C/Objective-C++ implementations backed by each OS message box API (including UIKit and Android AlertDialog).
-- Shared C ABI header located in `include/native_message_box.h`.
-- Managed `.NET 8.0` library using `LibraryImport` source generators.
-- Configurable host abstraction with pluggable implementations and thread-safety validation helpers.
-- Avalonia-based sample applications showcasing all features.
-- Build scripts and CI pipelines for packaging and releases.
+## Contents
+- [Feature Summary](#feature-summary)
+- [Feature Matrix](#feature-matrix)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Platform Implementations](#platform-implementations)
+- [Building From Source](#building-from-source)
+- [Samples](#samples)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Getting Started
-1. Review the roadmap: `docs/project-plan.md`.
-2. Ensure toolchains are installed (Visual Studio Build Tools, Xcode Command Line Tools, GCC/Clang, .NET 8 SDK).
-3. Explore the documentation set:
-   - `docs/design/platform-capabilities.md`
-   - `docs/design/user-experience-requirements.md`
-   - `docs/architecture.md`
-   - `docs/managed-api.md`
-   - `docs/quickstart.md`
-   - `docs/troubleshooting.md`
-   - `docs/release-policy.md`
-   - `docs/roadmap.md`
-4. Use `build/build.sh` (macOS/Linux) or `build/build.ps1` (Windows) to produce native binaries and NuGet packages under `artifacts/`.
-5. Run the Avalonia samples via `samples/AvaloniaSamples.sln` to experiment with the feature set.
-6. Follow progress in repository issues and pull requests.
+## Feature Summary
+
+| Feature | Description |
+| --- | --- |
+| Stable C ABI | `include/native_message_box.h` exposes a forward-compatible ABI with explicit struct sizing, version negotiation, and allocator hooks. |
+| Native implementations | Dedicated Windows (Task Dialog / MessageBox), macOS (NSAlert), Linux (GTK 3/4 with zenity fallback), iOS (UIKit), and Android (AlertDialog) back ends. |
+| Managed .NET 8 wrapper | `NativeMessageBox` NuGet package with source-generated interop, async APIs, configurable host abstraction, and logging hooks. |
+| Rich dialog options | Multiple buttons, custom IDs, icons, verification checkboxes, timeouts, secondary content, and optional text/password/combo inputs (platform-dependent). |
+| Mobile packaging | Automated AAR (Android) and XCFramework (iOS) outputs with manifests describing ABIs, architectures, and build metadata. |
+| Tooling and CI | Cross-platform `build.sh`/`build.ps1`, native tests via `ctest`, managed unit tests, and packaging jobs suitable for CI/CD pipelines. |
+| Samples | Avalonia desktop and mobile samples demonstrating host integration, lifecycle management, and advanced dialog scenarios. |
+| Documentation | DocFX site under `docs/` covering architecture, API reference, troubleshooting, and platform-specific guidance. |
+
+## Feature Matrix
+
+| Capability | Windows | macOS | Linux (GTK) | iOS | Android |
+| --- | --- | --- | --- | --- | --- |
+| Multi-button dialogs | Yes (Task Dialog supports 8+) | Yes | Yes | Yes | Partial (AlertDialog: 3 buttons) |
+| Custom button text/IDs | Yes | Yes | Yes | Yes | Yes (first 3 buttons) |
+| Button roles (default/cancel/destructive/help) | Yes | Yes | Partial (default/cancel) | Yes | Partial (positive/negative/neutral) |
+| Standard icons | Yes | Yes | Yes | No (ignored) | No (ignored) |
+| Verification checkbox | Yes | Yes | Yes | No | No |
+| Text/password input | No (planned) | Yes | Yes | Yes (text/password) | No |
+| Combo box input | No | Yes | Yes | No | No |
+| Secondary informative/expanded content | Yes | Yes | Yes | No | No |
+| Help links / hyperlinks | Yes (Task Dialog hyperlink events) | Yes (opens via `NSWorkspace`) | Yes (GtkLinkButton) | No | No |
+| Auto-close timeout | Yes | Yes | Yes | Yes | No |
+| Threading requirements | STA enforced for advanced dialogs | Must run on main thread | GTK main loop required | Must be called on main thread | Requires `Activity` on UI thread |
+
+> Notes: iOS ignores icons and secondary content but supports buttons, timeout, and single-line text/password input. Android is backed by `AlertDialog` and therefore limited to three buttons and no accessory controls. Windows falls back to `MessageBoxW` if Task Dialog APIs are unavailable.
+
+## Installation
+
+### .NET
+```bash
+dotnet add package NativeMessageBox
+```
+
+### Native C / C++
+1. Download the appropriate runtime archive from `artifacts/native-<rid>.zip` (produced by the build).  
+2. Add `include/native_message_box.h` to your project.  
+3. Link against `nativemessagebox` for your runtime identifier (RID).  
+
+### Mobile
+- **Android**: Consume `artifacts/android/NativeMessageBox.aar` (or the published artifact) as an `<AndroidLibrary>` or Gradle dependency.  
+- **iOS**: Add `artifacts/ios/NativeMessageBox.xcframework` as a native reference in Xcode or the .NET for iOS project system.  
+
+## Usage
+
+### .NET example
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using NativeMessageBox;
+
+static async Task<MessageBoxResult> ShowExportPromptAsync()
+{
+    NativeMessageBoxClient.ConfigureHost(options =>
+    {
+        // Allow background threads while still ensuring STA when required.
+        options.RequireStaThreadForWindows = true;
+    });
+
+    NativeMessageBoxClient.RegisterLogHandler(message =>
+    {
+        Console.WriteLine($"[NativeMessageBox] {message}");
+    });
+
+    var buttons = new[]
+    {
+        new MessageBoxButton(100, "Export", MessageBoxButtonKind.Primary, isDefault: true),
+        new MessageBoxButton(200, "Export && Open", MessageBoxButtonKind.Secondary),
+        new MessageBoxButton(0, "Cancel", MessageBoxButtonKind.Secondary, isCancel: true)
+    };
+
+    var input = new MessageBoxInputOptions(
+        MessageBoxInputMode.Text,
+        prompt: "File name:",
+        placeholder: "report.pdf",
+        defaultValue: "report.pdf");
+
+    var secondary = new MessageBoxSecondaryContent(
+        informativeText: "Select how you would like to export the report.",
+        expandedText: "Exports use the system temporary directory unless a custom path is provided.",
+        footerText: "Need automation? Configure auto-export from Settings.",
+        helpLink: "https://github.com/NativeMessageBox/NativeMessageBox/wiki/Export");
+
+    var options = new MessageBoxOptions(
+        message: "Export completed successfully. What would you like to do next?",
+        buttons: buttons,
+        title: "Export Finished",
+        icon: MessageBoxIcon.Information,
+        inputOptions: input,
+        secondaryContent: secondary,
+        verificationText: "Remember my choice",
+        showSuppressCheckbox: true,
+        timeout: TimeSpan.FromSeconds(30),
+        timeoutButtonId: 0);
+
+    return await NativeMessageBoxClient.ShowAsync(options);
+}
+```
+
+The returned `MessageBoxResult` exposes `Outcome`, the selected `ButtonId`, any `InputValue`, `CheckboxChecked`, and whether the dialog timed out. Use `NativeMessageBoxClient.ShowOrThrow` when failure conditions should surface as exceptions.
+
+### Native C example
+
+```c
+#include "native_message_box.h"
+
+int main(void)
+{
+    NmbInitializeOptions init = {0};
+    init.struct_size = sizeof(init);
+    init.abi_version = NMB_ABI_VERSION;
+    init.runtime_name_utf8 = "demo-app";
+    nmb_initialize(&init);
+
+    NmbButtonOption buttons[2] = {};
+    buttons[0].struct_size = sizeof(NmbButtonOption);
+    buttons[0].id = NMB_BUTTON_ID_OK;
+    buttons[0].label_utf8 = "Retry";
+    buttons[0].is_default = NMB_TRUE;
+
+    buttons[1].struct_size = sizeof(NmbButtonOption);
+    buttons[1].id = NMB_BUTTON_ID_CANCEL;
+    buttons[1].label_utf8 = "Cancel";
+    buttons[1].is_cancel = NMB_TRUE;
+
+    NmbMessageBoxOptions options = {0};
+    options.struct_size = sizeof(options);
+    options.abi_version = NMB_ABI_VERSION;
+    options.title_utf8 = "Connection lost";
+    options.message_utf8 = "The remote endpoint is unavailable.";
+    options.buttons = buttons;
+    options.button_count = 2;
+    options.icon = NMB_ICON_WARNING;
+    options.timeout_milliseconds = 15000;
+    options.timeout_button_id = NMB_BUTTON_ID_CANCEL;
+
+    NmbMessageBoxResult result = {0};
+    result.struct_size = sizeof(result);
+
+    NmbResultCode rc = nmb_show_message_box(&options, &result);
+    if (rc == NMB_OK)
+    {
+        // Inspect result.button, result.was_timeout, etc.
+    }
+
+    nmb_shutdown();
+    return 0;
+}
+```
+
+## Platform Implementations
+
+### Windows
+- Uses `TaskDialogIndirect` when available (Windows Vista+ with `comctl32` v6).  
+- Falls back to `MessageBoxW` when advanced features are not requested or Task Dialog is unavailable.  
+- Supports icons, verification checkbox, hyperlink footer, auto-close timers, and ESC/close policy controls.  
+- Advanced scenarios require running on an STA thread; the managed host enforces this unless explicitly disabled.
+
+### macOS
+- Backed by `NSAlert`, accessory views, and `NSStackView` compositions.  
+- Supports checkboxes, text/password fields, combo boxes, secondary informative text, footers, help buttons, and auto-close timers.  
+- Requires invocation on the main thread. Timeout handling uses `dispatch_source_t` to trigger button actions safely.
+
+### Linux (GTK 3/4)
+- Implements dialogs via `GtkMessageDialog` and custom content areas.  
+- Supports multiple buttons, checkbox verification, text/password/combo inputs, secondary/expanded text, help links, and timeouts via `g_timeout_add`.  
+- Respects modality flags and ESC handling. When GTK is unavailable, the fallback shell path uses `zenity`.
+
+### iOS
+- Implements dialogs through `UIAlertController`.  
+- Supports custom button labels, default/cancel/destructive roles, single text/password input, and timeouts using `dispatch_after`.  
+- Ignores secondary content, verification checkboxes, and icon hints (these limitations are logged via the runtime callback). Requires a presenter `UIViewController`.
+
+### Android
+- Uses a lightweight Java bridge around `AlertDialog`.  
+- Supports up to three buttons (positive/negative/neutral) with custom labels and IDs.  
+- Does not support accessory input, verification checkboxes, icons, or auto-close timers.  
+- Requires an `Activity` reference supplied through `MessageBoxOptions.ParentWindow`.
+
+## Building From Source
+- macOS / Linux: `./build/build.sh --all`  
+- Windows / PowerShell 7+: `pwsh build/build.ps1 -All`  
+- See `docs/building.md` for prerequisites, optional flags (`--skip-tests`, `--config Debug`, `-Targets android,ios`), and environment variables used by the Android/iOS packaging scripts.
+
+## Samples
+- `samples/Showcase` demonstrates feature coverage on desktop platforms.  
+- `samples/DialogPlayground` enables experimenting with different button layouts, icons, and inputs.  
+- Mobile samples consume the generated AAR/XCFramework to illustrate lifecycle integration. Build the solution via `dotnet build samples/AvaloniaSamples.sln`.
+
+## Documentation
+- Run `docs/build-docs.sh` to generate the DocFX site under `docs/docfx/_site`.  
+- Key entry points: `docs/quickstart.md`, `docs/managed-api.md`, `docs/advanced-usage.md`, `docs/architecture.md`, `docs/android-packaging.md`, and `docs/ios-packaging.md`.
+
+## Contributing
+- Review `CONTRIBUTING.md`, `MAINTENANCE.md`, and `SECURITY.md`.  
+- Use topic branches and include unit tests when extending native or managed functionality.  
+- File issues with platform details, reproduction steps, and diagnostics captured via `NativeMessageBoxClient.RegisterLogHandler`.
 
 ## License
-This project is released under the MIT License. See `LICENSE`.
+
+This project is licensed under the MIT License. See `LICENSE` for full details.

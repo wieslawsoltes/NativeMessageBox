@@ -14,8 +14,8 @@
   ],
   "build": {
     "content": [
-      { "files": ["index.md", "managed-api.md", "quickstart.md", "architecture.md", "samples.md", "roadmap.md", "release-policy.md"], "src": ".." },
-      { "files": ["design/*.md", "troubleshooting.md"], "src": ".." },
+      { "files": ["index.md", "quickstart.md", "building.md", "android-packaging.md", "ios-packaging.md", "advanced-usage.md", "architecture.md", "managed-api.md", "samples.md", "roadmap.md", "release-policy.md", "troubleshooting.md"], "src": ".." },
+      { "files": ["design/*.md"], "src": ".." },
       { "files": ["api/**.yml", "api/**.md"], "src": "." }
     ],
     "xref": [],
