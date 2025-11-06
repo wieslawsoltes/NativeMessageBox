@@ -141,3 +141,18 @@ jobs:
 
       - name: Build sample solution
         run: dotnet build samples/AvaloniaSamples.sln --configuration Release
+
+      - name: Package release artifacts
+        run: ./build/build.sh Release
+
+      - name: Upload NuGet packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/nuget/*.nupkg
+
+      - name: Upload native archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-artifacts
+          path: artifacts/native-*.zip
