@@ -8,6 +8,7 @@ build/output/
 build/native/
 artifacts/
 src/dotnet/NativeMessageBox/runtimes/
+.gradle/
 
 # Visual Studio / Rider / VS Code
 .vs/

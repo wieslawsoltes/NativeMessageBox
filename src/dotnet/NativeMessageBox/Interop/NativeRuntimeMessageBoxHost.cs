@@ -120,16 +120,42 @@ internal sealed class NativeRuntimeMessageBoxHost : INativeMessageBoxHost, INati
         ValidateCapabilities(options);
 
         using var scope = new NativeMemoryScope();
-        var nativeOptions = NativeMessageBoxMarshaller.CreateNativeOptions(options, scope);
-        var nativeResult = NativeMessageBoxMarshaller.CreateNativeResult();
-
-        var status = NativeMessageBoxNative.ShowMessageBox(ref nativeOptions, ref nativeResult);
-        if (status != NmbResultCode.Ok)
+        var parentHandle = options.ParentWindow;
+        AndroidActivityReference activityReference = AndroidActivityReference.None;
+        lock (_sync)
         {
-            nativeResult.ResultCode = status;
+            if (parentHandle == IntPtr.Zero && _options.Android.ActivityReferenceProvider is not null)
+            {
+                activityReference = _options.Android.ActivityReferenceProvider();
+                parentHandle = activityReference.Handle;
+            }
         }
 
-        return NativeMessageBoxMarshaller.ToManagedResult(ref nativeResult, options);
+        if (OperatingSystem.IsAndroid() && parentHandle == IntPtr.Zero)
+        {
+            activityReference.Dispose();
+            throw new NativeMessageBoxException(
+                "Android dialogs require a foreground Activity handle. Configure NativeMessageBoxClient.ConfigureHost to supply one.",
+                NmbResultCode.InvalidArgument);
+        }
+
+        try
+        {
+            var nativeOptions = NativeMessageBoxMarshaller.CreateNativeOptions(options, scope, parentHandle);
+            var nativeResult = NativeMessageBoxMarshaller.CreateNativeResult();
+
+            var status = NativeMessageBoxNative.ShowMessageBox(ref nativeOptions, ref nativeResult);
+            if (status != NmbResultCode.Ok)
+            {
+                nativeResult.ResultCode = status;
+            }
+
+            return NativeMessageBoxMarshaller.ToManagedResult(ref nativeResult, options);
+        }
+        finally
+        {
+            activityReference.Dispose();
+        }
     }
 
     public bool TryShow(MessageBoxOptions options, out MessageBoxResult result)

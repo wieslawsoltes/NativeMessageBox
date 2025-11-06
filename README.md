@@ -1,13 +1,13 @@
 # NativeMessageBox
 
-Cross-platform native message box library exposing a stable C ABI and a modern .NET 8 managed wrapper. The project targets Windows, macOS, and Linux, and includes Avalonia sample applications, comprehensive documentation, and fully automated build and release pipelines.
+Cross-platform native message box library exposing a stable C ABI and a modern .NET 8 managed wrapper. The project targets Windows, macOS, Linux, iOS, and Android, and includes Avalonia sample applications, comprehensive documentation, and fully automated build and release pipelines.
 
 ## Project Status
 - Planning: see `docs/project-plan.md`.
 - Development: scaffolding in progress.
 
 ## High-Level Components
-- Native C/C++/Objective-C implementations backed by each OS message box API.
+- Native C/C++/Objective-C/Objective-C++ implementations backed by each OS message box API (including UIKit and Android AlertDialog).
 - Shared C ABI header located in `include/native_message_box.h`.
 - Managed `.NET 8.0` library using `LibraryImport` source generators.
 - Configurable host abstraction with pluggable implementations and thread-safety validation helpers.

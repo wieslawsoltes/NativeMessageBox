@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-ios</TargetFramework>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.iOS" Version="11.3.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NativeMessageBox.CrossPlatformSample\NativeMessageBox.CrossPlatformSample.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="Exists('..\..\..\artifacts\ios\NativeMessageBox.xcframework')">
+    <NativeReference Include="..\..\..\artifacts\ios\NativeMessageBox.xcframework">
+      <Kind>Dynamic</Kind>
+    </NativeReference>
+  </ItemGroup>
+</Project>

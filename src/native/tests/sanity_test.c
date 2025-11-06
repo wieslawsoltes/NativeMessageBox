@@ -4,6 +4,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#include <dispatch/dispatch.h>
+#endif
+
 static void log_sink(void* user_data, const char* message)
 {
     (void)user_data;
@@ -196,6 +201,104 @@ static int run_verification_checkbox_test(void)
     return 0;
 }
 
+#if defined(__ANDROID__)
+static int run_android_requires_activity_test(void)
+{
+    NmbButtonOption button;
+    init_button_option(&button, NMB_BUTTON_ID_OK, "OK", NMB_TRUE, NMB_FALSE);
+
+    NmbMessageBoxOptions options;
+    init_options(&options, &button, 1);
+    options.parent_window = NULL;
+
+    NmbMessageBoxResult result;
+    memset(&result, 0, sizeof(result));
+    result.struct_size = sizeof(result);
+
+    NmbResultCode rc = nmb_show_message_box(&options, &result);
+    if (rc != NMB_E_INVALID_ARGUMENT)
+    {
+        fprintf(stderr, "Expected invalid argument when no Activity is supplied on Android (rc=%u)\n", rc);
+        return 1;
+    }
+
+    return 0;
+}
+#endif
+
+#if defined(__APPLE__) && (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST)
+typedef struct
+{
+    dispatch_semaphore_t semaphore;
+    int status;
+} NmbIOSDispatchContext;
+
+static void nmb_ios_background_worker(void* user_data)
+{
+    NmbIOSDispatchContext* context = (NmbIOSDispatchContext*)user_data;
+
+    NmbButtonOption button;
+    init_button_option(&button, NMB_BUTTON_ID_OK, "OK", NMB_TRUE, NMB_FALSE);
+
+    NmbMessageBoxOptions options;
+    init_options(&options, &button, 1);
+
+    NmbTestHarness harness;
+    memset(&harness, 0, sizeof(harness));
+    harness.struct_size = sizeof(harness);
+    harness.magic = NMB_TEST_HARNESS_MAGIC;
+    harness.scripted_button = NMB_BUTTON_ID_OK;
+    harness.result_code = NMB_OK;
+    options.user_context = &harness;
+
+    NmbMessageBoxResult result;
+    memset(&result, 0, sizeof(result));
+    result.struct_size = sizeof(result);
+
+    NmbResultCode rc = nmb_show_message_box(&options, &result);
+    if (rc != NMB_OK || result.button != NMB_BUTTON_ID_OK || result.was_timeout != NMB_FALSE)
+    {
+        fprintf(stderr, "iOS background dispatch: rc=%u button=%u timeout=%u\n",
+                (unsigned int)rc, (unsigned int)result.button, (unsigned int)result.was_timeout);
+        context->status = 1;
+    }
+    else
+    {
+        context->status = 0;
+    }
+
+    dispatch_semaphore_signal(context->semaphore);
+}
+
+static int run_ios_background_dispatch_test(void)
+{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    if (!semaphore)
+    {
+        fprintf(stderr, "Failed to create dispatch semaphore for iOS test\n");
+        return 1;
+    }
+
+    NmbIOSDispatchContext context;
+    context.semaphore = semaphore;
+    context.status = 1;
+
+    dispatch_async_f(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                     &context,
+                     nmb_ios_background_worker);
+
+    long wait_result = dispatch_semaphore_wait(semaphore,
+                                               dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)));
+    if (wait_result != 0)
+    {
+        fprintf(stderr, "iOS background dispatch test timed out\n");
+        context.status = 1;
+    }
+
+    return context.status;
+}
+#endif
+
 int main(void)
 {
     if (nmb_get_abi_version() != NMB_ABI_VERSION)
@@ -225,6 +328,22 @@ int main(void)
         nmb_shutdown();
         return 1;
     }
+
+#if defined(__ANDROID__)
+    if (run_android_requires_activity_test() != 0)
+    {
+        nmb_shutdown();
+        return 1;
+    }
+#endif
+
+#if defined(__APPLE__) && (TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_MACCATALYST)
+    if (run_ios_background_dispatch_test() != 0)
+    {
+        nmb_shutdown();
+        return 1;
+    }
+#endif
 
     nmb_shutdown();
     return 0;

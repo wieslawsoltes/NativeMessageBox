@@ -9,7 +9,7 @@ namespace NativeMessageBox.Interop;
 
 internal static class NativeMessageBoxMarshaller
 {
-    internal static NmbMessageBoxOptions CreateNativeOptions(MessageBoxOptions options, NativeMemoryScope scope)
+    internal static NmbMessageBoxOptions CreateNativeOptions(MessageBoxOptions options, NativeMemoryScope scope, IntPtr parentOverride = default)
     {
         var native = new NmbMessageBoxOptions
         {
@@ -19,7 +19,7 @@ internal static class NativeMessageBoxMarshaller
             MessageUtf8 = scope.AllocUtf8(options.Message),
             Icon = (NmbIcon)options.Icon,
             Severity = (NmbSeverity)options.Severity,
-            ParentWindow = options.ParentWindow,
+            ParentWindow = parentOverride != IntPtr.Zero ? parentOverride : options.ParentWindow,
             VerificationTextUtf8 = scope.AllocUtf8(options.VerificationText),
             AllowCancelViaEscape = options.AllowCancelViaEscape,
             ShowSuppressCheckbox = options.ShowSuppressCheckbox,

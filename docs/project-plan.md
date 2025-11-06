@@ -72,6 +72,20 @@ This roadmap defines the phased delivery of a cross-platform native message box 
 - [x] 10.4 Establish security policy and vulnerability reporting path.
 - [x] 10.5 Schedule long-term maintenance tasks (dependency upgrades, platform API updates).
 
+## Phase 11 — iOS Platform Support
+- [x] 11.1 Analyze iOS dialog UX expectations across UIKit and SwiftUI hosts, capturing API constraints and accessibility requirements. (See `docs/mobile-dialog-ux-analysis.md`)
+- [x] 11.2 Implement native iOS library (`src/native/ios/MessageBox.mm`) wrapping `UIAlertController` with the shared C ABI surface.
+- [x] 11.3 Ensure main-thread execution and run-loop integration, adding XCTest-based automation or simulator-driven smoke tests. (See `src/native/tests/sanity_test.c`)
+- [x] 11.4 Package the iOS artifacts as an XCFramework (device + simulator) and extend the managed loader for RID-specific discovery. (See `build/scripts/package-ios-xcframework.sh`, `docs/ios-packaging.md`, `src/dotnet/NativeMessageBox/Interop/NativeLibraryLoader.cs`)
+- [x] 11.5 Produce iOS sample integration (Avalonia.iOS or .NET MAUI head) and document deployment/configuration guidance. (See `samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.sln`, `samples/README.md`, `docs/ios-packaging.md`)
+
+## Phase 12 — Android Platform Support
+- [x] 12.1 Research Android dialog patterns (AlertDialog, Material alerts) and define compatibility matrix for API levels and theming. (See `docs/mobile-dialog-ux-analysis.md`)
+- [x] 12.2 Implement native Android bridge (`src/native/android/MessageBox.cpp`) using JNI to surface the C ABI via a lightweight Java/Kotlin host. (See `src/native/android/MessageBox.cpp`, `src/native/android/java/com/nativeinterop/NativeMessageBoxBridge.java`)
+- [x] 12.3 Manage activity lifecycle and UI thread dispatch guarantees, adding Instrumentation/Espresso smoke tests where feasible. (See `docs/android-lifecycle.md`, `samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Android/NativeMessageBoxActivityTracker.cs`, `src/dotnet/NativeMessageBox/Interop/NativeRuntimeMessageBoxHost.cs`)
+- [x] 12.4 Package the Android artifacts as an AAR with CMake/NDK builds and integrate loading hooks in the managed layer. (See `build/scripts/package-android-aar.sh`, `docs/android-packaging.md`, `src/dotnet/NativeMessageBox/Interop/NativeLibraryLoader.cs`)
+- [x] 12.5 Produce Android sample (Avalonia.Android or MAUI head) and extend documentation for platform setup, permissions, and limitations. (See `samples/CrossPlatformSample/README.md`, `samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Android`, `docs/android-packaging.md`)
+
 ---
 
 ### Repository Layout (Proposed)
