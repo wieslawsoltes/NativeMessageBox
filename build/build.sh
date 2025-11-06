@@ -6,6 +6,7 @@ usage() {
 Usage: build.sh [options]
 
 Options:
+  <Configuration>           Optional positional build configuration (e.g. Release)
   --config <Configuration>   Build configuration (default: Release)
   --targets <list>           Comma separated list of targets: host,ios,android
   --host                     Include the host-native build (default when no targets specified)
@@ -29,6 +30,7 @@ ARTIFACTS_DIR="${ROOT_DIR}/artifacts"
 NATIVE_BUILD_DIR="${ROOT_DIR}/build/native"
 
 CONFIG="Release"
+CONFIG_SET=false
 RUN_TESTS=true
 RUN_DOTNET=true
 declare -a REQUESTED_TARGETS=()
@@ -42,6 +44,7 @@ while [[ $# -gt 0 ]]; do
         echo "Missing value for --config" >&2
         exit 1
       fi
+      CONFIG_SET=true
       ;;
     --targets|-t)
       shift
@@ -70,9 +73,14 @@ while [[ $# -gt 0 ]]; do
       exit 0
       ;;
     *)
-      echo "Unknown option: $1" >&2
-      usage
-      exit 1
+      if [[ "${1}" != -* && "${CONFIG_SET}" == "false" ]]; then
+        CONFIG="$1"
+        CONFIG_SET=true
+      else
+        echo "Unknown option: $1" >&2
+        usage
+        exit 1
+      fi
       ;;
   esac
   shift || true
