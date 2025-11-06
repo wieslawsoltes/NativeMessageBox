@@ -74,15 +74,15 @@
 <tbody>
 <tr>
 <td>macOS</td>
-<td>Xcode command-line tools, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional for Android packaging), JDK 8+ (for <code>javac</code>/<code>jar</code>)</td>
+<td>Xcode command-line tools, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional for Android packaging), Emscripten SDK (optional for WebAssembly), JDK 8+ (for <code>javac</code>/<code>jar</code>)</td>
 </tr>
 <tr>
 <td>Linux</td>
-<td>GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional), JDK 8+</td>
+<td>GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+</td>
 </tr>
 <tr>
 <td>Windows</td>
-<td>Visual Studio Build Tools (with C++ workload), CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+, Android SDK/NDK (optional), JDK 8+</td>
+<td>Visual Studio Build Tools (with C++ workload), CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+, Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+</td>
 </tr>
 </tbody>
 </table>
@@ -105,9 +105,14 @@
 
 # Only produce the iOS xcframework (macOS only)
 ./build/build.sh --ios
+
+# Only produce the WebAssembly artifacts (requires Emscripten SDK)
+./build/build.sh --wasm
 </code></pre>
 <blockquote>
-<p>ℹ️ Non-macOS hosts automatically skip the iOS packaging step, so <code>--all</code> builds succeed everywhere.</p>
+<p>ℹ️ Non-macOS hosts automatically skip the iOS packaging step, so <code>--all</code> builds succeed everywhere.
+ℹ️ The WebAssembly preset bundles a default browser host (<code>src/native/web/message_box.js</code>). Override <code>Module.nativeMessageBox.showMessageBox</code> before loading the module to supply a custom UI or localization pipeline.
+ℹ️ When running inside a WebAssembly runtime, <code>NativeMessageBoxClient</code> selects <code>NativeMessageBoxBrowserHost</code> automatically and forwards requests through the <code>NativeMessageBoxManaged.*</code> JavaScript hooks—no native probing paths are required.</p>
 </blockquote>
 <h3 id="windows--cross-platform-powershell-buildps1">Windows / Cross-platform PowerShell (<code>build.ps1</code>)</h3>
 <pre><code class="lang-powershell"># Build desktop host binaries (Release configuration)
@@ -130,6 +135,7 @@ pwsh build/build.ps1 -Targets ios
 <li><code>host</code> — native desktop build + .NET packaging.</li>
 <li><code>android</code> — invokes <code>build/scripts/package-android-aar.sh</code>.</li>
 <li><code>ios</code> — invokes <code>build/scripts/package-ios-xcframework.sh</code> when running on macOS.</li>
+<li><code>wasm</code> — invokes <code>build/scripts/package-wasm.sh</code> (requires <code>emcc</code> from the Emscripten SDK).</li>
 </ul>
 <h2 id="artifact-locations">Artifact Locations</h2>
 <p>All artifacts are written to <code>artifacts/</code>:</p>
@@ -139,6 +145,7 @@ pwsh build/build.ps1 -Targets ios
 <li><code>artifacts/nuget/</code> — <code>.nupkg</code> outputs for the managed layer.</li>
 <li><code>artifacts/android/</code> — AAR bundle, JNI libraries per ABI, and metadata manifest.</li>
 <li><code>artifacts/ios/</code> — xcframework bundle and manifest metadata.</li>
+<li><code>artifacts/web/</code> — <code>libnative_message_box.wasm</code>, optional loader shims, and metadata manifest.</li>
 </ul>
 <p>Each packaging step generates a <code>manifest.json</code> with version and timestamp details to simplify CI publishing.</p>
 
