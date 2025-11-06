@@ -337,7 +337,7 @@ static NmbResultCode ShowDialogInternal(const NmbMessageBoxOptions* options, Nmb
         return NMB_E_PLATFORM_FAILURE;
     }
 
-    jobject activity = reinterpret_cast<jobject>(options->parent_window);
+    jobject activity = reinterpret_cast<jobject>(const_cast<void*>(options->parent_window));
     jobject activityLocal = env->NewLocalRef(activity);
     if (!activityLocal)
     {
