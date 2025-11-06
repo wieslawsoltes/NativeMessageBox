@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
   <PropertyGroup>
     <TargetFramework>net8.0-browser</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -15,28 +15,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\src\native\web\message_box.js">
-      <Link>wwwroot\native-message-box.js</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup Condition="Exists('..\..\..\artifacts\web')">
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm">
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.wasm')">
       <Link>wwwroot\native\libnative_message_box.wasm</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.js">
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.js" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.js')">
       <Link>wwwroot\native\libnative_message_box.js</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm.map">
+    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm.map" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.wasm.map')">
       <Link>wwwroot\native\libnative_message_box.wasm.map</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+
+  <Target Name="CopyNativeMessageBoxBridge" BeforeTargets="Build">
+    <Copy SourceFiles="..\..\..\src\native\web\message_box.js" DestinationFiles="wwwroot/native-message-box.js" SkipUnchangedFiles="true" />
+  </Target>
 </Project>

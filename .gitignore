@@ -24,3 +24,7 @@ src/dotnet/NativeMessageBox/runtimes/
 
 # Avalonia designer cache
 *.aps
+
+# Generated bridge copy
+samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser/wwwroot/native-message-box.js
+
