@@ -1,5 +1,6 @@
 using System;
 using Android.App;
+using Android.Runtime;
 using NativeMessageBox;
 
 namespace NativeMessageBox.CrossPlatformSample.Android;
@@ -58,7 +59,7 @@ internal static class NativeMessageBoxActivityTracker
                 s_currentActivity.TryGetTarget(out var activity) &&
                 activity is not null)
             {
-                var globalRef = Android.Runtime.JNIEnv.NewGlobalRef(activity.Handle);
+                var globalRef = JNIEnv.NewGlobalRef(activity.Handle);
                 return new AndroidActivityReference(globalRef, ownsHandle: true);
             }
         }

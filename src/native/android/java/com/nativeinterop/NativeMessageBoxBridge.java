@@ -41,44 +41,53 @@ public final class NativeMessageBoxBridge {
         }
 
         final Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(() -> {
-            try {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                if (title != null && !title.isEmpty()) {
-                    builder.setTitle(title);
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                    if (title != null && !title.isEmpty()) {
+                        builder.setTitle(title);
+                    }
+                    builder.setMessage(message != null ? message : "");
+
+                    final int count = buttonLabels != null ? buttonLabels.length : 0;
+                    final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final int index = mapWhichToIndex(which, count);
+                            final long buttonId = resolveButtonId(index, buttonIds);
+                            notifyCompleted(nativeHandle, buttonId, false);
+                        }
+                    };
+
+                    if (count >= 1) {
+                        builder.setPositiveButton(buttonLabels[0], listener);
+                    }
+
+                    if (count >= 2) {
+                        builder.setNegativeButton(buttonLabels[1], listener);
+                    }
+
+                    if (count >= 3) {
+                        builder.setNeutralButton(buttonLabels[2], listener);
+                    }
+
+                    builder.setCancelable(cancellable);
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.setCanceledOnTouchOutside(cancellable);
+                    dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface d) {
+                            final long buttonId = resolveButtonId(cancelIndex, buttonIds);
+                            notifyCompleted(nativeHandle, buttonId, true);
+                        }
+                    });
+                    dialog.show();
+                } catch (Throwable t) {
+                    notifyError(nativeHandle, 3);
                 }
-                builder.setMessage(message != null ? message : "");
-
-                final int count = buttonLabels != null ? buttonLabels.length : 0;
-                final DialogInterface.OnClickListener listener = (dialog, which) -> {
-                    final int index = mapWhichToIndex(which, count);
-                    final long buttonId = resolveButtonId(index, buttonIds);
-                    notifyCompleted(nativeHandle, buttonId, false);
-                };
-
-                if (count >= 1) {
-                    builder.setPositiveButton(buttonLabels[0], listener);
-                }
-
-                if (count >= 2) {
-                    builder.setNegativeButton(buttonLabels[1], listener);
-                }
-
-                if (count >= 3) {
-                    builder.setNeutralButton(buttonLabels[2], listener);
-                }
-
-                builder.setCancelable(cancellable);
-
-                final AlertDialog dialog = builder.create();
-                dialog.setCanceledOnTouchOutside(cancellable);
-                dialog.setOnCancelListener(d -> {
-                    final long buttonId = resolveButtonId(cancelIndex, buttonIds);
-                    notifyCompleted(nativeHandle, buttonId, true);
-                });
-                dialog.show();
-            } catch (Throwable t) {
-                notifyError(nativeHandle, 3);
             }
         });
     }
