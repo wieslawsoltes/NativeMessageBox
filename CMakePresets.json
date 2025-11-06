@@ -34,11 +34,7 @@
         "BUILD_SHARED_LIBS": "ON",
         "BUILD_TESTING": "OFF"
       },
-      "toolchainFile": "$env{EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
-      "condition": {
-        "type": "fileExists",
-        "path": "$env{EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
-      }
+      "toolchainFile": "$env{EMSDK}/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
     }
   ],
   "buildPresets": [
