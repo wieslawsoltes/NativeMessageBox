@@ -89,19 +89,22 @@ expand_source() {
   fi
 
   if [[ -d "${path}" ]]; then
-    shopt -s nullglob
-    local zips=("${path}"/*.zip)
-    shopt -u nullglob
-    if (( ${#zips[@]} )); then
+    local zip_list=()
+    while IFS= read -r -d '' zip_file; do
+      zip_list+=("${zip_file}")
+    done < <(find "${path}" -maxdepth 1 -type f -iname '*.zip' -print0)
+
+    if (( ${#zip_list[@]} )); then
       local tmp
       tmp="$(mktemp -d)"
       CLEANUP_DIRS+=("${tmp}")
-      for zip_file in "${zips[@]}"; do
+      for zip_file in "${zip_list[@]}"; do
         unzip -q "${zip_file}" -d "${tmp}"
       done
       echo "${tmp}"
       return 0
     fi
+
     echo "${path}"
     return 0
   fi
