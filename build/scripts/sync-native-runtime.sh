@@ -27,9 +27,15 @@ LIBRARY_OVERRIDE=""
 declare -a CLEANUP_DIRS=()
 
 cleanup() {
-  for dir in "${CLEANUP_DIRS[@]:-}"; do
+  if (( ${#CLEANUP_DIRS[@]} == 0 )); then
+    return 0
+  fi
+
+  for dir in "${CLEANUP_DIRS[@]}"; do
     [[ -n "${dir}" ]] && rm -rf "${dir}"
   done
+
+  return 0
 }
 trap cleanup EXIT
 
