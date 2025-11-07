@@ -8,6 +8,8 @@ on:
 jobs:
   native-linux:
     runs-on: ubuntu-latest
+    outputs:
+      rid: ${{ steps.runtime-info.outputs.rid }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,6 +41,17 @@ jobs:
       - name: Package artifacts
         run: ./build/build.sh Release
 
+      - name: Determine runtime identifier
+        id: runtime-info
+        run: |
+          arch="$(uname -m)"
+          case "${arch}" in
+            x86_64|amd64) arch="x64" ;;
+            arm64|aarch64) arch="arm64" ;;
+          esac
+          echo "rid=linux-${arch}" >> "${GITHUB_OUTPUT}"
+        shell: bash
+
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
         with:
@@ -47,6 +60,8 @@ jobs:
 
   native-macos:
     runs-on: macos-latest
+    outputs:
+      rid: ${{ steps.runtime-info.outputs.rid }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,6 +93,17 @@ jobs:
       - name: Package artifacts
         run: ./build/build.sh Release
 
+      - name: Determine runtime identifier
+        id: runtime-info
+        run: |
+          arch="$(uname -m)"
+          case "${arch}" in
+            x86_64|amd64) arch="x64" ;;
+            arm64|aarch64) arch="arm64" ;;
+          esac
+          echo "rid=osx-${arch}" >> "${GITHUB_OUTPUT}"
+        shell: bash
+
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
         with:
@@ -86,6 +112,8 @@ jobs:
 
   native-windows:
     runs-on: windows-latest
+    outputs:
+      rid: ${{ steps.runtime-info.outputs.rid }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -115,6 +143,17 @@ jobs:
 
       - name: Package artifacts
         run: ./build/build.sh Release
+
+      - name: Determine runtime identifier
+        id: runtime-info
+        run: |
+          arch="$(uname -m)"
+          case "${arch}" in
+            x86_64|amd64) arch="x64" ;;
+            arm64|aarch64) arch="arm64" ;;
+          esac
+          echo "rid=win-${arch}" >> "${GITHUB_OUTPUT}"
+        shell: bash
 
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
@@ -247,10 +286,64 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev ninja-build clang-format
+          sudo apt-get install -y libgtk-3-dev ninja-build clang-format unzip rsync
 
-      - name: Build and package managed artifacts
-        run: ./build/build.sh Release
+      - name: Build native host artifacts
+        run: ./build/build.sh Release --skip-dotnet
+
+      - name: Download native Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: native-linux
+          path: artifacts/native/linux
+
+      - name: Download native macOS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: native-macos
+          path: artifacts/native/macos
+
+      - name: Download native Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: native-windows
+          path: artifacts/native/windows
+
+      - name: Extract native artifacts
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for platform in linux macos windows; do
+            dest="artifacts/native/${platform}/extracted"
+            mkdir -p "${dest}"
+            for archive in artifacts/native/${platform}/*.zip; do
+              unzip -q "${archive}" -d "${dest}"
+            done
+          done
+
+      - name: Sync native runtime layouts
+        run: |
+          ./build/scripts/sync-native-runtime.sh --source artifacts/native/linux/extracted --rid "${LINUX_RID}"
+          ./build/scripts/sync-native-runtime.sh --source artifacts/native/macos/extracted --rid "${MACOS_RID}"
+          ./build/scripts/sync-native-runtime.sh --source artifacts/native/windows/extracted --rid "${WINDOWS_RID}"
+        env:
+          LINUX_RID: ${{ needs.native-linux.outputs.rid }}
+          MACOS_RID: ${{ needs.native-macos.outputs.rid }}
+          WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
+
+      - name: Pack NuGet artifacts
+        run: |
+          mkdir -p artifacts/nuget
+          dotnet pack src/dotnet/NativeMessageBox/NativeMessageBox.csproj --configuration Release --output artifacts/nuget
+
+      - name: Verify NuGet runtimes
+        run: |
+          package=$(ls artifacts/nuget/NativeMessageBox*.nupkg | head -n 1)
+          ./build/scripts/verify-nuget-runtimes.sh --package "${package}" --rids "${LINUX_RID},${MACOS_RID},${WINDOWS_RID}"
+        env:
+          LINUX_RID: ${{ needs.native-linux.outputs.rid }}
+          MACOS_RID: ${{ needs.native-macos.outputs.rid }}
+          WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
 
       - name: Download iOS artifact
         uses: actions/download-artifact@v4
