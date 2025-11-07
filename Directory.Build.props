@@ -1,5 +1,6 @@
 <Project>
-  <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.133" PrivateAssets="all" />
-  </ItemGroup>
+  <PropertyGroup Label="Versioning">
+    <VersionPrefix Condition="'$(VersionPrefix)' == ''">0.1.0</VersionPrefix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''">alpha.1</VersionSuffix>
+  </PropertyGroup>
 </Project>
