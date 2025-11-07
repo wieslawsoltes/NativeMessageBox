@@ -24,6 +24,14 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 SOURCE=""
 RID=""
 LIBRARY_OVERRIDE=""
+declare -a CLEANUP_DIRS=()
+
+cleanup() {
+  for dir in "${CLEANUP_DIRS[@]:-}"; do
+    [[ -n "${dir}" ]] && rm -rf "${dir}"
+  done
+}
+trap cleanup EXIT
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -63,17 +71,44 @@ if [[ -z "${RID}" ]]; then
   exit 1
 fi
 
-cleanup_dir=""
-if [[ -f "${SOURCE}" && "${SOURCE}" == *.zip ]]; then
-  cleanup_dir="$(mktemp -d)"
-  unzip -q "${SOURCE}" -d "${cleanup_dir}"
-  SOURCE="${cleanup_dir}"
-elif [[ ! -d "${SOURCE}" ]]; then
-  echo "Source path '${SOURCE}' does not exist or is not a directory/zip" >&2
+expand_source() {
+  local path="$1"
+  if [[ -f "${path}" && "${path}" == *.zip ]]; then
+    local tmp
+    tmp="$(mktemp -d)"
+    unzip -q "${path}" -d "${tmp}"
+    CLEANUP_DIRS+=("${tmp}")
+    echo "${tmp}"
+    return 0
+  fi
+
+  if [[ -d "${path}" ]]; then
+    shopt -s nullglob
+    local zips=("${path}"/*.zip)
+    shopt -u nullglob
+    if (( ${#zips[@]} )); then
+      local tmp
+      tmp="$(mktemp -d)"
+      CLEANUP_DIRS+=("${tmp}")
+      for zip_file in "${zips[@]}"; do
+        unzip -q "${zip_file}" -d "${tmp}"
+      done
+      echo "${tmp}"
+      return 0
+    fi
+    echo "${path}"
+    return 0
+  fi
+
+  echo ""
+  return 1
+}
+
+SOURCE="$(expand_source "${SOURCE}")"
+if [[ -z "${SOURCE}" ]]; then
+  echo "Source path is invalid or could not be expanded" >&2
   exit 1
 fi
-
-trap 'if [[ -n "${cleanup_dir}" ]]; then rm -rf "${cleanup_dir}"; fi' EXIT
 
 if [[ -n "${LIBRARY_OVERRIDE}" ]]; then
   LIB_NAME="${LIBRARY_OVERRIDE}"
@@ -91,12 +126,12 @@ fi
 
 find_first() {
   local pattern="$1"
-  find "${SOURCE}" -type f -name "${pattern}" -print -quit 2>/dev/null || true
+  find "${SOURCE}" -type f -iname "${pattern}" -print -quit 2>/dev/null || true
 }
 
 find_dir() {
   local pattern="$1"
-  find "${SOURCE}" -type d -name "${pattern}" -print -quit 2>/dev/null || true
+  find "${SOURCE}" -type d -iname "${pattern}" -print -quit 2>/dev/null || true
 }
 
 LIB_PATH="$(find_first "${LIB_NAME}")"
