@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="runtimes/**/*" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="runtimes/**/*" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="runtimes/%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>
