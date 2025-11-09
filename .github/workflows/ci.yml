@@ -262,11 +262,44 @@ jobs:
           name: native-windows
           path: artifacts/native/windows
 
+      - name: Prepare native runtime artifacts
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          for platform in linux macos windows; do
+            root="artifacts/native/${platform}"
+            extracted="${root}/extracted"
+
+            rm -rf "${extracted}"
+            mkdir -p "${root}"
+            mkdir -p "${extracted}"
+
+            extracted_any=false
+            for archive in "${root}"/*.zip; do
+              extracted_any=true
+              unzip -q "${archive}" -d "${extracted}"
+            done
+
+            case "${platform}" in
+              linux) env_var="LINUX_NATIVE_SOURCE" ;;
+              macos) env_var="MACOS_NATIVE_SOURCE" ;;
+              windows) env_var="WINDOWS_NATIVE_SOURCE" ;;
+            esac
+
+            if [[ "${extracted_any}" == "true" ]]; then
+              echo "${env_var}=${extracted}" >> "${GITHUB_ENV}"
+            else
+              echo "${env_var}=${root}" >> "${GITHUB_ENV}"
+            fi
+          done
+        shell: bash
+
       - name: Sync native runtime layouts
         run: |
-          ./build/scripts/sync-native-runtime.sh --source artifacts/native/linux --rid "${LINUX_RID}"
-          ./build/scripts/sync-native-runtime.sh --source artifacts/native/macos --rid "${MACOS_RID}"
-          ./build/scripts/sync-native-runtime.sh --source artifacts/native/windows --rid "${WINDOWS_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${LINUX_NATIVE_SOURCE}" --rid "${LINUX_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${MACOS_NATIVE_SOURCE}" --rid "${MACOS_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${WINDOWS_NATIVE_SOURCE}" --rid "${WINDOWS_RID}"
         env:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
