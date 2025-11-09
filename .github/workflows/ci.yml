@@ -27,12 +27,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev ninja-build clang-format zip
 
-      - name: Configure native build
-        run: cmake -S . -B build/native -G Ninja -DCMAKE_BUILD_TYPE=Release
-        shell: bash
-
-      - name: Build native library
-        run: cmake --build build/native --config Release
+      - name: Package native artifacts
+        run: ./build/build.sh Release --skip-dotnet --skip-tests
         shell: bash
 
       - name: Determine runtime identifier
@@ -50,9 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: native-linux
-          path: |
-            build/native/src/native/libnativemessagebox.*
-            build/native/src/native/nmb_sanity_test*
+          path: artifacts/native-linux-*.zip
 
   native-macos:
     runs-on: macos-latest
@@ -74,12 +68,8 @@ jobs:
           brew update
           brew install gtk+3 ninja clang-format
 
-      - name: Configure native build
-        run: cmake -S . -B build/native -G Ninja -DCMAKE_BUILD_TYPE=Release
-        shell: bash
-
-      - name: Build native library
-        run: cmake --build build/native --config Release
+      - name: Package native artifacts
+        run: ./build/build.sh Release --skip-dotnet --skip-tests
         shell: bash
 
       - name: Determine runtime identifier
@@ -97,9 +87,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: native-macos
-          path: |
-            build/native/src/native/libnativemessagebox.dylib
-            build/native/src/native/nmb_sanity_test
+          path: artifacts/native-osx-*.zip
 
   native-windows:
     runs-on: windows-latest
@@ -120,12 +108,8 @@ jobs:
         run: choco install ninja -y
         shell: powershell
 
-      - name: Configure native build
-        run: cmake -S . -B build/native -G Ninja -DCMAKE_BUILD_TYPE=Release
-        shell: bash
-
-      - name: Build native library
-        run: cmake --build build/native --config Release
+      - name: Package native artifacts
+        run: ./build/build.sh Release --skip-dotnet --skip-tests
         shell: bash
 
       - name: Determine runtime identifier
@@ -143,9 +127,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: native-windows
-          path: |
-            build/native/src/native/nativemessagebox.dll
-            build/native/src/native/nmb_sanity_test.exe
+          path: artifacts/native-win-*.zip
 
   ios-xcframework:
     runs-on: macos-latest
