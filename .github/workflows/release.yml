@@ -377,9 +377,9 @@ jobs:
   publish-nuget:
     runs-on: ubuntu-latest
     needs: managed
-    if: ${{ secrets.NUGET_API_KEY != '' }}
     steps:
       - name: Download NuGet packages
+        if: ${{ secrets.NUGET_API_KEY != '' }}
         uses: actions/download-artifact@v4
         with:
           name: nuget-packages
