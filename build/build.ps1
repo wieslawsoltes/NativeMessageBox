@@ -73,7 +73,7 @@ function Invoke-HostBuild {
     New-Item -ItemType Directory -Path $nativeArtifacts -Force | Out-Null
     New-Item -ItemType Directory -Path $nugetArtifacts -Force | Out-Null
 
-    cmake -S $rootDir -B $nativeBuild -G Ninja -DCMAKE_BUILD_TYPE=$Configuration
+    cmake -S $rootDir -B $nativeBuild -G Ninja "-DCMAKE_BUILD_TYPE=$Configuration"
     cmake --build $nativeBuild --config $Configuration
 
     if ($SkipTests) {
