@@ -27,6 +27,12 @@ jobs:
       runner: macos-latest
       configuration: Release
       artifact-name: native-macos
+  native-macos-x64:
+    uses: ./.github/workflows/native-build.yml
+    with:
+      runner: macos-13
+      configuration: Release
+      artifact-name: native-macos-x64
 
   native-windows:
     uses: ./.github/workflows/native-build.yml
@@ -108,7 +114,7 @@ jobs:
 
   managed:
     runs-on: ubuntu-latest
-    needs: [native-linux, native-linux-arm64, native-macos, native-windows, native-windows-arm64, ios-xcframework, android-aar, android-tests, wasm-package]
+    needs: [native-linux, native-linux-arm64, native-macos, native-macos-x64, native-windows, native-windows-arm64, ios-xcframework, android-aar, android-tests, wasm-package]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -157,6 +163,11 @@ jobs:
         with:
           name: native-macos
           path: artifacts/native/macos
+      - name: Download native macOS x64 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: native-macos-x64
+          path: artifacts/native/macos-x64
 
       - name: Download native Windows artifacts
         uses: actions/download-artifact@v4
@@ -193,7 +204,7 @@ jobs:
           set -euo pipefail
           shopt -s nullglob
 
-          for platform in linux linux-arm64 macos windows windows-arm64; do
+          for platform in linux linux-arm64 macos macos-x64 windows windows-arm64; do
             root="artifacts/native/${platform}"
             extracted="${root}/extracted"
 
@@ -212,6 +223,7 @@ jobs:
               linux) env_var="LINUX_NATIVE_SOURCE" ;;
               linux-arm64) env_var="LINUX_ARM64_NATIVE_SOURCE" ;;
               macos) env_var="MACOS_NATIVE_SOURCE" ;;
+              macos-x64) env_var="MACOS_X64_NATIVE_SOURCE" ;;
               windows) env_var="WINDOWS_NATIVE_SOURCE" ;;
               windows-arm64) env_var="WINDOWS_ARM64_NATIVE_SOURCE" ;;
             esac
@@ -233,12 +245,14 @@ jobs:
           ./build/scripts/sync-native-runtime.sh --source "${LINUX_NATIVE_SOURCE}" --rid "${LINUX_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${LINUX_ARM64_NATIVE_SOURCE}" --rid "${LINUX_ARM64_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${MACOS_NATIVE_SOURCE}" --rid "${MACOS_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${MACOS_X64_NATIVE_SOURCE}" --rid "${MACOS_X64_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${WINDOWS_NATIVE_SOURCE}" --rid "${WINDOWS_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${WINDOWS_ARM64_NATIVE_SOURCE}" --rid "${WINDOWS_ARM64_RID}"
         env:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
           LINUX_ARM64_RID: ${{ needs.native-linux-arm64.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
+          MACOS_X64_RID: ${{ needs.native-macos-x64.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
           WINDOWS_ARM64_RID: ${{ needs.native-windows-arm64.outputs.rid }}
 
@@ -263,9 +277,10 @@ jobs:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
           LINUX_ARM64_RID: ${{ needs.native-linux-arm64.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
+          MACOS_X64_RID: ${{ needs.native-macos-x64.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
           WINDOWS_ARM64_RID: ${{ needs.native-windows-arm64.outputs.rid }}
-          REQUIRED_RIDS: ${{ format('{0},{1},{2},{3},{4},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-linux-arm64.outputs.rid, needs.native-macos.outputs.rid, needs.native-windows.outputs.rid, needs.native-windows-arm64.outputs.rid) }}
+          REQUIRED_RIDS: ${{ format('{0},{1},{2},{3},{4},{5},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-linux-arm64.outputs.rid, needs.native-macos.outputs.rid, needs.native-macos-x64.outputs.rid, needs.native-windows.outputs.rid, needs.native-windows-arm64.outputs.rid) }}
 
       - name: Archive mobile artifacts
         run: |
