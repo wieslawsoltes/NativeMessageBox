@@ -358,12 +358,45 @@ jobs:
         with:
           name: nuget-packages
           path: artifacts/nuget/*.nupkg
+  publish-nuget:
+    runs-on: ubuntu-latest
+    needs: managed
+    if: ${{ secrets.NUGET_API_KEY != '' }}
+    steps:
+      - name: Download NuGet packages
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/nuget
 
       - name: Push to NuGet.org
-        if: ${{ env.NUGET_API_KEY != '' }}
-        run: dotnet nuget push artifacts/nuget/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json --skip-duplicate
+        if: ${{ secrets.NUGET_API_KEY != '' }}
+        run: dotnet nuget push artifacts/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
-      - name: Publish native artifacts
+  github-release:
+    runs-on: ubuntu-latest
+    needs: [managed, publish-nuget]
+    if: ${{ always() && needs.managed.result == 'success' && (needs.publish-nuget.result == 'success' || needs.publish-nuget.result == 'skipped') }}
+    steps:
+      - name: Download NuGet packages
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/nuget
+
+      - name: Download native packaged artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: native-artifacts
+          path: artifacts/native-archives
+
+      - name: Download mobile archives
+        uses: actions/download-artifact@v4
+        with:
+          name: mobile-artifacts
+          path: artifacts/mobile-archives
+
+      - name: Download native job outputs
         uses: actions/download-artifact@v4
         with:
           path: artifacts/download
@@ -373,7 +406,6 @@ jobs:
         with:
           files: |
             artifacts/nuget/*.nupkg
-            artifacts/native-ios.zip
-            artifacts/native-android.zip
-            artifacts/native-web.zip
+            artifacts/native-archives/native-*.zip
+            artifacts/mobile-archives/native-*.zip
             artifacts/download/native-*/*
