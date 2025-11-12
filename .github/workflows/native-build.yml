@@ -89,11 +89,13 @@ jobs:
         if: startsWith(inputs.runner, 'windows')
         shell: pwsh
         run: |
-          $args = @('-Configuration', '${{ inputs.configuration }}')
-          if ('${{ inputs.skip-dotnet }}' -eq 'true') { $args += '-SkipDotnet' }
-          if ('${{ inputs.skip-tests }}' -eq 'true') { $args += '-SkipTests' }
-          if ('${{ inputs.architecture }}') { $args += @('-Architecture', '${{ inputs.architecture }}') }
-          ./build/build.ps1 @args
+          $params = @{
+            Configuration = '${{ inputs.configuration }}'
+          }
+          if ('${{ inputs.skip-dotnet }}' -eq 'true') { $params.SkipDotnet = $true }
+          if ('${{ inputs.skip-tests }}' -eq 'true') { $params.SkipTests = $true }
+          if ('${{ inputs.architecture }}') { $params.Architecture = '${{ inputs.architecture }}' }
+          ./build/build.ps1 @params
 
       - name: Determine runtime identifier
         id: runtime-info
