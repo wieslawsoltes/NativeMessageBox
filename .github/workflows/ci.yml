@@ -109,8 +109,8 @@ jobs:
         shell: powershell
 
       - name: Package native artifacts
-        run: ./build/build.sh Release --skip-dotnet --skip-tests
-        shell: bash
+        run: ./build/build.ps1 -Configuration Release -SkipDotnet -SkipTests
+        shell: pwsh
 
       - name: Determine runtime identifier
         id: runtime-info
@@ -128,6 +128,7 @@ jobs:
         with:
           name: native-windows
           path: artifacts/native-win-*.zip
+          if-no-files-found: error
 
   ios-xcframework:
     runs-on: macos-latest
