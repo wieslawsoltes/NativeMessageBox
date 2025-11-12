@@ -10,6 +10,25 @@ artifacts/
 src/dotnet/NativeMessageBox/runtimes/
 .gradle/
 
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Makefile
+Testing/
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+**/DartConfiguration.tcl
+**/Makefile
+**/Testing/
+**/build.ninja
+**/.ninja_log
+**/.ninja_deps
+
 # Visual Studio / Rider / VS Code
 .vs/
 .idea/
@@ -27,4 +46,3 @@ src/dotnet/NativeMessageBox/runtimes/
 
 # Generated bridge copy
 samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser/wwwroot/native-message-box.js
-
