@@ -62,7 +62,7 @@ endif ()
 if (EMSCRIPTEN)
     set(_nmb_wasm_pre_js "${CMAKE_SOURCE_DIR}/src/native/web/message_box.js")
     set_target_properties(nativemessagebox PROPERTIES
-        OUTPUT_NAME "native_message_box"
+        OUTPUT_NAME "nativemessagebox"
         SUFFIX ".wasm")
     target_link_options(nativemessagebox PRIVATE
         "-sSTANDALONE_WASM=1"

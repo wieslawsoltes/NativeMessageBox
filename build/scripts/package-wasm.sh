@@ -30,24 +30,24 @@ mkdir -p "${ARTIFACT_DIR}"
 echo "Configuring WebAssembly build (preset: ${BUILD_PRESET})..."
 cmake --preset "${BUILD_PRESET}"
 
-echo "Building libnative_message_box.wasm..."
+echo "Building libnativemessagebox.wasm..."
 cmake --build --preset "${BUILD_PRESET}" --target nativemessagebox --clean-first
 
-WASM_OUTPUT="$(find "${BUILD_ROOT}" -name 'libnative_message_box.wasm' -print -quit || true)"
+WASM_OUTPUT="$(find "${BUILD_ROOT}" -name 'libnativemessagebox.wasm' -print -quit || true)"
 if [[ -z "${WASM_OUTPUT}" ]]; then
-    echo "Failed to locate libnative_message_box.wasm under ${BUILD_ROOT}" >&2
+    echo "Failed to locate libnativemessagebox.wasm under ${BUILD_ROOT}" >&2
     exit 1
 fi
 
 ARTIFACT_NAME="$(basename "${WASM_OUTPUT}")"
 cp "${WASM_OUTPUT}" "${ARTIFACT_DIR}/${ARTIFACT_NAME}"
 
-JS_SHIM="$(find "${BUILD_ROOT}" -name 'libnative_message_box.js' -print -quit || true)"
+JS_SHIM="$(find "${BUILD_ROOT}" -name 'libnativemessagebox.js' -print -quit || true)"
 if [[ -n "${JS_SHIM}" ]]; then
     cp "${JS_SHIM}" "${ARTIFACT_DIR}/"
 fi
 
-MAP_FILE="$(find "${BUILD_ROOT}" -name 'libnative_message_box.wasm.map' -print -quit || true)"
+MAP_FILE="$(find "${BUILD_ROOT}" -name 'libnativemessagebox.wasm.map' -print -quit || true)"
 if [[ -n "${MAP_FILE}" ]]; then
     cp "${MAP_FILE}" "${ARTIFACT_DIR}/"
 fi

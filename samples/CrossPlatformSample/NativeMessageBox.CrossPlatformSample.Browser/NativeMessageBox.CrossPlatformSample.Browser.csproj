@@ -16,18 +16,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.wasm')">
-      <Link>wwwroot\native\libnative_message_box.wasm</Link>
+    <Content Include="..\..\..\artifacts\web\libnativemessagebox.wasm" Condition="Exists('..\..\..\artifacts\web\libnativemessagebox.wasm')">
+      <Link>wwwroot\native\libnativemessagebox.wasm</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.js" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.js')">
-      <Link>wwwroot\native\libnative_message_box.js</Link>
+    <Content Include="..\..\..\artifacts\web\libnativemessagebox.js" Condition="Exists('..\..\..\artifacts\web\libnativemessagebox.js')">
+      <Link>wwwroot\native\libnativemessagebox.js</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\web\libnative_message_box.wasm.map" Condition="Exists('..\..\..\artifacts\web\libnative_message_box.wasm.map')">
-      <Link>wwwroot\native\libnative_message_box.wasm.map</Link>
+    <Content Include="..\..\..\artifacts\web\libnativemessagebox.wasm.map" Condition="Exists('..\..\..\artifacts\web\libnativemessagebox.wasm.map')">
+      <Link>wwwroot\native\libnativemessagebox.wasm.map</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

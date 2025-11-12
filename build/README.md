@@ -8,7 +8,7 @@ This folder contains cross-platform build orchestration scripts (Bash and PowerS
 - `build.ps1` &mdash; unified build entry point for Windows hosts (works with PowerShell 7+ on any platform). Supports desktop builds, Android packaging, WebAssembly packaging, and iOS packaging when run on macOS.
 - `scripts/package-ios-xcframework.sh` &mdash; produces `NativeMessageBox.xcframework` with device + simulator slices (requires Xcode toolchain).
 - `scripts/package-android-aar.sh` &mdash; builds native libraries for multiple Android ABIs and bundles them (with the Java bridge) into `NativeMessageBox.aar`.
-- `scripts/package-wasm.sh` &mdash; compiles the native core with Emscripten using the `wasm-release` CMake preset and copies the resulting `libnative_message_box.wasm` artifacts.
+- `scripts/package-wasm.sh` &mdash; compiles the native core with Emscripten using the `wasm-release` CMake preset and copies the resulting `libnativemessagebox.wasm` artifacts.
 
 ## Common Usage
 

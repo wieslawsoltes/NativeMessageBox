@@ -88,7 +88,7 @@ This roadmap defines the phased delivery of a cross-platform native message box 
 
 ## Phase 13 — WebAssembly (Browser) Support
 - [x] 13.1 Analyze browser dialog capabilities (`alert`, `confirm`, custom modal overlays) and capture UX, accessibility, and security constraints for WebAssembly hosts. (Document in `docs/web-dialog-ux-analysis.md`)
-- [x] 13.2 Add WebAssembly toolchain configuration (Emscripten/CMake presets) to compile the native core to `libnative_message_box.wasm` with the shared C ABI surface. (Update `CMakePresets.json`, `build/scripts/package-wasm.sh`)
+- [x] 13.2 Add WebAssembly toolchain configuration (Emscripten/CMake presets) to compile the native core to `libnativemessagebox.wasm` with the shared C ABI surface. (Update `CMakePresets.json`, `build/scripts/package-wasm.sh`)
 - [x] 13.3 Implement JavaScript ↔️ WASM glue code exposing the message box API, ensuring async handling and localization via the browser runtime. (See `src/native/web/wasm_message_box.cpp`, `src/native/web/message_box.js`)
 - [x] 13.4 Extend the managed loader to detect browser/WebAssembly runtime and route calls through `JSExport`/`JSImport` interop, maintaining parity with native platforms. (Update `src/dotnet/NativeMessageBox/Interop/NativeLibraryLoader.cs`, add `NativeMessageBoxBrowserHost.cs`)
 - [x] 13.5 Integrate the WebAssembly artifacts into the sample pipeline and wire up `samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser` to exercise the new host end-to-end. (Update project file, resource bundling, and Avalonia UI bindings)

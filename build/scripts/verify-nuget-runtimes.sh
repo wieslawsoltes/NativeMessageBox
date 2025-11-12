@@ -66,7 +66,7 @@ lib_name_for_rid() {
     ios) echo "libnativemessagebox.dylib" ;;
     iossimulator) echo "libnativemessagebox.dylib" ;;
     maccatalyst) echo "libnativemessagebox.dylib" ;;
-    browser) echo "libnative_message_box.wasm" ;;
+    browser) echo "libnativemessagebox.wasm" ;;
     *)
       echo ""
       ;;

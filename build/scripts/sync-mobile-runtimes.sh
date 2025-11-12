@@ -11,7 +11,7 @@ src/dotnet/NativeMessageBox/runtimes so they are included in the NuGet package.
 Arguments:
   --android PATH   Directory containing the extracted Android artifacts (jni/<abi>/...).
   --ios PATH       Directory containing the NativeMessageBox.xcframework output.
-  --web PATH       Directory containing libnative_message_box.wasm (+ optional js/map).
+  --web PATH       Directory containing libnativemessagebox.wasm (+ optional js/map).
   --dest PATH      Optional destination root (defaults to src/dotnet/NativeMessageBox/runtimes).
   -h, --help       Show this help message.
 HELP
@@ -253,7 +253,7 @@ sync_web() {
   mkdir -p "${dest}"
 
   local copied=false
-  for file in libnative_message_box.wasm libnative_message_box.js libnative_message_box.wasm.map; do
+  for file in libnativemessagebox.wasm libnativemessagebox.js libnativemessagebox.wasm.map; do
     if [[ -f "${source_dir}/${file}" ]]; then
       cp "${source_dir}/${file}" "${dest}/"
       copied=true

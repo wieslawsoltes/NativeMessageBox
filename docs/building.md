@@ -75,6 +75,6 @@ All artifacts are written to `artifacts/`:
 - `artifacts/nuget/` &mdash; `.nupkg` outputs for the managed layer.
 - `artifacts/android/` &mdash; AAR bundle, JNI libraries per ABI, and metadata manifest.
 - `artifacts/ios/` &mdash; xcframework bundle and manifest metadata.
-- `artifacts/web/` &mdash; `libnative_message_box.wasm`, optional loader shims, and metadata manifest.
+- `artifacts/web/` &mdash; `libnativemessagebox.wasm`, optional loader shims, and metadata manifest.
 
 Each packaging step generates a `manifest.json` with version and timestamp details to simplify CI publishing.

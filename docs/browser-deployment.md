@@ -1,12 +1,12 @@
 # Browser Deployment Guide
 
 This guide explains how to build, package, and host the WebAssembly/browser
-experience for **NativeMessageBox**, including the optional `libnative_message_box.wasm`
+experience for **NativeMessageBox**, including the optional `libnativemessagebox.wasm`
 artifact, JavaScript overlay host, and Avalonia sample application.
 
 ## Prerequisites
 - .NET 8 SDK (`8.0.x`) with browser workload (`dotnet workload install wasm-tools` if not already installed).
-- Emscripten SDK (only required when you want to regenerate `libnative_message_box.wasm`).
+- Emscripten SDK (only required when you want to regenerate `libnativemessagebox.wasm`).
 - Node.js/npm are *not* required; hosting can be static.
 
 ## Packaging Workflow
@@ -23,9 +23,9 @@ artifact, JavaScript overlay host, and Avalonia sample application.
    ./build/scripts/package-wasm.sh
    ```
    If `artifacts/web/` exists the browser project automatically adds:
-   - `wwwroot/native/libnative_message_box.wasm`
-   - `wwwroot/native/libnative_message_box.js`
-   - `wwwroot/native/libnative_message_box.wasm.map`
+   - `wwwroot/native/libnativemessagebox.wasm`
+   - `wwwroot/native/libnativemessagebox.js`
+   - `wwwroot/native/libnativemessagebox.wasm.map`
 
    These files are experimental until the native runtime integrates with
    JavaScript glue in a future phase, but publishing them alongside the sample
@@ -42,7 +42,7 @@ artifact, JavaScript overlay host, and Avalonia sample application.
 
 - **HTTPS Required**: Browsers block modals triggered from insecure origins in many scenarios. Serve the app over HTTPS (or `localhost`) to avoid mixed-content issues.
 - **Content-Security Policy**: Ensure the host allows inline scripts or reference the generated JS files explicitly (`native-message-box.js`, `_framework/dotnet.js`).
-- **Caching**: The `libnative_message_box.*` files are versioned only by timestamp.
+- **Caching**: The `libnativemessagebox.*` files are versioned only by timestamp.
   Configure cache headers or versioned URLs if you plan to update them frequently.
 - **IFrames / Embeds**: When embedding in an iframe, include `allow-modals` and
   `allow-popups` so the overlay can appear and `confirm/alert` fallbacks can run.
