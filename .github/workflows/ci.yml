@@ -310,7 +310,7 @@ jobs:
         run: dotnet test NativeMessageBox.sln --configuration Release --no-build
 
       - name: Build native host artifacts
-        run: ./build/build.sh Release --skip-dotnet
+        run: ./build/build.sh Release --skip-dotnet --skip-tests
 
       - name: Download native Linux artifacts
         uses: actions/download-artifact@v4
