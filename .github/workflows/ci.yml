@@ -47,6 +47,49 @@ jobs:
         with:
           name: native-linux
           path: artifacts/native-linux-*.zip
+          if-no-files-found: error
+
+  native-linux-arm64:
+    runs-on: ubuntu-22.04-arm
+    outputs:
+      rid: ${{ steps.runtime-info.outputs.rid }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev ninja-build clang-format zip
+
+      - name: Package native artifacts
+        run: ./build/build.sh Release --skip-dotnet --skip-tests
+        shell: bash
+
+      - name: Determine runtime identifier
+        id: runtime-info
+        run: |
+          arch="$(uname -m)"
+          case "${arch}" in
+            x86_64|amd64) arch="x64" ;;
+            arm64|aarch64) arch="arm64" ;;
+          esac
+          echo "rid=linux-${arch}" >> "${GITHUB_OUTPUT}"
+        shell: bash
+
+      - name: Upload native artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-linux-arm64
+          path: artifacts/native-linux-*.zip
+          if-no-files-found: error
 
   native-macos:
     runs-on: macos-latest
@@ -88,6 +131,7 @@ jobs:
         with:
           name: native-macos
           path: artifacts/native-osx-*.zip
+          if-no-files-found: error
 
   native-windows:
     runs-on: windows-latest
@@ -114,19 +158,60 @@ jobs:
 
       - name: Determine runtime identifier
         id: runtime-info
+        shell: pwsh
         run: |
-          arch="$(uname -m)"
-          case "${arch}" in
-            x86_64|amd64) arch="x64" ;;
-            arm64|aarch64) arch="arm64" ;;
-          esac
-          echo "rid=win-${arch}" >> "${GITHUB_OUTPUT}"
-        shell: bash
+          $archive = Get-ChildItem -Path artifacts/native-*.zip | Select-Object -First 1
+          if (-not $archive) {
+            throw "Unable to determine runtime identifier: no native archive found under artifacts/"
+          }
+          $rid = $archive.BaseName.Substring(7) # trim 'native-'
+          "rid=$rid" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Upload native artifact
         uses: actions/upload-artifact@v4
         with:
           name: native-windows
+          path: artifacts/native-win-*.zip
+          if-no-files-found: error
+
+  native-windows-arm64:
+    runs-on: windows-latest
+    outputs:
+      rid: ${{ steps.runtime-info.outputs.rid }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install dependencies
+        run: choco install ninja -y
+        shell: powershell
+
+      - name: Package native artifacts
+        run: ./build/build.ps1 -Configuration Release -SkipDotnet -SkipTests -Architecture arm64
+        shell: pwsh
+
+      - name: Determine runtime identifier
+        id: runtime-info
+        shell: pwsh
+        run: |
+          $archive = Get-ChildItem -Path artifacts/native-*.zip | Select-Object -First 1
+          if (-not $archive) {
+            throw "Unable to determine runtime identifier: no native archive found under artifacts/"
+          }
+          $rid = $archive.BaseName.Substring(7)
+          "rid=$rid" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Upload native artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-windows-arm64
           path: artifacts/native-win-*.zip
           if-no-files-found: error
 
@@ -195,7 +280,7 @@ jobs:
 
   managed:
     runs-on: ubuntu-latest
-    needs: [native-linux, native-macos, native-windows, ios-xcframework, android-aar, android-tests, wasm-package]
+    needs: [native-linux, native-linux-arm64, native-macos, native-windows, native-windows-arm64, ios-xcframework, android-aar, android-tests, wasm-package]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -233,6 +318,12 @@ jobs:
           name: native-linux
           path: artifacts/native/linux
 
+      - name: Download native Linux arm64 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: native-linux-arm64
+          path: artifacts/native/linux-arm64
+
       - name: Download native macOS artifacts
         uses: actions/download-artifact@v4
         with:
@@ -244,6 +335,12 @@ jobs:
         with:
           name: native-windows
           path: artifacts/native/windows
+
+      - name: Download native Windows arm64 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: native-windows-arm64
+          path: artifacts/native/windows-arm64
 
       - name: Download iOS artifacts
         uses: actions/download-artifact@v4
@@ -268,7 +365,7 @@ jobs:
           set -euo pipefail
           shopt -s nullglob
 
-          for platform in linux macos windows; do
+          for platform in linux linux-arm64 macos windows windows-arm64; do
             root="artifacts/native/${platform}"
             extracted="${root}/extracted"
 
@@ -282,11 +379,18 @@ jobs:
               unzip -q "${archive}" -d "${extracted}"
             done
 
+            env_var=""
             case "${platform}" in
               linux) env_var="LINUX_NATIVE_SOURCE" ;;
+              linux-arm64) env_var="LINUX_ARM64_NATIVE_SOURCE" ;;
               macos) env_var="MACOS_NATIVE_SOURCE" ;;
               windows) env_var="WINDOWS_NATIVE_SOURCE" ;;
+              windows-arm64) env_var="WINDOWS_ARM64_NATIVE_SOURCE" ;;
             esac
+
+            if [[ -z "${env_var}" ]]; then
+              continue
+            fi
 
             if [[ "${extracted_any}" == "true" ]]; then
               echo "${env_var}=${extracted}" >> "${GITHUB_ENV}"
@@ -299,12 +403,16 @@ jobs:
       - name: Sync native runtime layouts
         run: |
           ./build/scripts/sync-native-runtime.sh --source "${LINUX_NATIVE_SOURCE}" --rid "${LINUX_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${LINUX_ARM64_NATIVE_SOURCE}" --rid "${LINUX_ARM64_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${MACOS_NATIVE_SOURCE}" --rid "${MACOS_RID}"
           ./build/scripts/sync-native-runtime.sh --source "${WINDOWS_NATIVE_SOURCE}" --rid "${WINDOWS_RID}"
+          ./build/scripts/sync-native-runtime.sh --source "${WINDOWS_ARM64_NATIVE_SOURCE}" --rid "${WINDOWS_ARM64_RID}"
         env:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
+          LINUX_ARM64_RID: ${{ needs.native-linux-arm64.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
+          WINDOWS_ARM64_RID: ${{ needs.native-windows-arm64.outputs.rid }}
 
       - name: Sync mobile and browser runtimes
         run: |
@@ -325,9 +433,11 @@ jobs:
           ./build/scripts/verify-nuget-runtimes.sh --package "${package}" --rids "${REQUIRED_RIDS}"
         env:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
+          LINUX_ARM64_RID: ${{ needs.native-linux-arm64.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
-          REQUIRED_RIDS: ${{ format('{0},{1},{2},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-macos.outputs.rid, needs.native-windows.outputs.rid) }}
+          WINDOWS_ARM64_RID: ${{ needs.native-windows-arm64.outputs.rid }}
+          REQUIRED_RIDS: ${{ format('{0},{1},{2},{3},{4},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-linux-arm64.outputs.rid, needs.native-macos.outputs.rid, needs.native-windows.outputs.rid, needs.native-windows-arm64.outputs.rid) }}
 
       - name: Archive mobile artifacts
         run: |

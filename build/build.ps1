@@ -1,5 +1,6 @@
 param(
     [string]$Configuration = "Release",
+    [string]$Architecture,
     [string[]]$Targets,
     [switch]$All,
     [switch]$SkipTests,
@@ -10,11 +11,12 @@ $ErrorActionPreference = 'Stop'
 
 function Show-Usage {
     @"
-Usage: build.ps1 [-Configuration <name>] [-Targets <host|android|ios> ...] [-All] [-SkipTests] [-SkipDotnet]
+Usage: build.ps1 [-Configuration <name>] [-Architecture <arch>] [-Targets <host|android|ios> ...] [-All] [-SkipTests] [-SkipDotnet]
 
 Examples:
   pwsh build/build.ps1
   pwsh build/build.ps1 -Configuration Debug -Targets host,android
+  pwsh build/build.ps1 -Architecture arm64 -SkipDotnet -SkipTests
   pwsh build/build.ps1 -All -SkipTests
 "@
 }
@@ -64,6 +66,7 @@ New-Item -ItemType Directory -Path $artifacts -Force | Out-Null
 function Invoke-HostBuild {
     param(
         [string]$Configuration,
+        [string]$Architecture,
         [switch]$SkipTests,
         [switch]$SkipDotnet
     )
@@ -73,7 +76,40 @@ function Invoke-HostBuild {
     New-Item -ItemType Directory -Path $nativeArtifacts -Force | Out-Null
     New-Item -ItemType Directory -Path $nugetArtifacts -Force | Out-Null
 
-    cmake -S $rootDir -B $nativeBuild -G Ninja "-DCMAKE_BUILD_TYPE=$Configuration"
+    $runtimeInfo = [System.Runtime.InteropServices.RuntimeInformation]
+    $normalizedArchitecture = $null
+    if (-not [string]::IsNullOrWhiteSpace($Architecture)) {
+        $normalizedArchitecture = $Architecture.Trim().ToLowerInvariant()
+    }
+
+    $cmakeArgs = @('-S', $rootDir, '-B', $nativeBuild, "-DCMAKE_BUILD_TYPE=$Configuration")
+    $generatorSpecified = $false
+
+    if ($runtimeInfo::IsOSPlatform([System.Runtime.InteropServices.OSPlatform]::Windows) -and $normalizedArchitecture) {
+        switch ($normalizedArchitecture) {
+            'arm64' {
+                $cmakeArgs += @('-G', 'Visual Studio 17 2022', '-A', 'ARM64')
+                $generatorSpecified = $true
+            }
+            'x64' {
+                $cmakeArgs += @('-G', 'Visual Studio 17 2022', '-A', 'x64')
+                $generatorSpecified = $true
+            }
+            'x86' {
+                $cmakeArgs += @('-G', 'Visual Studio 17 2022', '-A', 'Win32')
+                $generatorSpecified = $true
+            }
+            default {
+                throw "Unsupported Architecture '$Architecture' on Windows host. Supported values: x64, x86, arm64."
+            }
+        }
+    }
+
+    if (-not $generatorSpecified) {
+        $cmakeArgs += @('-G', 'Ninja')
+    }
+
+    cmake @cmakeArgs
     cmake --build $nativeBuild --config $Configuration
 
     if ($SkipTests) {
@@ -83,7 +119,6 @@ function Invoke-HostBuild {
         ctest --test-dir $nativeBuild --output-on-failure
     }
 
-    $runtimeInfo = [System.Runtime.InteropServices.RuntimeInformation]
     $osMoniker = $null
     $libPattern = $null
 
@@ -103,13 +138,24 @@ function Invoke-HostBuild {
         throw "Unsupported host platform: $([System.Runtime.InteropServices.RuntimeInformation]::OSDescription)"
     }
 
-    $processArch = [System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture
-    switch ($processArch) {
-        ([System.Runtime.InteropServices.Architecture]::X64) { $archRid = 'x64' }
-        ([System.Runtime.InteropServices.Architecture]::Arm64) { $archRid = 'arm64' }
-        ([System.Runtime.InteropServices.Architecture]::Arm) { $archRid = 'arm' }
-        ([System.Runtime.InteropServices.Architecture]::X86) { $archRid = 'x86' }
-        default { $archRid = $processArch.ToString().ToLowerInvariant() }
+    if ($normalizedArchitecture) {
+        switch ($normalizedArchitecture) {
+            'x64' { $archRid = 'x64' }
+            'arm64' { $archRid = 'arm64' }
+            'arm' { $archRid = 'arm' }
+            'x86' { $archRid = 'x86' }
+            default { $archRid = $normalizedArchitecture }
+        }
+    }
+    else {
+        $processArch = [System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture
+        switch ($processArch) {
+            ([System.Runtime.InteropServices.Architecture]::X64) { $archRid = 'x64' }
+            ([System.Runtime.InteropServices.Architecture]::Arm64) { $archRid = 'arm64' }
+            ([System.Runtime.InteropServices.Architecture]::Arm) { $archRid = 'arm' }
+            ([System.Runtime.InteropServices.Architecture]::X86) { $archRid = 'x86' }
+            default { $archRid = $processArch.ToString().ToLowerInvariant() }
+        }
     }
 
     $rid = "$osMoniker-$archRid"
@@ -395,7 +441,7 @@ function Invoke-IosPackaging {
 foreach ($target in $targetOrder) {
     switch ($target) {
         'host' {
-            Invoke-HostBuild -Configuration $Configuration -SkipTests:$SkipTests -SkipDotnet:$SkipDotnet
+            Invoke-HostBuild -Configuration $Configuration -Architecture $Architecture -SkipTests:$SkipTests -SkipDotnet:$SkipDotnet
         }
         'android' {
             Invoke-AndroidPackaging
