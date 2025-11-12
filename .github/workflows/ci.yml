@@ -245,6 +245,24 @@ jobs:
           name: native-windows
           path: artifacts/native/windows
 
+      - name: Download iOS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ios-xcframework
+          path: artifacts/ios
+
+      - name: Download Android artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: android-aar
+          path: artifacts/android
+
+      - name: Download Web artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-package
+          path: artifacts/web
+
       - name: Prepare native runtime artifacts
         run: |
           set -euo pipefail
@@ -288,6 +306,14 @@ jobs:
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
 
+      - name: Sync mobile and browser runtimes
+        run: |
+          ./build/scripts/sync-mobile-runtimes.sh \
+            --android artifacts/android \
+            --ios artifacts/ios \
+            --web artifacts/web
+        shell: bash
+
       - name: Pack NuGet artifacts
         run: |
           mkdir -p artifacts/nuget
@@ -296,29 +322,12 @@ jobs:
       - name: Verify NuGet runtimes
         run: |
           package=$(ls artifacts/nuget/NativeMessageBox*.nupkg | head -n 1)
-          ./build/scripts/verify-nuget-runtimes.sh --package "${package}" --rids "${LINUX_RID},${MACOS_RID},${WINDOWS_RID}"
+          ./build/scripts/verify-nuget-runtimes.sh --package "${package}" --rids "${REQUIRED_RIDS}"
         env:
           LINUX_RID: ${{ needs.native-linux.outputs.rid }}
           MACOS_RID: ${{ needs.native-macos.outputs.rid }}
           WINDOWS_RID: ${{ needs.native-windows.outputs.rid }}
-
-      - name: Download iOS artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ios-xcframework
-          path: artifacts/ios
-
-      - name: Download Android artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: android-aar
-          path: artifacts/android
-
-      - name: Download Web artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: wasm-package
-          path: artifacts/web
+          REQUIRED_RIDS: ${{ format('{0},{1},{2},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-macos.outputs.rid, needs.native-windows.outputs.rid) }}
 
       - name: Archive mobile artifacts
         run: |

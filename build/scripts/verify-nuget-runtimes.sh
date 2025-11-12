@@ -62,6 +62,11 @@ lib_name_for_rid() {
     linux) echo "libnativemessagebox.so" ;;
     osx) echo "libnativemessagebox.dylib" ;;
     win) echo "nativemessagebox.dll" ;;
+    android) echo "libnativemessagebox.so" ;;
+    ios) echo "libnativemessagebox.dylib" ;;
+    iossimulator) echo "libnativemessagebox.dylib" ;;
+    maccatalyst) echo "libnativemessagebox.dylib" ;;
+    browser) echo "libnative_message_box.wasm" ;;
     *)
       echo ""
       ;;
