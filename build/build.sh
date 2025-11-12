@@ -36,6 +36,11 @@ RUN_TESTS=true
 RUN_DOTNET=true
 declare -a REQUESTED_TARGETS=()
 
+TARGET_HOST=false
+TARGET_IOS=false
+TARGET_ANDROID=false
+TARGET_WASM=false
+
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --config|-c)
@@ -90,14 +95,22 @@ while [[ $# -gt 0 ]]; do
   shift || true
 done
 
-declare -A TARGETS=()
 if (( ${#REQUESTED_TARGETS[@]} == 0 )); then
-  TARGETS["host"]=1
+  TARGET_HOST=true
 else
   for target in "${REQUESTED_TARGETS[@]}"; do
     case "${target}" in
-      host|ios|android|wasm)
-        TARGETS["${target}"]=1
+      host)
+        TARGET_HOST=true
+        ;;
+      ios)
+        TARGET_IOS=true
+        ;;
+      android)
+        TARGET_ANDROID=true
+        ;;
+      wasm)
+        TARGET_WASM=true
         ;;
       "" )
         ;;
@@ -236,19 +249,19 @@ package_ios() {
   CONFIGURATION="${CONFIG}" "${SCRIPT_DIR}/scripts/package-ios-xcframework.sh"
 }
 
-if [[ -n "${TARGETS[host]+set}" ]]; then
+if [[ "${TARGET_HOST}" == "true" ]]; then
   build_host
 fi
 
-if [[ -n "${TARGETS[android]+set}" ]]; then
+if [[ "${TARGET_ANDROID}" == "true" ]]; then
   package_android
 fi
 
-if [[ -n "${TARGETS[wasm]+set}" ]]; then
+if [[ "${TARGET_WASM}" == "true" ]]; then
   package_wasm
 fi
 
-if [[ -n "${TARGETS[ios]+set}" ]]; then
+if [[ "${TARGET_IOS}" == "true" ]]; then
   package_ios
 fi
 
