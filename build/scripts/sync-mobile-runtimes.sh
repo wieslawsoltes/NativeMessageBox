@@ -128,7 +128,7 @@ sync_ios() {
   fi
 
   local framework_dir="${source_dir}"
-  if [[ ! -d "${framework_dir}/Info.plist" ]]; then
+  if [[ ! -f "${framework_dir}/Info.plist" ]]; then
     if [[ -d "${framework_dir}/NativeMessageBox.xcframework" ]]; then
       framework_dir="${framework_dir}/NativeMessageBox.xcframework"
     else
@@ -140,7 +140,7 @@ sync_ios() {
     fi
   fi
 
-  if [[ ! -d "${framework_dir}/Info.plist" ]]; then
+  if [[ ! -f "${framework_dir}/Info.plist" ]]; then
     echo "Unable to locate NativeMessageBox.xcframework under ${source_dir}; skipping." >&2
     return
   fi
@@ -181,7 +181,11 @@ PY
     return
   fi
 
-  mapfile -t entries <<< "${python_output}"
+  local entries=()
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    entries+=("${line}")
+  done <<< "${python_output}"
 
   if (( ${#entries[@]} == 0 )); then
     echo "No entries found in ${info_plist}; skipping iOS runtime sync." >&2
@@ -223,7 +227,7 @@ PY
     if (( ${#normalized_arches[@]} )); then
       local base="${prefix}"
       local already_synced=false
-      for existing in "${synced_prefixes[@]}"; do
+      for existing in ${synced_prefixes[@]+"${synced_prefixes[@]}"}; do
         if [[ "${existing}" == "${base}" ]]; then
           already_synced=true
           break
