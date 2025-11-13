@@ -362,12 +362,54 @@ jobs:
           WINDOWS_ARM64_RID: ${{ needs.native-windows-arm64.outputs.rid }}
           REQUIRED_RIDS: ${{ format('{0},{1},{2},{3},{4},{5},android-arm,android-arm64,android-x64,ios,ios-arm64,iossimulator,iossimulator-arm64,iossimulator-x64,browser-wasm', needs.native-linux.outputs.rid, needs.native-linux-arm64.outputs.rid, needs.native-macos.outputs.rid, needs.native-macos-x64.outputs.rid, needs.native-windows.outputs.rid, needs.native-windows-arm64.outputs.rid) }}
 
-      - name: Archive mobile artifacts
+      - name: Archive native packaged artifacts
+        shell: bash
         run: |
+          set -euo pipefail
+          shopt -s nullglob
+          mkdir -p artifacts/native-archives
+          copied=false
+          for archive in artifacts/native/*/*.zip; do
+            cp "${archive}" artifacts/native-archives/
+            copied=true
+          done
+          if [[ "${copied}" != "true" ]]; then
+            echo "No native archives found under artifacts/native" >&2
+            exit 1
+          fi
+
+      - name: Archive mobile artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
           cd artifacts
-          if [ -d ios ]; then zip -r native-ios.zip ios; fi
-          if [ -d android ]; then zip -r native-android.zip android; fi
-          if [ -d web ]; then zip -r native-web.zip web; fi
+          mkdir -p mobile-archives
+          if [ -d ios ]; then
+            rm -f mobile-archives/native-ios.zip
+            zip -q -r mobile-archives/native-ios.zip ios
+          fi
+          if [ -d android ]; then
+            rm -f mobile-archives/native-android.zip
+            zip -q -r mobile-archives/native-android.zip android
+          fi
+          if [ -d web ]; then
+            rm -f mobile-archives/native-web.zip
+            zip -q -r mobile-archives/native-web.zip web
+          fi
+
+      - name: Upload native release archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-artifacts
+          path: artifacts/native-archives/native-*.zip
+          if-no-files-found: error
+
+      - name: Upload mobile release archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-artifacts
+          path: artifacts/mobile-archives/native-*.zip
+          if-no-files-found: error
 
       - name: Publish NuGet artifacts
         uses: actions/upload-artifact@v4
