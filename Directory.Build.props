@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="Versioning">
     <VersionPrefix Condition="'$(VersionPrefix)' == ''">0.1.0</VersionPrefix>
-    <VersionSuffix Condition="'$(VersionSuffix)' == ''">alpha.2</VersionSuffix>
+    <VersionSuffix Condition="'$(VersionSuffix)' == ''">alpha.3</VersionSuffix>
   </PropertyGroup>
 </Project>
