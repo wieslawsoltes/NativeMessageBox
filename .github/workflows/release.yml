@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   native-linux:
     uses: ./.github/workflows/native-build.yml
