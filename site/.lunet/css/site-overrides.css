@@ -1,0 +1,324 @@
+/* NativeMessageBox brand polish on top of Lunet template defaults. */
+
+:root {
+  --nmb-accent: #117a8b;
+  --nmb-accent-strong: #0b5561;
+  --nmb-accent-soft: #e6f6f8;
+  --nmb-highlight: #35b5c6;
+  --nmb-card-radius: 14px;
+  --nmb-shadow-soft: 0 10px 30px rgba(8, 23, 28, 0.08);
+  --nmb-shadow-strong: 0 14px 34px rgba(8, 23, 28, 0.16);
+}
+
+:root[data-bs-theme="dark"] {
+  --nmb-accent: #35b5c6;
+  --nmb-accent-strong: #83d7e3;
+  --nmb-accent-soft: rgba(17, 122, 139, 0.18);
+  --nmb-highlight: #9fe3ed;
+  --nmb-shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+  --nmb-shadow-strong: 0 16px 38px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  min-height: 100vh;
+  background-image: radial-gradient(circle at top right, color-mix(in srgb, var(--nmb-accent) 11%, transparent), transparent 42%);
+}
+
+#lunet {
+  max-width: 1460px;
+}
+
+#lunet .lunet-logo {
+  width: auto;
+  height: 74px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+#lunet .navbar {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--bs-border-color) 82%, transparent);
+  backdrop-filter: saturate(125%) blur(6px);
+}
+
+#lunet .navbar .nav-link {
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+#lunet .navbar .nav-link:hover {
+  background: color-mix(in srgb, var(--nmb-accent) 14%, transparent);
+}
+
+#lunet li.nav-item.active {
+  border-bottom: none;
+}
+
+#lunet li.nav-item.active > .nav-item-row > .nav-link {
+  color: var(--nmb-accent-strong);
+  background: color-mix(in srgb, var(--nmb-accent) 16%, transparent);
+}
+
+#lunet .navbar .lunet-search .input-group {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bs-border-color) 75%, transparent);
+  border-radius: 0.7rem;
+}
+
+#lunet .lunet-theme-toggle {
+  border-radius: 0.7rem;
+}
+
+#lunet .navbar-right .btn-info,
+#lunet .navbar-right .btn-outline-info {
+  border-radius: 0.7rem;
+}
+
+#lunet .navbar-right .btn-info {
+  border-color: color-mix(in srgb, var(--nmb-accent) 45%, var(--bs-border-color));
+  background: color-mix(in srgb, var(--nmb-accent) 28%, transparent);
+  color: var(--bs-body-color);
+}
+
+#lunet .navbar-right .btn-info:hover {
+  background: color-mix(in srgb, var(--nmb-accent) 40%, transparent);
+}
+
+#lunet .navbar-right .btn-outline-info {
+  border-color: color-mix(in srgb, var(--nmb-accent) 38%, var(--bs-border-color));
+  color: var(--nmb-accent-strong);
+}
+
+#lunet .menu,
+#lunet .breadcrumb {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+#lunet .menu .menu {
+  margin-top: 0.35rem;
+  margin-left: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid color-mix(in srgb, var(--bs-border-color) 75%, transparent);
+}
+
+#lunet .menu-item {
+  margin: 0.1rem 0;
+}
+
+#lunet .menu-link,
+#lunet .breadcrumb-link {
+  text-decoration: none;
+}
+
+#lunet .menu-link:hover,
+#lunet .breadcrumb-link:hover {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+#lunet .menu-item.active > .menu-item-row > .menu-link {
+  font-weight: 600;
+  color: var(--nmb-accent-strong);
+}
+
+#docs-sidebar-menu.menu-sidebar,
+#docs-sidebar-toc.menu-sidebar {
+  max-height: calc(100vh - 6.25rem);
+  overflow: auto;
+  padding-bottom: 1rem;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 80%, transparent);
+  border-radius: var(--nmb-card-radius);
+  box-shadow: var(--nmb-shadow-soft);
+}
+
+#docs-sidebar-menu .offcanvas-body,
+#docs-sidebar-toc {
+  background: color-mix(in srgb, var(--bs-body-bg) 92%, var(--nmb-accent-soft));
+}
+
+#docs-sidebar-toc .js-toc {
+  font-size: 0.92rem;
+}
+
+#docs-sidebar-toc .toc-list {
+  margin: 0;
+  padding-left: 0.85rem;
+  list-style: none;
+}
+
+#docs-sidebar-toc .toc-link {
+  text-decoration: none;
+  color: var(--bs-body-color);
+}
+
+#docs-sidebar-toc .is-active-link {
+  font-weight: 700;
+  color: var(--nmb-accent-strong);
+}
+
+#lunet .lunet-articles .js-toc-content,
+#lunet .lunet-api .js-toc-content {
+  background: color-mix(in srgb, var(--bs-body-bg) 94%, var(--nmb-accent-soft));
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 80%, transparent);
+  border-radius: var(--nmb-card-radius);
+  padding: 1.25rem 1.3rem 1.4rem;
+  box-shadow: var(--nmb-shadow-soft);
+}
+
+#lunet h1 {
+  letter-spacing: -0.02em;
+}
+
+#lunet h2 {
+  margin-top: 1.6rem;
+}
+
+#lunet h1,
+#lunet h2,
+#lunet h3 {
+  scroll-margin-top: 7rem;
+}
+
+#lunet blockquote {
+  border-radius: 0.6rem;
+  border-left-width: 4px;
+}
+
+#lunet pre[class*="language-"] {
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 80%, transparent);
+  border-radius: 0.8rem;
+}
+
+#lunet :focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--nmb-highlight) 70%, white);
+  outline-offset: 2px;
+}
+
+.lunet-home .container {
+  max-width: 1120px;
+}
+
+.nmb-hero {
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 80%, transparent);
+  border-radius: 18px;
+  padding: clamp(1.4rem, 2vw, 2rem);
+  background-image: linear-gradient(140deg, color-mix(in srgb, var(--nmb-accent) 20%, transparent), transparent 42%);
+  box-shadow: var(--nmb-shadow-strong);
+}
+
+.nmb-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nmb-accent-strong);
+}
+
+.nmb-hero .lead {
+  max-width: 70ch;
+}
+
+.nmb-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.nmb-hero-actions .btn-primary {
+  background: var(--nmb-accent);
+  border-color: var(--nmb-accent);
+}
+
+.nmb-hero-actions .btn-primary:hover {
+  background: var(--nmb-accent-strong);
+  border-color: var(--nmb-accent-strong);
+}
+
+.nmb-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.7rem;
+}
+
+.nmb-link-grid--wide {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.nmb-link-card {
+  display: block;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 80%, transparent);
+  border-radius: 12px;
+  padding: 0.78rem 0.9rem;
+  text-decoration: none;
+  color: inherit;
+  background: color-mix(in srgb, var(--bs-body-bg) 92%, var(--nmb-accent-soft));
+  box-shadow: var(--nmb-shadow-soft);
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.nmb-link-card:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--nmb-accent) 45%, var(--bs-border-color));
+  box-shadow: var(--nmb-shadow-strong);
+}
+
+.nmb-link-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--nmb-accent-strong);
+}
+
+.nmb-link-card p {
+  margin: 0.42rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  opacity: 0.92;
+}
+
+#lunet .api-dotnet .list-group-item code {
+  word-break: break-word;
+}
+
+#lunet .api-dotnet .api-dotnet-member-item {
+  border-radius: 0.6rem;
+}
+
+#lunet .api-dotnet .api-dotnet-definition,
+#lunet .api-dotnet .api-dotnet-parameter,
+#lunet .api-dotnet .api-dotnet-member-filter {
+  border-color: color-mix(in srgb, var(--nmb-accent) 24%, var(--bs-border-color));
+}
+
+@media (max-width: 992px) {
+  #lunet .lunet-logo {
+    height: 64px;
+  }
+
+  #lunet .lunet-articles .js-toc-content,
+  #lunet .lunet-api .js-toc-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #lunet .navbar {
+    margin-bottom: 0.75rem;
+  }
+
+  .nmb-hero {
+    padding: 1.1rem;
+  }
+
+  .nmb-link-grid,
+  .nmb-link-grid--wide {
+    grid-template-columns: 1fr;
+  }
+}

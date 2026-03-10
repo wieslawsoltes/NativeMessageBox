@@ -1,0 +1,4 @@
+articles:
+  - {path: architecture-and-flow.md, title: "Architecture and Flow"}
+  - {path: dialog-options-and-results.md, title: "Dialog Options and Results"}
+  - {path: platform-capabilities.md, title: "Platform Capabilities"}

@@ -46,3 +46,11 @@ Testing/
 
 # Generated bridge copy
 samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser/wwwroot/native-message-box.js
+
+# Documentation output
+/site/.lunet/build/
+/docs/docfx/_site/
+/.tmp-lunet-sample-articles
+/.tmp-lunet-sample-lite
+/.tmp-lunet-sample
+/.tmp-lunet-sample-clear

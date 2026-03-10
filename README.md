@@ -215,8 +215,10 @@ int main(void)
 - Mobile samples consume the generated AAR/XCFramework to illustrate lifecycle integration. Build the solution via `dotnet build samples/AvaloniaSamples.sln`.
 
 ## Documentation
-- Run `docs/build-docs.sh` to generate the DocFX site under `docs/docfx/_site`.  
-- Key entry points: `docs/quickstart.md`, `docs/managed-api.md`, `docs/advanced-usage.md`, `docs/architecture.md`, `docs/android-packaging.md`, `docs/ios-packaging.md`, and `docs/browser-deployment.md`.
+- Run `./build-docs.sh` to generate the Lunet site under `site/.lunet/build/www`.  
+- Run `./serve-docs.sh` for a local watcher + static server loop during doc authoring.
+- Published site: `https://wieslawsoltes.github.io/NativeMessageBox/`
+- Key entry points: `site/articles/getting-started/quickstart-dotnet.md`, `site/articles/concepts/architecture-and-flow.md`, `site/articles/guides/building-and-packaging.md`, `site/articles/platforms/mobile-platforms.md`, and the generated API output under `site/.lunet/build/www/api/`.
 
 ## Contributing
 - Review `CONTRIBUTING.md`, `MAINTENANCE.md`, and `SECURITY.md`.  
