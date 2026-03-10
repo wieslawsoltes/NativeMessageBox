@@ -1,0 +1,4 @@
+articles:
+  - {path: desktop-platforms.md, title: "Desktop Platforms"}
+  - {path: mobile-platforms.md, title: "Mobile Platforms"}
+  - {path: browser-platform.md, title: "Browser Platform"}
