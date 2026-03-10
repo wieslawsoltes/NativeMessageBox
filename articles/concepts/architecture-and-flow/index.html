@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html data-lunet-theme-mode="system" data-lunet-theme-storage-key="lunet-theme" data-lunet-css-prefix="lunet" lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="lunet 1.0.10.0">
+    <script>(function(){const root=document.documentElement;const key=root.getAttribute("data-lunet-theme-storage-key")||"lunet-theme";const fallback=root.getAttribute("data-lunet-theme-mode")||"system";let stored=null;try{stored=localStorage.getItem(key);}catch(_){stored=null;}const mode=(stored==="light"||stored==="dark"||stored==="system")?stored:fallback;const prefersDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;const resolved=mode==="system"?(prefersDark?"dark":"light"):mode;root.setAttribute("data-lunet-theme-mode",mode);root.setAttribute("data-bs-theme",resolved);}());</script>
+    <link rel='icon' href='/NativeMessageBox/favicon.ico' sizes='32x32'>
+    <title>Architecture and Request Flow | NativeMessageBox</title>
+    <link rel="stylesheet" href="/NativeMessageBox/css/lite.css">
+    <script src="/NativeMessageBox/js/lite-defer.js" defer></script>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@wieslawsoltes">
+<meta name="twitter:title" content="Architecture and Request Flow | NativeMessageBox">
+<meta name="twitter:description" content="Architecture and Request Flow NativeMessageBox is split into a small set of clear layers so platform behavior stays isolated while the public API stays stable. Main Components Component Role Native runtime (src/native) Implements per-platform dialogs for Windows, macOS, Linux, iOS, Android, and browser Shared runtime helpers (src/shared) Holds ABI helpers, allocator support, and runtime utility code Managed wrapper (src/dotnet/NativeMessageBox) Exposes typed .NET API, marshaling, host abstraction, and diagnostics...">
+<meta name="twitter:image" content="https://wieslawsoltes.github.io/NativeMessageBox/images/logo.svg">
+<meta name="twitter:image:alt" content="Architecture and Request Flow | NativeMessageBox">
+<meta property="og:title" content="Architecture and Request Flow | NativeMessageBox">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wieslawsoltes.github.io/NativeMessageBox">
+<meta property="og:description" content="Architecture and Request Flow NativeMessageBox is split into a small set of clear layers so platform behavior stays isolated while the public API stays stable. Main Components Component Role Native runtime (src/native) Implements per-platform dialogs for Windows, macOS, Linux, iOS, Android, and browser Shared runtime helpers (src/shared) Holds ABI helpers, allocator support, and runtime utility code Managed wrapper (src/dotnet/NativeMessageBox) Exposes typed .NET API, marshaling, host abstraction, and diagnostics...">
+<meta property="og:image" content="https://wieslawsoltes.github.io/NativeMessageBox/images/logo.svg">
+<meta property="og:image:alt" content="Architecture and Request Flow | NativeMessageBox">
+  </head>
+  <body>
+
+    <div id="lunet" class="container">
+      <nav class="navbar navbar-expand-md sticky-top">
+        <a class="navbar-brand" href="/NativeMessageBox/">
+          <img class="lunet-logo" src="/NativeMessageBox/images/logo.svg" alt="NativeMessageBox" width="96" height="96">
+          <span class="visually-hidden">Home</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-between">
+<ol id='nav-id-home-0' class='navbar-nav nav-level0 show '>
+  <li id='nav-item-home-1' class='nav-item '>
+    <span class='nav-item-row'><a href='/NativeMessageBox/' class='nav-link  '><i class='bi bi-house-door' aria-hidden='true'></i> Home</a></span>  </li>
+  <li id='nav-item-home-2' class='nav-item  active'>
+    <span class='nav-item-row'><a href='/NativeMessageBox/articles/' class='nav-link  '><i class='bi bi-book' aria-hidden='true'></i> Docs</a></span>  </li>
+  <li id='nav-item-home-3' class='nav-item '>
+    <span class='nav-item-row'><a href='/NativeMessageBox/api/' class='nav-link  '><i class='bi bi-braces' aria-hidden='true'></i> API</a></span>  </li>
+</ol>
+          <ol class="navbar-nav flex-grow-1" style="padding-right: 0.5rem;">
+            <li class="nav-item w-100">
+                <div class="lunet-search dropdown w-100">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="search-input" type="search" class="form-control" placeholder="Search... (Alt+s)" aria-label="Search" aria-controls="search-results" data-bs-toggle="dropdown" data-bs-auto-close="outside" data-search-empty-message="Enter words to search..." data-search-no-results-message="No results found.">
+                    <ul id="search-results" class="dropdown-menu w-100 p-0" style="max-height: 50vh;" role="listbox" aria-labelledby="search-input"></ul>
+                  </div>
+                </div>
+            </li>
+          </ol>
+          <div class="d-flex align-items-center gap-2 flex-shrink-0 navbar-right">
+            <div class="dropdown">
+              <button
+                id="theme-mode-toggle"
+                class="btn btn-outline-secondary btn-sm lunet-theme-toggle dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Theme">
+                <i class="bi bi-circle-half" data-lunet-theme-toggle-icon aria-hidden="true"></i>
+                <span
+                  data-lunet-theme-toggle-label
+                  data-theme-system-label="System"
+                  data-theme-light-label="Light"
+                  data-theme-dark-label="Dark">Theme</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="theme-mode-toggle">
+                <li><button class="dropdown-item" type="button" data-lunet-theme-choice="system"><i class="bi bi-circle-half me-2"></i>System</button></li>
+                <li><button class="dropdown-item" type="button" data-lunet-theme-choice="light"><i class="bi bi-sun-fill me-2"></i>Light</button></li>
+                <li><button class="dropdown-item" type="button" data-lunet-theme-choice="dark"><i class="bi bi-moon-stars-fill me-2"></i>Dark</button></li>
+              </ul>
+            </div>
+<ol id='nav-id-home2-0' class='navbar-nav nav-level0 show flex-shrink-0'>
+  <li id='nav-item-home2-1' class='nav-item '>
+    <span class='nav-item-row'><a href='https://github.com/wieslawsoltes/NativeMessageBox' class='nav-link  btn btn-info'><i class="bi bi-github"></i> GitHub</a></span>  </li>
+  <li id='nav-item-home2-2' class='nav-item '>
+    <span class='nav-item-row'><a href='https://www.nuget.org/packages/NativeMessageBox/' class='nav-link  btn btn-outline-info'><i class="bi bi-box-seam"></i> NuGet</a></span>  </li>
+</ol>
+          </div>
+        </div>
+      </nav>
+      <div class="lunet lunet-articles">
+        <section data-prismjs-copy="" data-prismjs-copy-success="" data-prismjs-copy-timeout="1200" data-copy-tooltip="Copy to Clipboard." data-copy-tooltip-success="Copied!" data-copy-tooltip-error="Failed to copy!">
+
+<div class="container-xxl">
+  <div class="row">
+      <!-- Left sidebar - responsive offcanvas (offcanvas on mobile, visible sidebar on md+) -->
+      <nav id="docs-sidebar-menu" class="col-md-3 col-lg-3 col-xl-3 col-xxl-2 offcanvas-md offcanvas-start sticky-md-top menu-sidebar align-self-start order-1 order-md-0" tabindex="-1" aria-labelledby="docs-sidebar-menu-label" aria-expanded="true">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="docs-sidebar-menu-label">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#docs-sidebar-menu" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ol id='menu-id-articles-0' class='menu menu-level0 show '>
+            <li id='menu-item-articles-1' class='menu-item  active'>
+              <span class='menu-item-row'><a href='/NativeMessageBox/articles/concepts/architecture-and-flow/' class='menu-link  '>Architecture and Flow</a></span>  </li>
+            <li id='menu-item-articles-2' class='menu-item '>
+              <span class='menu-item-row'><a href='/NativeMessageBox/articles/concepts/dialog-options-and-results/' class='menu-link  '>Dialog Options and Results</a></span>  </li>
+            <li id='menu-item-articles-3' class='menu-item '>
+              <span class='menu-item-row'><a href='/NativeMessageBox/articles/concepts/platform-capabilities/' class='menu-link  '>Platform Capabilities</a></span>  </li>
+          </ol>
+
+        </div>
+      </nav>
+      <!-- Right sidebar (TOC) - collapsible on mobile, visible sidebar on xxl+ -->
+      <aside id="docs-sidebar-toc" class="col-12 col-xxl-2 sticky-xxl-top menu-sidebar align-self-start order-0 order-xxl-2 collapse d-xxl-block" aria-expanded="true">
+        <h3 class="toc-title">On this page</h3>
+        <nav class="js-toc"></nav>
+      </aside>
+      <!-- Main content column -->
+      <div class="col-12 col-md-9 col-lg-9 col-xl-9 col-xxl-8 order-2 order-md-1 js-toc-content">
+        <ol class='breadcrumb'>
+          <li class='breadcrumb-item '>
+            <a href='/NativeMessageBox/' class='breadcrumb-link  '><i class='bi bi-house-door' aria-hidden='true'></i> Home</a>  </li>
+          <li class='breadcrumb-item '>
+            <a href='/NativeMessageBox/articles/' class='breadcrumb-link  '><i class='bi bi-book' aria-hidden='true'></i> Docs</a>  </li>
+          <li class='breadcrumb-item '>
+            <a href='/NativeMessageBox/articles/concepts/' class='breadcrumb-link  '>Concepts</a>  </li>
+          <li class='breadcrumb-item  active'>
+            Architecture and Flow  </li>
+        </ol>
+
+        <p id="lunet-results"></p>
+        <!-- Toggle buttons visible only on small screens -->
+        <div class="d-md-none mb-3">
+          <button
+            class="btn btn-outline-secondary btn-sm me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#docs-sidebar-menu"
+            aria-controls="docs-sidebar-menu"
+            aria-label="Toggle docs menu">
+            Menu
+          </button>
+          <button
+            class="btn btn-outline-secondary btn-sm d-xxl-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#docs-sidebar-toc"
+            aria-controls="docs-sidebar-toc"
+            aria-expanded="false"
+            aria-label="Toggle Table Of Contents">
+            On this page
+          </button>
+        </div>
+<!-- lunet:summarize -->
+<h1 id="architecture-and-request-flow">Architecture and Request Flow</h1>
+<p>NativeMessageBox is split into a small set of clear layers so platform behavior stays isolated while the public API stays stable.</p>
+<h2 id="main-components">Main Components</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Native runtime (<code>src/native</code>)</td>
+<td>Implements per-platform dialogs for Windows, macOS, Linux, iOS, Android, and browser</td>
+</tr>
+<tr>
+<td>Shared runtime helpers (<code>src/shared</code>)</td>
+<td>Holds ABI helpers, allocator support, and runtime utility code</td>
+</tr>
+<tr>
+<td>Managed wrapper (<code>src/dotnet/NativeMessageBox</code>)</td>
+<td>Exposes typed .NET API, marshaling, host abstraction, and diagnostics</td>
+</tr>
+<tr>
+<td>Samples and tests</td>
+<td>Exercise packaging, platform integration, and high-level usage</td>
+</tr>
+</tbody>
+</table>
+<h2 id="flow">Flow</h2>
+<pre class="mermaid">flowchart LR
+    A["App code"] --> B["NativeMessageBoxClient / C ABI"]
+    B --> C["Host configuration and validation"]
+    C --> D["Marshaling into native structs"]
+    D --> E["Platform implementation"]
+    E --> F["Native result + logs"]
+    F --> G["MessageBoxResult / result codes"]
+</pre>
+<h2 id="managed-request-path">Managed Request Path</h2>
+<ol>
+<li>Application code creates <a href="/NativeMessageBox/api/NativeMessageBox.MessageBoxOptions/" title="MessageBoxOptions">MessageBoxOptions</a>.</li>
+<li><a href="/NativeMessageBox/api/NativeMessageBox.NativeMessageBoxClient/" title="NativeMessageBoxClient">NativeMessageBoxClient</a> resolves the current host.</li>
+<li>The host validates runtime requirements such as STA or Android activity access.</li>
+<li>Managed options are marshaled into the C ABI surface.</li>
+<li>The native implementation presents a platform dialog.</li>
+<li>The result is mapped back into <a href="/NativeMessageBox/api/NativeMessageBox.MessageBoxResult/" title="MessageBoxResult">MessageBoxResult</a>.</li>
+</ol>
+<h2 id="extensibility-points">Extensibility Points</h2>
+<ul>
+<li><a href="/NativeMessageBox/api/NativeMessageBox.INativeMessageBoxHost/" title="INativeMessageBoxHost">INativeMessageBoxHost</a> allows a custom host strategy.</li>
+<li><a href="/NativeMessageBox/api/NativeMessageBox.NativeMessageBoxHostOptions/" title="NativeMessageBoxHostOptions">NativeMessageBoxHostOptions</a> controls default runtime host behavior.</li>
+<li>The C ABI uses version and struct-size fields so additive changes stay forward-compatible.</li>
+</ul>
+<h2 id="why-this-shape-matters">Why This Shape Matters</h2>
+<p>The separation keeps the API stable while still letting the project support platform-specific features such as:</p>
+<ul>
+<li>Windows Task Dialog fallbacks</li>
+<li>macOS accessory views</li>
+<li>GTK or zenity behavior on Linux</li>
+<li>Android activity-bound presentation</li>
+<li>Browser-hosted custom overlays</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="/NativeMessageBox/articles/concepts/dialog-options-and-results">Dialog Options and Results</a></li>
+<li><a href="/NativeMessageBox/articles/advanced/threading-and-hosts">Threading and Host Customization</a></li>
+</ul>
+
+      </div>
+  </div>
+</div>
+
+        </section>
+        <footer>
+          <hr>
+          <p>Copyright &copy; 2026, Wieslaw Soltes aka <a href="https://github.com/wieslawsoltes">wieslawsoltes</a> - Content licensed under the Creative Commons <a href="http://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a> | Site generated by <a href="https://github.com/lunet-io/lunet">lunet</a> hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

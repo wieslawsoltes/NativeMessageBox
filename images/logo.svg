@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">NativeMessageBox logo</title>
+  <desc id="desc">A stylized native dialog window with a chat bubble.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#117a8b"/>
+      <stop offset="100%" stop-color="#35b5c6"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#d8f1f5" stop-opacity="0.98"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="url(#bg)"/>
+  <rect x="24" y="26" width="80" height="58" rx="12" fill="url(#panel)"/>
+  <rect x="24" y="26" width="80" height="14" rx="12" fill="#0b5561" opacity="0.94"/>
+  <circle cx="35" cy="33" r="2.5" fill="#d8f1f5"/>
+  <circle cx="43" cy="33" r="2.5" fill="#d8f1f5"/>
+  <circle cx="51" cy="33" r="2.5" fill="#d8f1f5"/>
+  <path d="M42 51h44a8 8 0 0 1 8 8v13a8 8 0 0 1-8 8H63l-10 10v-10H42a8 8 0 0 1-8-8V59a8 8 0 0 1 8-8Z" fill="#117a8b"/>
+  <circle cx="55" cy="66" r="3.5" fill="#ffffff"/>
+  <circle cx="68" cy="66" r="3.5" fill="#ffffff"/>
+  <circle cx="81" cy="66" r="3.5" fill="#ffffff"/>
+  <rect x="33" y="93" width="26" height="8" rx="4" fill="#d8f1f5" opacity="0.95"/>
+  <rect x="67" y="93" width="28" height="8" rx="4" fill="#0b5561" opacity="0.88"/>
+</svg>
