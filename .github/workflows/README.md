@@ -1,9 +1,8 @@
 # GitHub Actions Workflows
 
-Workflow files for continuous integration and delivery will be authored here. Planned pipelines include:
+This repository uses GitHub Actions for:
 
-- PR validation across Windows, macOS, and Linux.
-- Native artifact packaging per architecture.
-- Managed library build, test, and publish.
-- Documentation generation and deployment.
-
+- cross-platform native and managed validation in `ci.yml`
+- reusable native build orchestration in `native-build.yml`
+- Lunet documentation publishing in `docs.yml`
+- tagged release packaging in `release.yml`
