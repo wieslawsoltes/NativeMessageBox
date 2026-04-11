@@ -4,7 +4,7 @@ Thanks for your interest in contributing!
 
 ## Getting Started
 1. **Fork and clone** the repository.
-2. Install dependencies (CMake, Ninja, GTK, .NET 8 SDK).
+2. Install dependencies (CMake, Ninja, GTK, .NET 10 SDK, and a .NET 8 runtime/SDK for the current `net8.0` library and test targets).
 3. Run the setup build:
    ```bash
    ./build/build.sh
@@ -31,4 +31,3 @@ Use the issue templates in `.github/ISSUE_TEMPLATE`. Provide platform info, repr
 
 ## Communication
 Join discussions via GitHub issues or discussions (planned). Please be respectful and follow the Code of Conduct.
-

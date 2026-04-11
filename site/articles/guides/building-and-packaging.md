@@ -10,9 +10,9 @@ NativeMessageBox ships cross-platform build scripts for native libraries, manage
 
 | Host OS | Required toolchains |
 | --- | --- |
-| macOS | Xcode command-line tools, CMake 3.21+, Ninja, .NET 8 SDK |
-| Linux | GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 8 SDK |
-| Windows | Visual Studio C++ workload, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ |
+| macOS | Xcode command-line tools, CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets |
+| Linux | GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets |
+| Windows | Visual Studio C++ workload, CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets, PowerShell 7+ |
 
 Additional SDKs are needed only when you build optional targets such as Android, iOS, or browser WASM.
 

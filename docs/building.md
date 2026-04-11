@@ -6,9 +6,9 @@ NativeMessageBox ships cross-platform tooling that can build the native librarie
 
 | Host OS | Required Toolchains |
 | --- | --- |
-| macOS | Xcode command-line tools, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional for Android packaging), Emscripten SDK (optional for WebAssembly), JDK 8+ (for `javac`/`jar`) |
-| Linux | GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+ (optional), Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+ |
-| Windows | Visual Studio Build Tools (with C++ workload), CMake 3.21+, Ninja, .NET 8 SDK, PowerShell 7+, Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+ |
+| macOS | Xcode command-line tools, CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets, PowerShell 7+ (optional), Android SDK/NDK (optional for Android packaging), Emscripten SDK (optional for WebAssembly), JDK 8+ (for `javac`/`jar`) |
+| Linux | GCC/Clang toolchain, CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets, PowerShell 7+ (optional), Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+ |
+| Windows | Visual Studio Build Tools (with C++ workload), CMake 3.21+, Ninja, .NET 10 SDK, .NET 8 runtime/SDK for current `net8.0` test targets, PowerShell 7+, Android SDK/NDK (optional), Emscripten SDK (optional for WebAssembly), JDK 8+ |
 
 > ℹ️ iOS packaging requires macOS with the full Xcode toolchain. The Android packaging scripts expect the `ANDROID_SDK_ROOT`, `ANDROID_NDK_ROOT`, and `JAVA_HOME`/`PATH` variables to be configured.
 
