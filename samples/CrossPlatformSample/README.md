@@ -14,7 +14,7 @@ The shared project references the managed `NativeMessageBox` library. Each mobil
 
 ## Prerequisites
 
-- .NET 8 SDK (`8.0.x`).
+- .NET 10 SDK (`10.0.x`).
 - For iOS: Xcode + command-line tools.
 - For Android: Android SDK/NDK (matching the versions used by the packaging scripts). Ensure `ANDROID_SDK_ROOT` and `ANDROID_NDK_ROOT` are set when building locally.
 
@@ -34,11 +34,11 @@ dotnet run --project NativeMessageBox.CrossPlatformSample.Desktop
    ```
 2. Build the iOS head:
    ```bash
-   dotnet build NativeMessageBox.CrossPlatformSample.iOS -c Debug -f net8.0-ios
+   dotnet build NativeMessageBox.CrossPlatformSample.iOS -c Debug -f net10.0-ios
    ```
 3. Deploy to a simulator with:
    ```bash
-   dotnet publish NativeMessageBox.CrossPlatformSample.iOS -c Debug -f net8.0-ios /p:RunSimulator=true
+   dotnet publish NativeMessageBox.CrossPlatformSample.iOS -c Debug -f net10.0-ios /p:RunSimulator=true
    ```
 
 ### Android
@@ -51,8 +51,8 @@ dotnet run --project NativeMessageBox.CrossPlatformSample.Desktop
 
 2. Build and deploy:
    ```bash
-   dotnet build NativeMessageBox.CrossPlatformSample.Android -c Debug -f net8.0-android
-   dotnet publish NativeMessageBox.CrossPlatformSample.Android -c Debug -f net8.0-android /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT /p:AndroidNdkDirectory=$ANDROID_NDK_ROOT
+   dotnet build NativeMessageBox.CrossPlatformSample.Android -c Debug -f net10.0-android
+   dotnet publish NativeMessageBox.CrossPlatformSample.Android -c Debug -f net10.0-android /p:AndroidSdkDirectory=$ANDROID_SDK_ROOT /p:AndroidNdkDirectory=$ANDROID_NDK_ROOT
    ```
    Use `dotnet android install` or your preferred device manager to sideload the resulting APK.
 
