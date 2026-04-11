@@ -1,6 +1,5 @@
 using System;
 using Avalonia;
-using Avalonia.ReactiveUI;
 
 namespace DialogPlayground;
 
@@ -11,7 +10,6 @@ internal static class Program
 
     public static AppBuilder BuildAvaloniaApp()
         => AppBuilder.Configure<App>()
-            .UseReactiveUI()
             .UsePlatformDetect()
             .LogToTrace();
 }
