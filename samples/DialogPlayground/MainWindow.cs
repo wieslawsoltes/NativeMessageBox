@@ -40,12 +40,12 @@ public class MainWindow : Window
         var configurationPanel = new StackPanel { Spacing = 12 };
         container.Children.Add(configurationPanel);
 
-        _titleTextBox = new TextBox { Watermark = "Title" };
+        _titleTextBox = new TextBox { PlaceholderText = "Title" };
         configurationPanel.Children.Add(_titleTextBox);
 
         _messageTextBox = new TextBox
         {
-            Watermark = "Message",
+            PlaceholderText = "Message",
             AcceptsReturn = true,
             Height = 100,
             TextWrapping = TextWrapping.Wrap
@@ -70,8 +70,8 @@ public class MainWindow : Window
         configurationPanel.Children.Add(optionsRow);
 
         var buttonRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 12 };
-        _primaryButtonTextBox = new TextBox { Width = 160, Watermark = "Primary button label" };
-        _secondaryButtonTextBox = new TextBox { Width = 160, Watermark = "Secondary button label (optional)" };
+        _primaryButtonTextBox = new TextBox { Width = 160, PlaceholderText = "Primary button label" };
+        _secondaryButtonTextBox = new TextBox { Width = 160, PlaceholderText = "Secondary button label (optional)" };
         buttonRow.Children.Add(_primaryButtonTextBox);
         buttonRow.Children.Add(_secondaryButtonTextBox);
         configurationPanel.Children.Add(buttonRow);

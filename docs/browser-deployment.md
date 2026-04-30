@@ -5,7 +5,7 @@ experience for **NativeMessageBox**, including the optional `libnativemessagebox
 artifact, JavaScript overlay host, and Avalonia sample application.
 
 ## Prerequisites
-- .NET 8 SDK (`8.0.x`) with browser workload (`dotnet workload install wasm-tools` if not already installed).
+- .NET 10 SDK (`10.0.x`) with browser workload (`dotnet workload install wasm-tools` if not already installed).
 - Emscripten SDK (only required when you want to regenerate `libnativemessagebox.wasm`).
 - Node.js/npm are *not* required; hosting can be static.
 
@@ -35,7 +35,7 @@ artifact, JavaScript overlay host, and Avalonia sample application.
    ```bash
    dotnet publish samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Browser -c Release
    ```
-   The publish output under `bin/Release/net8.0-browser/publish/wwwroot/` is a
+   The publish output under `bin/Release/net10.0-browser/publish/wwwroot/` is a
    static site ready for deployment.
 
 ## Hosting Considerations

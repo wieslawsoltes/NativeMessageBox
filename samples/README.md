@@ -29,12 +29,12 @@ The new cross-platform sample demonstrates invoking the native message box from 
 - iOS (simulator):
   ```bash
   ./build/scripts/package-ios-xcframework.sh               # produces NativeMessageBox.xcframework
-  dotnet build samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.iOS -f net8.0-ios
+  dotnet build samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.iOS -f net10.0-ios
   ```
 - Android:
   ```bash
   ./build/scripts/package-android-aar.sh                   # produces NativeMessageBox.aar
-  dotnet build samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Android -f net8.0-android
+  dotnet build samples/CrossPlatformSample/NativeMessageBox.CrossPlatformSample.Android -f net10.0-android
   ```
 
 > The Android target now invokes the native bridge via JNI. Provide an emulator/device and ensure the activity tracker is wired (see `NativeMessageBoxActivityTracker`). The build automatically consumes the generated `NativeMessageBox.aar` when present. The iOS target consumes the packaged `NativeMessageBox.xcframework` generated in Phase 11.4.
